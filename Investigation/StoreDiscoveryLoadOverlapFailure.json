@@ -1,0 +1,30 @@
+{
+  "failure" : {
+    "detail" : "actual=[], expected=[BoutiqueTests.StoreDiscoveryItem(id: \"b\", payload: 1)]",
+    "invariant" : "store.overlap.load.memory",
+    "step" : 0
+  },
+  "original" : {
+    "bothStartedFirstCompletesFirst" : false,
+    "firstBatch" : true,
+    "following" : "insert",
+    "initialCount" : 0,
+    "loading" : true,
+    "payload" : 10,
+    "secondBatch" : true,
+    "secondCompletesFirst" : true
+  },
+  "reduced" : {
+    "bothStartedFirstCompletesFirst" : false,
+    "firstBatch" : true,
+    "following" : "insert",
+    "initialCount" : 0,
+    "loading" : true,
+    "payload" : 0,
+    "secondBatch" : true,
+    "secondCompletesFirst" : true
+  },
+  "revision" : "b740dd56a5ab7e5f09013c6c454f6c50ccb77483",
+  "suite" : "store-overlap-schedules",
+  "version" : 1
+}

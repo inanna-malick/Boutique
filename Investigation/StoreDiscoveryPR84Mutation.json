@@ -1,0 +1,899 @@
+{
+  "failure" : {
+    "detail" : "",
+    "invariant" : "store.persistence",
+    "step" : 1
+  },
+  "original" : {
+    "steps" : [
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-3",
+                "payload" : 0
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : true
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-3",
+                "payload" : -15
+              },
+              {
+                "id" : "key\/é-3",
+                "payload" : -14
+              },
+              {
+                "id" : "extra-3",
+                "payload" : -15
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-2",
+                "payload" : 0
+              },
+              {
+                "id" : "key\/é-2",
+                "payload" : 1
+              },
+              {
+                "id" : "extra-2",
+                "payload" : 0
+              }
+            ],
+            "kind" : "removeBatch"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : -3
+              }
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : 1
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : 9
+              }
+            ],
+            "kind" : "remove"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-2",
+                "payload" : 16
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-2",
+                "payload" : 15
+              }
+            ],
+            "kind" : "remove"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-0",
+                "payload" : -3
+              }
+            ],
+            "kind" : "insert"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-0",
+                "payload" : 9
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-0",
+                "payload" : 12
+              }
+            ],
+            "kind" : "removeBatch"
+          },
+          {
+            "items" : [
+
+            ],
+            "kind" : "removeBatch"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : 0
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : -19
+              }
+            ],
+            "kind" : "removeBatch"
+          },
+          {
+            "items" : [
+
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-1",
+                "payload" : -17
+              },
+              {
+                "id" : "key\/é-1",
+                "payload" : -16
+              },
+              {
+                "id" : "extra-1",
+                "payload" : -17
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-2",
+                "payload" : -2
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-3",
+                "payload" : -7
+              }
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-3",
+                "payload" : -7
+              },
+              {
+                "id" : "key\/é-3",
+                "payload" : -6
+              },
+              {
+                "id" : "extra-3",
+                "payload" : -7
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-3",
+                "payload" : -6
+              },
+              {
+                "id" : "key\/é-3",
+                "payload" : -5
+              },
+              {
+                "id" : "extra-3",
+                "payload" : -6
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-2",
+                "payload" : 15
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-1",
+                "payload" : 4
+              },
+              {
+                "id" : "key\/é-1",
+                "payload" : 5
+              },
+              {
+                "id" : "extra-1",
+                "payload" : 4
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : 14
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-1",
+                "payload" : -2
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : -7
+              },
+              {
+                "id" : "key\/é-4",
+                "payload" : -6
+              },
+              {
+                "id" : "extra-4",
+                "payload" : -7
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "extra-4",
+                "payload" : -7
+              },
+              {
+                "id" : "extra-4",
+                "payload" : -6
+              },
+              {
+                "id" : "extra-0",
+                "payload" : -7
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "extra-4",
+                "payload" : -8
+              },
+              {
+                "id" : "extra-4",
+                "payload" : -7
+              },
+              {
+                "id" : "extra-4",
+                "payload" : -8
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : -1
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "extra-0",
+                "payload" : 0
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "extra-0",
+                "payload" : -7
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-1",
+                "payload" : -5
+              }
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-1",
+                "payload" : -5
+              },
+              {
+                "id" : "key\/é-1",
+                "payload" : -4
+              },
+              {
+                "id" : "extra-1",
+                "payload" : -5
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-2",
+                "payload" : 10
+              },
+              {
+                "id" : "key\/é-2",
+                "payload" : 11
+              },
+              {
+                "id" : "extra-2",
+                "payload" : 10
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-1",
+                "payload" : -8
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-2",
+                "payload" : 10
+              },
+              {
+                "id" : "key\/é-2",
+                "payload" : 11
+              },
+              {
+                "id" : "extra-2",
+                "payload" : 10
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-0",
+                "payload" : -4
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : true
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-0",
+                "payload" : -2
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-2",
+                "payload" : 15
+              },
+              {
+                "id" : "key\/é-2",
+                "payload" : 16
+              },
+              {
+                "id" : "extra-2",
+                "payload" : 15
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : -12
+              }
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : -12
+              },
+              {
+                "id" : "key\/é-4",
+                "payload" : -11
+              },
+              {
+                "id" : "extra-4",
+                "payload" : -12
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : 6
+              },
+              {
+                "id" : "key\/é-4",
+                "payload" : 7
+              },
+              {
+                "id" : "extra-3",
+                "payload" : 6
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-0",
+                "payload" : 18
+              }
+            ],
+            "kind" : "remove"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : -15
+              }
+            ],
+            "kind" : "insert"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-3",
+                "payload" : -8
+              }
+            ],
+            "kind" : "remove"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : -8
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : -11
+              },
+              {
+                "id" : "key\/é-4",
+                "payload" : -10
+              },
+              {
+                "id" : "extra-2",
+                "payload" : -11
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "extra-4",
+                "payload" : -9
+              }
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "extra-4",
+                "payload" : -9
+              },
+              {
+                "id" : "extra-4",
+                "payload" : -8
+              },
+              {
+                "id" : "extra-1",
+                "payload" : -9
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      }
+    ]
+  },
+  "reduced" : {
+    "steps" : [
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-0",
+                "payload" : 0
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : 0
+              }
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "key\/é-4",
+                "payload" : 0
+              },
+              {
+                "id" : "key\/é-4",
+                "payload" : 1
+              },
+              {
+                "id" : "extra-4",
+                "payload" : 0
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      }
+    ]
+  },
+  "revision" : "b740dd56a5ab7e5f09013c6c454f6c50ccb77483",
+  "suite" : "store-history-mock",
+  "version" : 1
+}
