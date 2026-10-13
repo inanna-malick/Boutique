@@ -8,6 +8,7 @@ actor StoreDiscoveryStorage: StorageEngine {
     struct Call: Sendable { let kind: String; let keys: [String] }
     private var values: [CacheKey: Data] = [:]
     private(set) var calls: [Call] = []
+    private(set) var commits: [Call] = []
     private var fault: (kind: String, after: Int)?
     private var gatedKind: String?
     private var gates: [CheckedContinuation<Void, Never>] = []
@@ -16,11 +17,11 @@ actor StoreDiscoveryStorage: StorageEngine {
 
     func fail(_ kind: String, after: Int) { fault = (kind, after) }
     func pause(_ kind: String) { gatedKind = kind; reached = false }
-    func waitForGate() async throws {
+    func waitForGate(timeout duration: Duration = .seconds(5)) async throws {
         if reached { return }
         let id = UUID()
         let timeout = Task {
-            do { try await Task.sleep(for: .seconds(5)) }
+            do { try await Task.sleep(for: duration) }
             catch { return }
             self.expire(id)
         }
@@ -63,23 +64,23 @@ actor StoreDiscoveryStorage: StorageEngine {
     }
     func write(_ data: Data, key: CacheKey) async throws {
         await enter("write", keys: [key]); try check("write", committed: 0)
-        values[key] = data; try check("write", committed: 1)
+        values[key] = data; commits.append(Call(kind: "write", keys: [key.value])); try check("write", committed: 1)
     }
     func write(_ entries: [(key: CacheKey, data: Data)]) async throws {
         await enter("batch", keys: entries.map(\.key)); try check("batch", committed: 0)
-        for (index, entry) in entries.enumerated() { values[entry.key] = entry.data; try check("batch", committed: index + 1) }
+        for (index, entry) in entries.enumerated() { values[entry.key] = entry.data; commits.append(Call(kind: "write", keys: [entry.key.value])); try check("batch", committed: index + 1) }
     }
     func remove(key: CacheKey) async throws {
         await enter("remove", keys: [key]); try check("remove", committed: 0)
-        values.removeValue(forKey: key); try check("remove", committed: 1)
+        values.removeValue(forKey: key); commits.append(Call(kind: "remove", keys: [key.value])); try check("remove", committed: 1)
     }
     func remove(keys: [CacheKey]) async throws {
         await enter("removeBatch", keys: keys); try check("removeBatch", committed: 0)
-        for (index, key) in keys.enumerated() { values.removeValue(forKey: key); try check("removeBatch", committed: index + 1) }
+        for (index, key) in keys.enumerated() { values.removeValue(forKey: key); commits.append(Call(kind: "remove", keys: [key.value])); try check("removeBatch", committed: index + 1) }
     }
     func removeAllData() async throws {
         await enter("clear"); try check("clear", committed: 0)
-        values = [:]; try check("clear", committed: 1)
+        values = [:]; commits.append(Call(kind: "clear", keys: [])); try check("clear", committed: 1)
     }
     func readAllData() async -> [Data] {
         let snapshot = values.sorted { $0.key.value < $1.key.value }.map(\.value)
@@ -92,4 +93,40 @@ actor StoreDiscoveryStorage: StorageEngine {
     func keyExists(_ key: CacheKey) -> Bool { values[key] != nil }
     func createdAt(key: CacheKey) -> Date? { nil }
     func updatedAt(key: CacheKey) -> Date? { nil }
+}
+
+/// An unstructured operation can be awaited with a deadline without putting a
+/// noncooperative storage-gated task inside a task group that must join to return.
+actor StoreDiscoveryCompletion {
+    private var result: Result<Void, Error>?
+    private var waiters: [UUID: CheckedContinuation<Void, Error>] = [:]
+
+    func finish(_ result: Result<Void, Error>) {
+        self.result = result
+        let pending = waiters; waiters = [:]
+        pending.values.forEach { $0.resume(with: result) }
+    }
+
+    func wait(timeout duration: Duration) async throws {
+        if let result { return try result.get() }
+        let id = UUID()
+        let timeout = Task {
+            do { try await Task.sleep(for: duration) }
+            catch { return }
+            self.expire(id)
+        }
+        defer { timeout.cancel() }
+        try await withTaskCancellationHandler {
+            try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+                if Task.isCancelled { continuation.resume(throwing: CancellationError()) }
+                else { waiters[id] = continuation }
+            }
+        } onCancel: {
+            Task { await self.expire(id) }
+        }
+    }
+
+    private func expire(_ id: UUID) {
+        waiters.removeValue(forKey: id)?.resume(throwing: StoreDiscoveryStorage.Failure.gateTimedOut)
+    }
 }

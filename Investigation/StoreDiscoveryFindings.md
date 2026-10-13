@@ -31,7 +31,13 @@ release gates. It can pause read snapshots and mutation commits. Teardown releas
 all gates and awaits outstanding operations. Schedules contain initial size,
 payload, single/batch choices, insert/remove/clear choice, and completion order.
 Both operations can start before either completes; both completion orders are
-representable. Serialized controls pass by default.
+representable. Serialized controls pass by default. Completion waits are bounded
+while another gate is held; a repaired implementation that serializes operations
+is classified explicitly as an infeasible requested overlap. All gates are then
+released, both tasks joined, and the oracle uses recorded backend commit order.
+Requested, reached, and infeasible scheduling counters are separate. Twelve
+calibration cases deliberately make the second operation wait for the first;
+both requested orders finish and validate serialized outcomes (including clear).
 
 The opt-in generated overlap search currently fails:
 

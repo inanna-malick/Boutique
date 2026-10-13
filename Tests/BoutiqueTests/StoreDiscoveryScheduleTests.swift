@@ -135,97 +135,132 @@ struct StoreDiscoveryScheduleTests {
         }
     }
 
-    private func overlap(_ scenario: StoreDiscoveryOverlapScenario, coverage: DiscoveryCoverage) async throws {
+    private func overlap(_ scenario: StoreDiscoveryOverlapScenario, coverage: DiscoveryCoverage,
+                         forceSerializedSecond: Bool = false, deadline: Duration = .seconds(1)) async throws {
         let storage = StoreDiscoveryStorage()
         let initial = (0..<scenario.initialCount).map { StoreDiscoveryItem(id: "initial-\($0)", payload: scenario.payload) }
         for item in initial { try await storage.write(JSONEncoder().encode(item), key: CacheKey(item.id)) }
+        let commitStart = await storage.commits.count
         let a = StoreDiscoveryItem(id: "a", payload: scenario.payload)
         let b = StoreDiscoveryItem(id: "b", payload: scenario.payload + 1)
         let store: Store<StoreDiscoveryItem>
+        let first: Task<Void, Error>
         if scenario.loading {
             await storage.pause("readAll")
             store = synchronous(storage)
-            do {
-                try await storage.waitForGate()
-                if !scenario.secondCompletesFirst {
-                    await storage.release()
-                    try await store.itemsHaveLoaded()
-                }
-                if scenario.bothStartedFirstCompletesFirst == true {
-                    await storage.pause(followingStorageKind(scenario))
-                    let second = Task { try await following(scenario, store: store, inserted: b, removed: initial.first ?? a) }
-                    do {
-                        try await storage.waitForGate()
-                        await storage.release()
-                        try await store.itemsHaveLoaded()
-                        await storage.release()
-                        try await second.value
-                    } catch {
-                        await storage.releaseAll()
-                        _ = try? await second.value
-                        throw error
-                    }
-                } else {
-                    try await following(scenario, store: store, inserted: b, removed: initial.first ?? a)
-                    await storage.release()
-                    try await store.itemsHaveLoaded()
-                }
-            } catch {
-                await storage.releaseAll()
-                _ = try? await store.itemsHaveLoaded()
-                throw error
-            }
+            first = Task { try await store.itemsHaveLoaded() }
         } else {
             store = try await Store<StoreDiscoveryItem>(storage: storage, cacheIdentifier: \.id)
             await storage.pause(scenario.firstBatch ? "batch" : "write")
-            let first = Task {
+            first = Task {
                 if scenario.firstBatch { try await store.insert([a]) as Void }
                 else { try await store.insert(a) as Void }
             }
-            do {
-                try await storage.waitForGate()
-                if !scenario.secondCompletesFirst { await storage.release(); try await first.value }
-                if scenario.bothStartedFirstCompletesFirst == true {
-                    await storage.pause(followingStorageKind(scenario))
-                    let second = Task { try await following(scenario, store: store, inserted: b, removed: initial.first ?? a) }
-                    do {
-                        try await storage.waitForGate()
-                        await storage.release()
-                        try await first.value
-                        await storage.release()
-                        try await second.value
-                    } catch {
-                        await storage.releaseAll()
-                        _ = try? await second.value
-                        throw error
-                    }
-                } else {
-                    try await following(scenario, store: store, inserted: b, removed: initial.first ?? a)
-                    await storage.release()
-                    try await first.value
-                }
-            } catch {
-                await storage.releaseAll()
-                _ = try? await first.value
-                throw error
+        }
+        do {
+            try await storage.waitForGate()
+            try await driveSchedule(scenario, storage: storage, first: first, coverage: coverage,
+                                    deadline: deadline, forceSerializedSecond: forceSerializedSecond) {
+                try await following(scenario, store: store, inserted: b, removed: initial.first ?? a)
             }
+        } catch {
+            await storage.releaseAll()
+            _ = try? await first.value
+            throw error
         }
         let reopened = try await Store<StoreDiscoveryItem>(storage: storage, cacheIdentifier: \.id)
-        // The independent model applies actual storage commit order. For distinct
-        // inserts/removing an unrelated initial key, either order has one result.
+        // A timed-out schedule may be infeasible because a valid implementation
+        // serializes operations. Derive ordering from actual backend commits, not
+        // from the requested schedule or timeout alone (clear is noncommutative).
+        let commits = Array(await storage.commits.dropFirst(commitStart))
         var expected = StoreDiscoveryModel(items: initial)
-        if !scenario.loading && (!scenario.secondCompletesFirst || scenario.bothStartedFirstCompletesFirst == true) { expected.apply(.init(kind: .insert, items: [a])) }
-        switch scenario.following {
-        case .insert: expected.apply(.init(kind: .insert, items: [b]))
-        case .remove: expected.apply(.init(kind: .remove, items: [initial.first ?? a]))
-        case .clear: expected.apply(.init(kind: .clear, items: []))
+        for commit in commits {
+            if commit.kind == "write", commit.keys == [CacheKey(a.id).value] {
+                expected.apply(.init(kind: .insert, items: [a]))
+                coverage.hit("schedule.commit.first")
+            } else {
+                switch scenario.following {
+                case .insert: expected.apply(.init(kind: .insert, items: [b]))
+                case .remove: expected.apply(.init(kind: .remove, items: [initial.first ?? a]))
+                case .clear: expected.apply(.init(kind: .clear, items: []))
+                }
+                coverage.hit("schedule.commit.second")
+            }
         }
-        if !scenario.loading && scenario.secondCompletesFirst && scenario.bothStartedFirstCompletesFirst != true { expected.apply(.init(kind: .insert, items: [a])) }
+        // Completeness independently requires the second operation to have committed,
+        // and a non-loading first operation must also have committed its item.
+        let firstCommits = commits.filter { $0.kind == "write" && $0.keys == [CacheKey(a.id).value] }.count
+        try discoveryRequire(firstCommits == (scenario.loading ? 0 : 1) && commits.count == firstCommits + 1,
+                             "store.overlap.commit-completeness", step: 0)
+        coverage.hit("schedule.observed-" + (scenario.loading ? "load-plus-mutation" :
+            commits.first?.kind == "write" && commits.first?.keys == [CacheKey(a.id).value] ? "first-then-second" : "second-then-first"))
         let family = scenario.loading ? "load" : "mutation"
         coverage.hit("\(family)-\(scenario.following.rawValue)-\(scenario.firstBatch)-\(scenario.secondBatch)-first-completes-\(scenario.bothStartedFirstCompletesFirst == true)")
         try discoveryRequire(sorted(reopened.items) == sorted(expected.items), "store.overlap.\(family).persistence", step: 0)
         try discoveryRequire(sorted(store.items) == sorted(expected.items), "store.overlap.\(family).memory", step: 0,
             "actual=\(store.items), expected=\(expected.items)")
+    }
+
+    private func driveSchedule(_ scenario: StoreDiscoveryOverlapScenario, storage: StoreDiscoveryStorage,
+                               first: Task<Void, Error>, coverage: DiscoveryCoverage, deadline: Duration,
+                               forceSerializedSecond: Bool, following: @escaping @MainActor () async throws -> Void) async throws {
+        coverage.hit("schedule.requested-" + (!scenario.secondCompletesFirst ? "serial" :
+            scenario.bothStartedFirstCompletesFirst == true ? "first-then-second" : "second-then-first"))
+        if !scenario.secondCompletesFirst { await storage.release(); try await first.value }
+        if scenario.bothStartedFirstCompletesFirst == true { await storage.pause(followingStorageKind(scenario)) }
+        let completion = StoreDiscoveryCompletion()
+        let second = Task {
+            do {
+                if forceSerializedSecond { try await first.value }
+                try await following()
+                await completion.finish(.success(()))
+            } catch {
+                await completion.finish(.failure(error))
+                throw error
+            }
+        }
+        do {
+            if scenario.bothStartedFirstCompletesFirst == true {
+                try await storage.waitForGate(timeout: deadline)
+                await storage.release()
+                try await first.value
+                await storage.release()
+                try await second.value
+            } else {
+                // Bound the second operation while the first's gate is held. An
+                // implementation may legally wait for that first operation.
+                try await completion.wait(timeout: deadline)
+                await storage.release()
+                try await first.value
+                try await second.value
+            }
+            coverage.hit("schedule.reached")
+        } catch StoreDiscoveryStorage.Failure.gateTimedOut {
+            coverage.hit("schedule.infeasible")
+            await storage.releaseAll()
+            // Joining happens only AFTER releasing every test-owned suspension.
+            // A deadline does not prove serialization; commit logs drive the oracle.
+            do { try await first.value; try await second.value }
+            catch { _ = try? await second.value; throw error }
+        } catch {
+            await storage.releaseAll()
+            _ = try? await first.value
+            _ = try? await second.value
+            throw error
+        }
+    }
+
+    @Test(arguments: [false, true], [false, true])
+    func serializedImplementationMakesOverlapExplicitlyInfeasible(loading: Bool, firstCompletesFirst: Bool) async throws {
+        for following in StoreDiscoveryOverlapScenario.Following.allCases {
+            let coverage = DiscoveryCoverage()
+            try await overlap(.init(loading: loading, firstBatch: false, secondBatch: false,
+                following: following, initialCount: 1, payload: 0, secondCompletesFirst: true,
+                bothStartedFirstCompletesFirst: firstCompletesFirst), coverage: coverage,
+                forceSerializedSecond: true, deadline: .milliseconds(20))
+            #expect(coverage.counts["schedule.infeasible"] == 1)
+            #expect(coverage.counts["schedule.reached"] == nil)
+        }
     }
 
     private func followingStorageKind(_ scenario: StoreDiscoveryOverlapScenario) -> String {
