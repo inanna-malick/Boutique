@@ -1,0 +1,389 @@
+Fetching https://github.com/stephencelis/SQLite.swift.git from cache
+Fetching https://github.com/apple/swift-docc-plugin from cache
+Fetching https://github.com/apple/swift-collections from cache
+Fetching https://github.com/x-sheep/swift-property-based.git from cache
+Fetching https://github.com/mergesort/Bodega.git from cache
+Fetched https://github.com/apple/swift-docc-plugin from cache (0.39s)
+Fetched https://github.com/mergesort/Bodega.git from cache (0.39s)
+Fetched https://github.com/stephencelis/SQLite.swift.git from cache (0.52s)
+Fetched https://github.com/x-sheep/swift-property-based.git from cache (0.52s)
+Fetched https://github.com/apple/swift-collections from cache (0.52s)
+Computing version for https://github.com/apple/swift-docc-plugin
+Computed https://github.com/apple/swift-docc-plugin at 1.0.0 (1.01s)
+Computing version for https://github.com/apple/swift-collections
+Computed https://github.com/apple/swift-collections at 1.0.4 (0.48s)
+Computing version for https://github.com/mergesort/Bodega.git
+Computed https://github.com/mergesort/Bodega.git at 2.1.3 (0.45s)
+Computing version for https://github.com/x-sheep/swift-property-based.git
+Computed https://github.com/x-sheep/swift-property-based.git at 2.0.1 (0.38s)
+Computing version for https://github.com/stephencelis/SQLite.swift.git
+Computed https://github.com/stephencelis/SQLite.swift.git at 0.13.3 (0.46s)
+Creating working copy for https://github.com/stephencelis/SQLite.swift.git
+Working copy of https://github.com/stephencelis/SQLite.swift.git resolved at 0.13.3
+Creating working copy for https://github.com/mergesort/Bodega.git
+Working copy of https://github.com/mergesort/Bodega.git resolved at 2.1.3
+Creating working copy for https://github.com/apple/swift-docc-plugin
+Working copy of https://github.com/apple/swift-docc-plugin resolved at 1.0.0
+Creating working copy for https://github.com/x-sheep/swift-property-based.git
+Working copy of https://github.com/x-sheep/swift-property-based.git resolved at 2.0.1
+Creating working copy for https://github.com/apple/swift-collections
+Working copy of https://github.com/apple/swift-collections resolved at 1.0.4
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/14] /Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/.build/arm64-apple-macosx/debug/BoutiquePackageTests.derived/runner.swift
+[3/14] Write swift-version-6FAF900280F264CA.txt
+[4/14] Write sources
+[7/32] Compiling SQLiteObjc SQLiteObjc.m
+[9/58] Compiling OrderedCollections _HashTable+Bucket.swift
+[10/58] Compiling OrderedCollections _HashTable+BucketIterator.swift
+[11/58] Compiling OrderedCollections _HashTable+Constants.swift
+[12/58] Compiling OrderedCollections _HashTable+CustomStringConvertible.swift
+[13/58] Compiling OrderedCollections _HashTable+Testing.swift
+[14/58] Compiling OrderedCollections _HashTable+UnsafeHandle.swift
+[15/58] Compiling OrderedCollections _HashTable.swift
+[16/58] Compiling OrderedCollections _Hashtable+Header.swift
+[17/58] Compiling OrderedCollections OrderedDictionary+Codable.swift
+[18/58] Compiling OrderedCollections OrderedDictionary+CustomDebugStringConvertible.swift
+[19/58] Compiling OrderedCollections OrderedDictionary+CustomReflectable.swift
+[20/58] Compiling OrderedCollections OrderedDictionary+CustomStringConvertible.swift
+[21/58] Compiling OrderedCollections OrderedDictionary+Deprecations.swift
+[22/58] Compiling OrderedCollections OrderedDictionary+Elements+SubSequence.swift
+[23/58] Compiling OrderedCollections OrderedDictionary+Elements.swift
+[24/58] Compiling OrderedCollections OrderedDictionary+Equatable.swift
+[25/58] Compiling OrderedCollections OrderedDictionary+ExpressibleByDictionaryLiteral.swift
+[26/58] Compiling OrderedCollections OrderedDictionary+Hashable.swift
+[27/58] Compiling OrderedCollections OrderedDictionary+Initializers.swift
+[28/58] Compiling OrderedCollections OrderedDictionary+Invariants.swift
+[29/58] Compiling OrderedCollections OrderedDictionary+Partial MutableCollection.swift
+[30/58] Compiling OrderedCollections OrderedDictionary+Partial RangeReplaceableCollection.swift
+[31/58] Compiling OrderedCollections OrderedDictionary+Sequence.swift
+[32/58] Compiling OrderedCollections OrderedDictionary+Values.swift
+[33/58] Compiling OrderedCollections OrderedDictionary.swift
+[34/58] Emitting module OrderedCollections
+[35/83] Compiling OrderedCollections OrderedSet+Codable.swift
+[36/83] Compiling OrderedCollections OrderedSet+CustomDebugStringConvertible.swift
+[37/83] Compiling OrderedCollections OrderedSet+CustomReflectable.swift
+[38/83] Compiling OrderedCollections OrderedSet+CustomStringConvertible.swift
+[39/83] Compiling OrderedCollections OrderedSet+Diffing.swift
+[40/83] Compiling OrderedCollections OrderedSet+Equatable.swift
+[41/83] Compiling OrderedCollections OrderedSet+ExpressibleByArrayLiteral.swift
+[42/83] Compiling OrderedCollections OrderedSet+Hashable.swift
+[43/83] Compiling OrderedCollections OrderedSet+Initializers.swift
+[44/83] Compiling OrderedCollections OrderedSet+Insertions.swift
+[45/83] Compiling OrderedCollections OrderedSet+Invariants.swift
+[46/83] Compiling OrderedCollections OrderedSet+Partial MutableCollection.swift
+[47/83] Compiling OrderedCollections OrderedSet+Partial RangeReplaceableCollection.swift
+[48/83] Compiling OrderedCollections OrderedSet+Partial SetAlgebra+Basics.swift
+[49/83] Compiling OrderedCollections OrderedSet+Partial SetAlgebra+Operations.swift
+[50/83] Compiling OrderedCollections OrderedSet+Partial SetAlgebra+Predicates.swift
+[51/83] Compiling OrderedCollections OrderedSet+RandomAccessCollection.swift
+[52/83] Compiling OrderedCollections OrderedSet+ReserveCapacity.swift
+[53/83] Compiling OrderedCollections OrderedSet+SubSequence.swift
+[54/83] Compiling OrderedCollections OrderedSet+Testing.swift
+[55/83] Compiling OrderedCollections OrderedSet+UnorderedView.swift
+[56/83] Compiling OrderedCollections OrderedSet+UnstableInternals.swift
+[57/83] Compiling OrderedCollections OrderedSet.swift
+[58/83] Compiling OrderedCollections RandomAccessCollection+Offsets.swift
+[59/83] Compiling OrderedCollections _UnsafeBitset.swift
+[60/97] Emitting module SQLite
+[61/97] Compiling SQLite Backup.swift
+[62/97] Compiling SQLite Blob.swift
+[63/97] Compiling SQLite Connection+Aggregation.swift
+[64/97] Compiling SQLite Connection.swift
+[65/97] Compiling SQLite Errors.swift
+[66/97] Compiling SQLite Result.swift
+[67/97] Compiling SQLite Statement.swift
+[68/97] Compiling SQLite Value.swift
+[69/97] Compiling SQLite Cipher.swift
+[70/97] Compiling SQLite FTS4.swift
+[71/97] Compiling SQLite FTS5.swift
+[72/97] Compiling SQLite RTree.swift
+[73/97] Compiling SQLite Foundation.swift
+[74/109] Compiling SQLite Helpers.swift
+[75/109] Compiling SQLite AggregateFunctions.swift
+[76/109] Compiling SQLite Coding.swift
+[77/109] Compiling SQLite Collation.swift
+[78/109] Compiling SQLite CoreFunctions.swift
+[79/109] Compiling SQLite CustomFunctions.swift
+[80/109] Compiling SQLite DateAndTimeFunctions.swift
+[81/109] Compiling SQLite Expression.swift
+[82/109] Compiling SQLite Operators.swift
+[83/109] Compiling SQLite Query.swift
+[84/109] Compiling SQLite Schema.swift
+[85/109] Compiling SQLite Setter.swift
+[85/109] Write sources
+[90/114] Emitting module Bodega
+[91/114] Compiling Bodega CacheKey.swift
+[92/114] Compiling Bodega DiskStorageEngine.swift
+[93/114] Compiling Bodega FileManager.Directory.swift
+[94/114] Compiling Bodega ObjectStorage.swift
+[95/118] Compiling Bodega SQLiteStorageEngine+Default.swift
+[96/118] Compiling Bodega SQLiteStorageEngine.swift
+[97/118] Compiling Bodega StorageEngine.swift
+[98/118] Compiling Bodega String+Formatting.swift
+[99/129] Compiling Boutique AsyncValueSubject.swift
+[100/129] Compiling Boutique BoxedValue.swift
+[101/129] Compiling Boutique CachedValue.swift
+[102/129] Compiling Boutique JSONCoders.swift
+[103/129] Compiling Boutique Keychain.swift
+[104/129] Compiling Boutique Store.ItemRemovalStrategy.swift
+[105/129] Compiling Boutique SecurelyStoredValue.swift
+[106/129] Compiling Boutique StorableItem.swift
+[107/129] Compiling Boutique Store+Identifiable.swift
+[108/129] Compiling Boutique Store+Observation.swift
+[116/129] Emitting module PropertyBased
+[117/146] Compiling PropertyBased MaximumAttemptsTrait.swift
+[118/146] Compiling PropertyBased Mutex.swift
+[119/146] Compiling PropertyBased PropertyCheck+Pack.swift
+[120/146] Compiling PropertyBased PropertyCheck.swift
+[121/146] Compiling PropertyBased SeededRandomNumberGenerator.swift
+[122/146] Compiling PropertyBased Shrink+Appended.swift
+[123/146] Compiling PropertyBased Shrink+Bitset.swift
+[124/146] Compiling PropertyBased Shrink+Collection.swift
+[125/146] Compiling PropertyBased Shrink+Date.swift
+[126/146] Compiling PropertyBased Shrink+Float.swift
+[127/146] Compiling PropertyBased Shrink+Integer.swift
+[128/146] Compiling PropertyBased Shrink+MutableCollection.swift
+[129/146] Compiling PropertyBased Shrink+Optional.swift
+[130/146] Compiling PropertyBased Shrink+Tuple.swift
+[131/146] Compiling PropertyBased Shrink.swift
+[132/146] Compiling PropertyBased Xoshiro.swift
+[133/146] Compiling PropertyBased Zip.swift
+[134/146] Emitting module Boutique
+[145/156] Compiling Boutique Store.Operation.swift
+[146/156] Compiling Boutique Store.swift
+[147/156] Compiling Boutique StoreEvent.swift
+[148/156] Compiling Boutique Stored.swift
+[149/156] Compiling Boutique StoredValue+Array.swift
+[150/156] Compiling Boutique StoredValue+Binding.swift
+[151/156] Compiling Boutique StoredValue+Bool.swift
+[152/156] Compiling Boutique StoredValue+Dictionary.swift
+[153/156] Compiling Boutique StoredValue+KeypathSetter.swift
+[154/156] Compiling Boutique StoredValue.swift
+[155/176] Emitting module BoutiqueTests
+[156/194] Compiling BoutiqueTests AsyncStoreTests.swift
+[157/194] Compiling BoutiqueTests BoutiqueItem.swift
+[158/194] Compiling BoutiqueTests KeychainService.Tests.swift
+[159/194] Compiling BoutiqueTests OperationLifecycleDiscoveryTests.swift
+[160/194] Compiling BoutiqueTests PropertyBasedAsyncValueSubjectTests.swift
+[161/194] Compiling BoutiqueTests PropertyBasedBindingTests.swift
+[162/194] Compiling BoutiqueTests PropertyBasedKeychainRetryTests.swift
+[163/194] Compiling BoutiqueTests PropertyBasedObservationTests.swift
+[164/194] Compiling BoutiqueTests PropertyBasedSecureWrapperTests.swift
+[165/194] Compiling BoutiqueTests PropertyBasedStoreTests.swift
+[166/194] Compiling BoutiqueTests PropertyBasedStoredValueTests.swift
+[167/194] Compiling BoutiqueTests PropertyLibraryAcceptanceTests.swift
+[168/194] Compiling BoutiqueTests DiscoveryProperty.swift
+[169/194] Compiling BoutiqueTests DiscoveryRandom.swift
+[170/194] Compiling BoutiqueTests DiscoveryStreamSupport.swift
+[171/194] Compiling BoutiqueTests SecureStreamDiscoveryTests.swift
+[172/194] Compiling BoutiqueTests SecurelyStoredValueTests.swift
+[173/194] Compiling BoutiqueTests StoreDiscoveryHistoryTests.swift
+[174/194] Compiling BoutiqueTests StoreDiscoveryInterleavingTests.swift
+[175/194] Compiling BoutiqueTests StoreDiscoveryScheduleTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[176/194] Compiling BoutiqueTests StoreDiscoveryStorage.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[177/194] Compiling BoutiqueTests StoreEvent.Tests.Requirements.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[178/194] Compiling BoutiqueTests StoreFusedRemovalTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[179/194] Compiling BoutiqueTests StoreIdentityDiscoveryTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[180/194] Compiling BoutiqueTests StorePartialFailureClearReproductionTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[181/194] Compiling BoutiqueTests StorePartialFailureHistoryTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[182/194] Compiling BoutiqueTests StorePreviewLifecycleDiscoveryTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[183/194] Compiling BoutiqueTests StorePropertyMirrorTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[184/194] Compiling BoutiqueTests StoreSharedClearReproductionTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[185/194] Compiling BoutiqueTests StoreSharedPersistenceDiscoveryTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[186/194] Compiling BoutiqueTests StoreTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[187/194] Compiling BoutiqueTests StoredTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[188/194] Compiling BoutiqueTests StoredValueTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[189/194] Compiling BoutiqueTests StreamDiscoveryStoreEventsTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[190/194] Compiling BoutiqueTests StreamDiscoveryStoredValueTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[191/194] Compiling BoutiqueTests StreamDiscoveryTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[192/194] Compiling BoutiqueTests WrapperDiscoveryTests.swift
+/Users/inannamalick/dev/botique-proptest/worktrees/preview-lifecycle/Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift:95:65: warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 93 |         let store = make(expected, overload: "keypath")
+ 94 |         var changes = 0
+ 95 |         withObservationTracking { _ = store.items } onChange: { changes += 1 }
+    |                                                                 `- warning: mutation of captured var 'changes' in concurrently-executing code; this is an error in the Swift 6 language mode [#SendableClosureCaptures]
+ 96 |         try await store.itemsHaveLoaded()
+ 97 |         #expect(changes == 0, "Preview initialization should not replace supplied fixtures")
+
+[#SendableClosureCaptures]: <https://docs.swift.org/compiler/documentation/diagnostics/sendable-closure-captures>
+[193/196] Compiling BoutiquePackageTests runner.swift
+[194/196] Emitting module BoutiquePackageTests
+[194/196] Write Objects.LinkFileList
+[195/196] Linking BoutiquePackageTests
+Build complete! (67.20s)
+Test Suite 'Selected tests' started at 2026-10-12 22:53:24.523.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:53:24.524.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:53:24.524.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:53:24.524.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Preview Store lifecycle discovery" started.
+◇ Test immediateConstructionControls(overload:) started.
+◇ Test case passing 1 argument overload → "keypath" to immediateConstructionControls(overload:) started.
+✘ Test immediateConstructionControls(overload:) recorded an issue with 1 argument overload → "keypath" at StorePreviewLifecycleDiscoveryTests.swift:42:6: Caught error: preview.isolation-directory at step -1: TMPDIR must be set before process launch
+◇ Test case passing 1 argument overload → "identifiable" to immediateConstructionControls(overload:) started.
+✘ Test immediateConstructionControls(overload:) recorded an issue with 1 argument overload → "identifiable" at StorePreviewLifecycleDiscoveryTests.swift:42:6: Caught error: preview.isolation-directory at step -1: TMPDIR must be set before process launch
+✘ Test immediateConstructionControls(overload:) with 2 test cases failed after 0.001 seconds with 2 issues.
+➜ Test loadedFixturesSearch(overload:) skipped.
+➜ Test standaloneLoadedFixtureWitness(overload:) skipped.
+➜ Test observationAfterLoadWitness() skipped.
+✘ Suite "Preview Store lifecycle discovery" failed after 0.002 seconds with 2 issues.
+✘ Test run with 4 tests in 1 suite failed after 0.002 seconds with 2 issues.
