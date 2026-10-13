@@ -1,0 +1,32 @@
+[
+  {
+    "baseRefOid": "3474aa1d931c17ddcd099285b26b513b36b6969b",
+    "headRefOid": "7a0f3142e9081fddd2fbd80626b5db57bb9de305",
+    "isDraft": false,
+    "number": 85,
+    "title": "Reproduce Unicode identifier divergence between Store memory and persistence",
+    "url": "https://github.com/mergesort/Boutique/pull/85",
+    "focusedResult": "\u2718 Test run with 3 tests in 1 suite failed after 0.011 seconds with 6 issues.",
+    "purpose": "Ready for maintainer review of intentionally failing repro tests; not merge-ready without repair"
+  },
+  {
+    "baseRefOid": "3474aa1d931c17ddcd099285b26b513b36b6969b",
+    "headRefOid": "465a843666bb9dd366064b5ba4515a645e5b0e78",
+    "isDraft": false,
+    "number": 86,
+    "title": "Reproduce Store lost updates during concurrent inserts and initial loading",
+    "url": "https://github.com/mergesort/Boutique/pull/86",
+    "focusedResult": "\u2718 Test run with 3 tests in 1 suite failed after 0.002 seconds with 4 issues.",
+    "purpose": "Ready for maintainer review of intentionally failing repro tests; not merge-ready without repair"
+  },
+  {
+    "baseRefOid": "3474aa1d931c17ddcd099285b26b513b36b6969b",
+    "headRefOid": "2f3bb8b56c49d2089f7c06788c24b65dc846e4b1",
+    "isDraft": false,
+    "number": 87,
+    "title": "Reproduce fused clear retaining records absent from memory",
+    "url": "https://github.com/mergesort/Boutique/pull/87",
+    "focusedResult": "\u2718 Test run with 4 tests in 2 suites failed after 0.022 seconds with 12 issues.",
+    "purpose": "Ready for maintainer review of intentionally failing repro tests; not merge-ready without repair"
+  }
+]
