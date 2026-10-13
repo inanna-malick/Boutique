@@ -132,6 +132,12 @@ struct CodecRecoveryDiscoveryTests {
             try await encoding(scenario, coverage: coverage)
         }
     }
+    @Test(.shrinking)
+    func encodeBeforeRemovalPolicyControl() async throws {
+        try await DiscoveryProperty.check("codec-encode-first-control", input: generator()) { scenario, coverage in
+            try await encoding(scenario, coverage: coverage, encodeBeforeRemoval: true)
+        }
+    }
     @Test
     func boundedEncodingMatrix() async throws {
         for position in 0...2 { for duplicate in 0...2 { for fused in [false, true] {
@@ -142,7 +148,7 @@ struct CodecRecoveryDiscoveryTests {
         } }
         print("PROPERTY codec-matrix: combinations=18, two-command histories=49")
     }
-    private func encoding(_ scenario: CodecScenario, coverage: DiscoveryCoverage) async throws {
+    private func encoding(_ scenario: CodecScenario, coverage: DiscoveryCoverage, encodeBeforeRemoval: Bool = false) async throws {
         let storage = StoreDiscoveryStorage()
         var store = try await Store<CodecRecord>(storage: storage, cacheIdentifier: \.id)
         let unrelated = CodecRecord(id: "unrelated", payload: scenario.payload)
@@ -162,15 +168,25 @@ struct CodecRecoveryDiscoveryTests {
             let before = await storage.readAllData()
             do {
                 if scenario.fused {
+                    if encodeBeforeRemoval { for item in normalized { _ = try JSONEncoder().encode(item) } }
                     let op: Store<CodecRecord>.Operation = try await store.removeAll()
                     try await op.insert(operands).run()
                 } else { try await store.insert(operands) as Void }
                 try discoveryRequire(!rejects, "codec.encoding.error", step: round)
             } catch CodecRecord.Rejection.payload { try discoveryRequire(rejects, "codec.encoding.error", step: round) }
+            var retainedBeforeFailure = [unrelated]
             if rejects {
                 let raw = await storage.readAllData()
-                // Fused removal executes before encoding; no rollback promise.
-                try discoveryRequire(scenario.fused ? raw.isEmpty : raw == before, "codec.encoding.persistence", step: round)
+                if scenario.fused {
+                    // Failed fused-call memory and removal timing are unspecified.
+                    // Adopt only retained identity selection from authored versions.
+                    let actual = try raw.map { try JSONDecoder().decode(CodecRecord.self, from: $0) }
+                    try discoveryRequire(Set(actual.map(\.id)).count == actual.count && actual.allSatisfy { $0 == unrelated }, "codec.encoding.fusedKnownVersions", step: round)
+                    retainedBeforeFailure = [unrelated].filter { authored in actual.contains { $0.id == authored.id } }
+                    coverage.hit(actual.isEmpty ? "failedFusedRemoved" : "failedFusedRetained")
+                } else {
+                    try discoveryRequire(raw == before, "codec.encoding.persistence", step: round)
+                }
                 coverage.hit("rejected"); coverage.hit("position.\(scenario.position)")
             } else {
                 let expected = (scenario.fused ? [] : [unrelated]) + normalized
@@ -178,7 +194,7 @@ struct CodecRecoveryDiscoveryTests {
                 try discoveryRequire(actual.sorted { $0.id < $1.id } == expected.sorted { $0.id < $1.id }, "codec.encoding.accepted", step: round)
                 coverage.hit("duplicateMasksRejectedValue")
             }
-            var persistedModel = rejects ? (scenario.fused ? [] : [unrelated]) : ((scenario.fused ? [] : [unrelated]) + normalized)
+            var persistedModel = rejects ? retainedBeforeFailure : ((scenario.fused ? [] : [unrelated]) + normalized)
             // Successful insertion on the original failed Store: only persistence
             // is asserted before reconstruction, with no failed-memory contract.
             let continued = CodecRecord(id: "continued", payload: round)

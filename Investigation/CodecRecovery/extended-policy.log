@@ -1,0 +1,24 @@
+Another instance of SwiftPM (PID: 38064) is already running using '/Users/inannamalick/dev/botique-proptest/worktrees/codec-recovery/.build', waiting until that process has finished execution...[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.54s)
+Test Suite 'Selected tests' started at 2026-10-12 22:48:33.900.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:48:33.900.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:48:33.900.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:48:33.900.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Codec recovery discovery" started.
+◇ Test encodingRecoveryHistories() started.
+PROPERTY codec-encoding: successful generated histories=10000, total attempts including shrinking=10000; command.0=55717, command.1=55015, command.2=55427, command.3=54847, command.4=55902, command.5=55226, command.6=55516, continuation.0=55717, continuation.1=55015, continuation.2=55427, continuation.3=54847, continuation.4=55902, continuation.5=55226, continuation.6=55516, continuedBeforeReopen=24883, directClear=12406, duplicateMasksRejectedValue=8290, failedFusedRemoved=8331, fusedClear=12477, historyRejected=55516, position.0=5391, position.1=5571, position.2=5631, rejected=16593, reopen=24883
+✔ Test encodingRecoveryHistories() passed after 45.896 seconds.
+◇ Test encodeBeforeRemovalPolicyControl() started.
+PROPERTY codec-encode-first-control: successful generated histories=10000, total attempts including shrinking=10000; command.0=55477, command.1=55982, command.2=55777, command.3=55129, command.4=55802, command.5=56029, command.6=55686, continuation.0=55477, continuation.1=55982, continuation.2=55777, continuation.3=55129, continuation.4=55802, continuation.5=56029, continuation.6=55686, continuedBeforeReopen=25017, directClear=12405, duplicateMasksRejectedValue=8265, failedFusedRetained=8464, fusedClear=12612, historyRejected=55686, position.0=5647, position.1=5612, position.2=5493, rejected=16752, reopen=25017
+✔ Test encodeBeforeRemovalPolicyControl() passed after 45.920 seconds.
+✔ Suite "Codec recovery discovery" passed after 91.816 seconds.
+✔ Test run with 2 tests in 1 suite passed after 91.816 seconds.

@@ -1,0 +1,48 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/5] Write sources
+[3/5] Write swift-version-6FAF900280F264CA.txt
+[5/7] Compiling BoutiqueTests CodecRecoveryDiscoveryTests.swift
+[6/7] Emitting module BoutiqueTests
+[7/11] Compiling BoutiqueTests OperationLifecycleDiscoveryTests.swift
+[8/11] Compiling BoutiqueTests StoreDiscoveryHistoryTests.swift
+[9/11] Compiling BoutiqueTests StoreDiscoveryInterleavingTests.swift
+[10/11] Compiling BoutiqueTests StoreIdentityDiscoveryTests.swift
+[10/12] Write Objects.LinkFileList
+[11/12] Linking BoutiquePackageTests
+Build complete! (10.20s)
+Test Suite 'Selected tests' started at 2026-10-12 22:48:17.987.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:48:17.987.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:48:17.987.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:48:17.987.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Codec recovery discovery" started.
+◇ Test authoredRawLoadRecovery() started.
+PROPERTY codec-load: successful generated histories=1000, total attempts including shrinking=1000; decodeFailure=1000, exactDecodingError=1000, malformed.0=358, malformed.1=327, malformed.2=315, retryRetainedFailure=1000
+✔ Test authoredRawLoadRecovery() passed after 0.193 seconds.
+◇ Test backendCorruptReadRepairReconstruct() started.
+PROPERTY codec-read: successful generated histories=1000, total attempts including shrinking=1000; corruptRead=1000, exactDecodingError=1000, malformed.0=330, malformed.1=348, malformed.2=322, retryRetainedFailure=1000
+✔ Test backendCorruptReadRepairReconstruct() passed after 0.193 seconds.
+◇ Test realBackendMalformedRecovery(backend:) started.
+◇ Test case passing 1 argument backend → "disk" to realBackendMalformedRecovery(backend:) started.
+PROPERTY codec-load-disk: successful generated histories=100, total attempts including shrinking=100; decodeFailure=100, exactDecodingError=100, malformed.0=23, malformed.1=34, malformed.2=43, retryRetainedFailure=100
+◇ Test case passing 1 argument backend → "sqlite" to realBackendMalformedRecovery(backend:) started.
+PROPERTY codec-load-sqlite: successful generated histories=100, total attempts including shrinking=100; decodeFailure=100, exactDecodingError=100, malformed.0=38, malformed.1=35, malformed.2=27, retryRetainedFailure=100
+✔ Test realBackendMalformedRecovery(backend:) with 2 test cases passed after 0.302 seconds.
+◇ Test encodingRecoveryHistories() started.
+PROPERTY codec-encoding: successful generated histories=1000, total attempts including shrinking=1000; command.0=5758, command.1=5450, command.2=5675, command.3=5559, command.4=5531, command.5=5458, command.6=5380, continuation.0=5758, continuation.1=5450, continuation.2=5675, continuation.3=5559, continuation.4=5531, continuation.5=5458, continuation.6=5380, continuedBeforeReopen=2567, directClear=1319, duplicateMasksRejectedValue=837, failedFusedRemoved=857, fusedClear=1248, historyRejected=5380, position.0=539, position.1=652, position.2=539, rejected=1730, reopen=2567
+✔ Test encodingRecoveryHistories() passed after 4.149 seconds.
+◇ Test encodeBeforeRemovalPolicyControl() started.
+PROPERTY codec-encode-first-control: successful generated histories=1000, total attempts including shrinking=1000; command.0=5480, command.1=5677, command.2=5325, command.3=5602, command.4=5339, command.5=5649, command.6=5676, continuation.0=5480, continuation.1=5677, continuation.2=5325, continuation.3=5602, continuation.4=5339, continuation.5=5649, continuation.6=5676, continuedBeforeReopen=2488, directClear=1259, duplicateMasksRejectedValue=732, failedFusedRetained=882, fusedClear=1229, historyRejected=5676, position.0=607, position.1=591, position.2=558, rejected=1756, reopen=2488
+✔ Test encodeBeforeRemovalPolicyControl() passed after 4.038 seconds.
+◇ Test boundedEncodingMatrix() started.
+PROPERTY codec-matrix: combinations=18, two-command histories=49
+✔ Test boundedEncodingMatrix() passed after 0.037 seconds.
+✔ Suite "Codec recovery discovery" passed after 8.915 seconds.
+✔ Test run with 6 tests in 1 suite passed after 8.915 seconds.
