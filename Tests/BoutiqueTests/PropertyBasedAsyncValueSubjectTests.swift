@@ -7,10 +7,18 @@ import Testing
 /// concurrent send ordering is not part of this model.
 @Suite("Async Value Subject Property Tests", .serialized)
 struct PropertyBasedAsyncValueSubjectTests {
-    private enum Mutation: Sendable {
+    private enum Mutation: Sendable, CustomStringConvertible {
         case send(Int)
         case assign(Int)
         case add(Int)
+
+        var description: String {
+            switch self {
+            case .send(let value): "send(\(value))"
+            case .assign(let value): "assign(\(value))"
+            case .add(let delta): "add(\(delta))"
+            }
+        }
 
     }
 
@@ -93,11 +101,12 @@ struct PropertyBasedAsyncValueSubjectTests {
                     expectedEvents.append(expectedValue)
                 }
                 _ = apply(mutation, to: subject)
-                #expect(subject.value == expectedValue)
+                #expect(subject.value == expectedValue,
+                        "seed=\(seed), trace=\(trace), expected=\(expectedValue), actual=\(subject.value)")
             }
 
             let observed = await collect(stream, count: expectedEvents.count)
-            #expect(observed == expectedEvents)
+            #expect(observed == expectedEvents, "seed=\(seed), trace=\(trace)")
         }
     }
 
@@ -146,8 +155,10 @@ struct PropertyBasedAsyncValueSubjectTests {
                     _ = apply(mutation, to: subject)
                 }
 
-                #expect(subject.value == expectedValue)
-                #expect(await collect(stream, count: expectedEvents.count) == expectedEvents)
+                #expect(subject.value == expectedValue,
+                        "encodedTrace=\(encodedTrace), subscriptionIndex=\(subscriptionIndex), trace=\(trace)")
+                #expect(await collect(stream, count: expectedEvents.count) == expectedEvents,
+                        "encodedTrace=\(encodedTrace), subscriptionIndex=\(subscriptionIndex), trace=\(trace)")
             }
         }
     }
@@ -187,8 +198,10 @@ struct PropertyBasedAsyncValueSubjectTests {
                 _ = apply(mutation, to: subject)
             }
 
-            #expect(await collect(first, count: expectedFirst.count) == expectedFirst)
-            #expect(await collect(second, count: expectedSecond.count) == expectedSecond)
+            #expect(await collect(first, count: expectedFirst.count) == expectedFirst,
+                    "seed=\(seed), prefix=\(prefix), suffix=\(suffix)")
+            #expect(await collect(second, count: expectedSecond.count) == expectedSecond,
+                    "seed=\(seed), prefix=\(prefix), suffix=\(suffix)")
         }
     }
 

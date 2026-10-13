@@ -30,10 +30,12 @@ struct PropertyBasedObservationTests {
         var model: [ObservationItem] = []
         var random = ObservationGenerator(seed: 0xA11CE)
         var revision = 0
+        var history: [String] = []
 
-        for _ in 0..<256 {
+        for step in 0..<256 {
             let canRemove = !model.isEmpty
             let action = canRemove ? random.next(upperBound: 3) : 0
+            let operation: String
 
             switch action {
             case 0:
@@ -46,17 +48,21 @@ struct PropertyBasedObservationTests {
                 } else {
                     model.append(item)
                 }
+                operation = "insert(\(item))"
             case 1:
                 let index = random.next(upperBound: model.count)
                 let item = model.remove(at: index)
                 try await store.remove(item)
+                operation = "remove(\(item))"
             default:
                 try await store.removeAll()
                 model.removeAll()
+                operation = "removeAll"
             }
 
-            #expect(projection.items == model)
-            #expect(projection.items == store.items)
+            history.append(operation)
+            #expect(projection.items == model, "step=\(step), history=\(history)")
+            #expect(projection.items == store.items, "step=\(step), history=\(history)")
         }
     }
 
@@ -70,7 +76,7 @@ struct PropertyBasedObservationTests {
         var random = ObservationGenerator(seed: 0x51A7E)
         var revision = 0
 
-        for _ in 0..<128 {
+        for step in 0..<128 {
             let invalidation = ObservationInvalidationCounter()
             withObservationTracking {
                 _ = store.items
@@ -78,6 +84,7 @@ struct PropertyBasedObservationTests {
                 invalidation.increment()
             }
 
+            let operation: String
             if model.isEmpty || random.next(upperBound: 2) == 0 {
                 let id = "store-\(random.next(upperBound: 6))"
                 let item = ObservationItem(id: id, revision: revision)
@@ -88,13 +95,15 @@ struct PropertyBasedObservationTests {
                 } else {
                     model.append(item)
                 }
+                operation = "insert(\(item))"
             } else {
                 let item = model.remove(at: random.next(upperBound: model.count))
                 try await store.remove(item)
+                operation = "remove(\(item))"
             }
 
-            #expect(invalidation.count == 1)
-            #expect(store.items == model)
+            #expect(invalidation.count == 1, "step=\(step), operation=\(operation)")
+            #expect(store.items == model, "step=\(step), operation=\(operation)")
         }
     }
 
@@ -115,8 +124,8 @@ struct PropertyBasedObservationTests {
 
             storedValue.set(expectedValue)
 
-            #expect(invalidation.count == 1)
-            #expect(storedValue.wrappedValue == expectedValue)
+            #expect(invalidation.count == 1, "value=\(expectedValue)")
+            #expect(storedValue.wrappedValue == expectedValue, "value=\(expectedValue)")
         }
     }
 
@@ -144,7 +153,7 @@ struct PropertyBasedObservationTests {
                 #expect(storedValue.wrappedValue == nil)
             }
 
-            #expect(invalidation.count == 1)
+            #expect(invalidation.count == 1, "step=\(index)")
         }
     }
 }

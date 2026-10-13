@@ -17,7 +17,7 @@ struct PropertyBasedStoreTests {
             var history: [StoreCommand] = []
 
             for step in 0..<48 {
-                let command = generator.action()
+                let command = generator.action(against: model)
                 history.append(command)
                 try await Self.apply(command, to: store, model: &model)
 
@@ -39,7 +39,7 @@ struct PropertyBasedStoreTests {
         }
     }
 
-    @Test("generated Store events report each direct operation")
+    @Test("generated Store events report each direct operation", .timeLimit(.minutes(1)))
     func generatedDirectEvents() async throws {
         for seed in 100..<112 {
             var generator = TraceGenerator(seed: UInt64(seed) &* 0xD1342543DE82EF95)
@@ -49,19 +49,21 @@ struct PropertyBasedStoreTests {
             #expect(initial?.operation == .loaded)
             #expect(initial?.items.isEmpty == true)
             var model = OrderedStoreModel()
+            var history: [StoreCommand] = []
 
             for step in 0..<32 {
-                let action = generator.action()
+                let action = generator.action(against: model)
+                history.append(action)
                 let expectedEvent = model.event(for: action)
                 try await Self.apply(action, to: store, model: &model)
 
                 let actualEvent = await iterator.next()
                 #expect(actualEvent?.operation == expectedEvent.operation,
-                        "wrong event kind for seed=\(seed), step=\(step), action=\(action)")
+                        "wrong event kind for seed=\(seed), step=\(step), history=\(history)")
                 #expect(actualEvent?.items == expectedEvent.items,
-                        "wrong event payload for seed=\(seed), step=\(step), action=\(action)")
+                        "wrong event payload for seed=\(seed), step=\(step), history=\(history)")
                 #expect(store.items == model.items,
-                        "wrong state for seed=\(seed), step=\(step), action=\(action)")
+                        "wrong state for seed=\(seed), step=\(step), history=\(history)")
             }
         }
     }
@@ -122,8 +124,13 @@ struct PropertyBasedStoreTests {
             var generator = TraceGenerator(seed: UInt64(seed) &* 0x9E3779B185EBCA87)
             let storage = PropertyStorageEngine()
             let store = try await Store<PropertyItem>(storage: storage, cacheIdentifier: \.id)
-            let actions = (0..<generator.count(12)).map { _ in generator.action() }
             var model = OrderedStoreModel()
+            var actions: [StoreCommand] = []
+            for _ in 0..<generator.count(12) {
+                let action = generator.action(against: model)
+                actions.append(action)
+                model.apply(action)
+            }
 
             guard let first = actions.first else { continue }
             var operation = try await Self.enqueue(first, on: store)
@@ -134,12 +141,53 @@ struct PropertyBasedStoreTests {
             let beforeRun = store.items
             #expect(beforeRun.isEmpty, "queued actions ran before run(), seed=\(seed)")
             try await operation.run()
-            for action in actions { model.apply(action) }
             #expect(store.items == model.items, "seed=\(seed), actions=\(actions)")
 
             let finished = store.items
             try await operation.run()
             #expect(store.items == finished, "second run changed state, seed=\(seed)")
+        }
+    }
+
+    @Test("malformed persisted items fail loading and a repaired backend loads cleanly")
+    func malformedPersistedItemsAreReportedAndRecoverableByReopening() async throws {
+        let malformedPayloads = [
+            Data([0xFF, 0x00]),
+            Data("{".utf8),
+            Data("{\"id\":1,\"payload\":2}".utf8),
+            Data("{\"id\":\"missing-payload\"}".utf8),
+        ]
+
+        for seed in 0..<32 {
+            let storage = PropertyStorageEngine()
+            let invalidKey = CacheKey("invalid-\(seed)")
+            try await storage.write(malformedPayloads[seed % malformedPayloads.count], key: invalidKey)
+            let validItem = PropertyItem(id: "valid-\(seed)", payload: seed)
+            try await storage.write(try JSONEncoder().encode(validItem), key: CacheKey(validItem.id))
+
+            // The synchronous initializer starts a load task; awaiting it must surface a
+            // decode error and leave the in-memory collection empty.
+            let synchronousStore = Store<PropertyItem>(storage: storage, cacheIdentifier: \.id)
+            var synchronousError: Error?
+            do {
+                try await synchronousStore.itemsHaveLoaded()
+            } catch {
+                synchronousError = error
+            }
+            #expect(synchronousError is DecodingError, "sync load seed=\(seed), error=\(String(describing: synchronousError))")
+            #expect(synchronousStore.items.isEmpty, "partial load escaped on seed=\(seed)")
+
+            var asynchronousError: Error?
+            do {
+                let _: Store<PropertyItem> = try await Store(storage: storage, cacheIdentifier: \.id)
+            } catch {
+                asynchronousError = error
+            }
+            #expect(asynchronousError is DecodingError, "async load seed=\(seed), error=\(String(describing: asynchronousError))")
+
+            try await storage.remove(key: invalidKey)
+            let repairedStore = try await Store<PropertyItem>(storage: storage, cacheIdentifier: \.id)
+            #expect(repairedStore.items == [validItem], "repaired load seed=\(seed)")
         }
     }
 
@@ -302,22 +350,68 @@ private struct TraceGenerator {
         PropertyItem(id: "id-\(next() % 6)", payload: Int(next() % 13))
     }
 
-    mutating func action() -> StoreCommand {
-        switch next() % 5 {
-        case 0: return .insertOne(item())
-        case 1: return .insertMany(items(count(5)))
-        case 2: return .removeOne(item())
-        case 3: return .removeMany(items(count(5)))
-        default: return .removeAll
+    /// Bias operands toward logical items in the independent model while retaining
+    /// absent and never-before-used IDs. This makes overwrites, successful deletes,
+    /// and stale-payload removal observable in short histories.
+    mutating func action(against model: OrderedStoreModel) -> StoreCommand {
+        switch next() % 8 {
+        case 0, 1, 2:
+            return .insertOne(relatedItem(against: model))
+        case 3, 4:
+            return .insertMany(relatedItems(maxCount: 5, against: model, removals: false))
+        case 5:
+            return .removeOne(relatedItem(against: model, forRemoval: true))
+        case 6:
+            return .removeMany(relatedItems(maxCount: 5, against: model, removals: true))
+        default:
+            return .removeAll
         }
     }
 
-    private mutating func items(_ upperBound: Int) -> [PropertyItem] {
-        let itemCount = count(upperBound)
+    private mutating func relatedItem(
+        against model: OrderedStoreModel,
+        forRemoval: Bool = false
+    ) -> PropertyItem {
+        if forRemoval, !model.items.isEmpty, next().isMultiple(of: 4) == false {
+            let existing = model.items[Int(next() % UInt64(model.items.count))]
+            // Deliberately vary payload independently of identity. Store removal is by ID.
+            let payload = next().isMultiple(of: 2) ? existing.payload : Int(next() % 13)
+            return PropertyItem(id: existing.id, payload: payload)
+        }
+
+        let presentIDs = Set(model.items.map(\.id))
+        let missingIDs = (0..<6).map { "id-\($0)" }.filter { !presentIDs.contains($0) }
+        if !missingIDs.isEmpty, next().isMultiple(of: 3) {
+            return PropertyItem(
+                id: missingIDs[Int(next() % UInt64(missingIDs.count))],
+                payload: Int(next() % 13)
+            )
+        }
+        if !model.items.isEmpty, next().isMultiple(of: 2) {
+            let existing = model.items[Int(next() % UInt64(model.items.count))]
+            return PropertyItem(id: existing.id, payload: Int(next() % 13))
+        }
+        return item()
+    }
+
+    private mutating func relatedItems(
+        maxCount: Int,
+        against model: OrderedStoreModel,
+        removals: Bool
+    ) -> [PropertyItem] {
+        let amount = count(maxCount)
         var result: [PropertyItem] = []
-        for _ in 0..<itemCount { result.append(item()) }
+        for _ in 0..<amount {
+            if !removals, !result.isEmpty, next().isMultiple(of: 4) {
+                let prior = result[Int(next() % UInt64(result.count))]
+                result.append(PropertyItem(id: prior.id, payload: Int(next() % 13)))
+            } else {
+                result.append(relatedItem(against: model, forRemoval: removals))
+            }
+        }
         return result
     }
+
 }
 
 private actor PropertyStorageEngine: StorageEngine {

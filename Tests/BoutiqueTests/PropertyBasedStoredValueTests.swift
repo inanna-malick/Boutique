@@ -17,7 +17,7 @@ struct PropertyBasedStoredValueTests {
             var generator = ValueGenerator(seed: UInt64(seed) &* 0xD1342543DE82EF95)
 
             for step in 0..<96 {
-                let operation = generator.arrayOperation()
+                let operation = generator.arrayOperation(against: model)
                 switch operation {
                 case .append(let value):
                     stored.append(value)
@@ -66,7 +66,7 @@ struct PropertyBasedStoredValueTests {
             var generator = ValueGenerator(seed: UInt64(seed) &* 0x9E3779B185EBCA87)
 
             for step in 0..<96 {
-                let key = generator.smallInt()
+                let key = generator.dictionaryKey(against: model)
                 let value = generator.optionalSmallInt()
                 stored.update(key: key, value: value)
                 model[key] = value
@@ -312,18 +312,49 @@ private struct ValueGenerator {
         return samples[Int(next() % UInt64(samples.count))]
     }
 
-    mutating func arrayOperation() -> ArrayOperation {
+    mutating func arrayOperation(against model: [Int]) -> ArrayOperation {
         switch next() % 5 {
-        case 0: return .append(smallInt())
-        case 1: return .toggle(smallInt())
-        case 2: return .replace(smallInt(), smallInt())
+        case 0:
+            return .append(smallInt())
+        case 1:
+            return .toggle(collectionValue(against: model, preferPresent: false))
+        case 2:
+            let old = collectionValue(against: model, preferPresent: true)
+            return .replace(old, smallInt())
         case 3:
             let elementCount = count(9)
             var values: [Int] = []
             for _ in 0..<elementCount { values.append(smallInt()) }
             return .set(values)
-        default: return .reset
+        default:
+            return .reset
         }
+    }
+
+    mutating func dictionaryKey(against model: [Int: Int]) -> Int {
+        if !model.isEmpty, !next().isMultiple(of: 3) {
+            let keys = model.keys.sorted()
+            return keys[Int(next() % UInt64(keys.count))]
+        }
+        let absent = (-5...5).filter { model[$0] == nil }
+        if !absent.isEmpty {
+            return absent[Int(next() % UInt64(absent.count))]
+        }
+        return smallInt()
+    }
+
+    private mutating func collectionValue(against model: [Int], preferPresent: Bool) -> Int {
+        if preferPresent, !model.isEmpty, next().isMultiple(of: 3) != 0 {
+            return model[Int(next() % UInt64(model.count))]
+        }
+        if !preferPresent, !model.isEmpty, next().isMultiple(of: 3) == 0 {
+            return model[Int(next() % UInt64(model.count))]
+        }
+        let absent = (-5...5).filter { !model.contains($0) }
+        if !absent.isEmpty {
+            return absent[Int(next() % UInt64(absent.count))]
+        }
+        return smallInt()
     }
 }
 

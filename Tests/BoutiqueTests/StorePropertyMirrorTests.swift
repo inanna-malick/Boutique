@@ -20,7 +20,12 @@ struct StorePropertyMirrorTests {
 
             let commandCount = random.int(1, 16)
             var commands: [StorePropertyCommand] = []
-            for _ in 0..<commandCount { commands.append(random.command()) }
+            var commandModel = model
+            for _ in 0..<commandCount {
+                let command = random.command(against: commandModel)
+                commands.append(command)
+                commandModel.apply(command)
+            }
             guard let first = commands.first else { continue }
             var chain = try await enqueue(first, on: store)
             for command in commands.dropFirst() {
@@ -144,8 +149,9 @@ struct StorePropertyMirrorTests {
             var model = [UUID: UUIDIDPropertyItem]()
 
             for _ in 0..<24 {
-                let item = UUIDIDPropertyItem(id: random.uuid(), payload: random.int(-30, 30))
-                if random.int(0, 3) == 0 {
+                let removing = random.int(0, 3) == 0
+                let item = random.uuidItem(against: model, forRemoval: removing)
+                if removing {
                     try await convenience.remove(item)
                     try await explicit.remove(item)
                     model.removeValue(forKey: item.id)
@@ -297,14 +303,45 @@ private struct StorePropertyRandom {
         for _ in 0..<count { result.append(item()) }
         return result
     }
-    mutating func command() -> StorePropertyCommand {
+    mutating func command(against model: StorePropertyModel) -> StorePropertyCommand {
         switch int(0, 4) {
-        case 0: .insertOne(item())
-        case 1: .insertMany(items(maxCount: 5))
-        case 2: .removeOne(item())
-        case 3: .removeMany(items(maxCount: 5))
+        case 0: .insertOne(item(against: model))
+        case 1: .insertMany(items(maxCount: 5, against: model, forRemoval: false))
+        case 2: .removeOne(item(against: model, forRemoval: true))
+        case 3: .removeMany(items(maxCount: 5, against: model, forRemoval: true))
         default: .removeAll
         }
+    }
+
+    private mutating func item(against model: StorePropertyModel, forRemoval: Bool = false) -> StorePropertyItem {
+        if forRemoval, !model.items.isEmpty, int(0, 3) != 0 {
+            let existing = model.items[int(0, model.items.count - 1)]
+            let payload = int(0, 1) == 0 ? existing.payload : int(-20, 20)
+            return StorePropertyItem(id: existing.id, payload: payload)
+        }
+
+        if !model.items.isEmpty, int(0, 2) != 0 {
+            let existing = model.items[int(0, model.items.count - 1)]
+            return StorePropertyItem(id: existing.id, payload: int(-20, 20))
+        }
+        return item()
+    }
+
+    private mutating func items(
+        maxCount: Int,
+        against model: StorePropertyModel,
+        forRemoval: Bool
+    ) -> [StorePropertyItem] {
+        var result: [StorePropertyItem] = []
+        for _ in 0..<int(0, maxCount) {
+            if !forRemoval, !result.isEmpty, int(0, 3) == 0 {
+                let existing = result[int(0, result.count - 1)]
+                result.append(StorePropertyItem(id: existing.id, payload: int(-20, 20)))
+            } else {
+                result.append(item(against: model, forRemoval: forRemoval))
+            }
+        }
+        return result
     }
     mutating func uuid() -> UUID {
         // UUID construction is deterministic and intentionally independent from Store.
@@ -317,6 +354,22 @@ private struct StorePropertyRandom {
                           UInt16(truncatingIfNeeded: low >> 48),
                           low & 0x0000_FFFF_FFFF_FFFF)
         return UUID(uuidString: text)!
+    }
+
+    mutating func uuidItem(
+        against model: [UUID: UUIDIDPropertyItem],
+        forRemoval: Bool
+    ) -> UUIDIDPropertyItem {
+        let existingItems = model.values.sorted { $0.id.uuidString < $1.id.uuidString }
+        if !existingItems.isEmpty,
+           (forRemoval ? int(0, 3) != 0 : int(0, 1) == 0) {
+            let existing = existingItems[int(0, existingItems.count - 1)]
+            return UUIDIDPropertyItem(id: existing.id, payload: int(-30, 30))
+        }
+
+        var identifier = uuid()
+        while model[identifier] != nil { identifier = uuid() }
+        return UUIDIDPropertyItem(id: identifier, payload: int(-30, 30))
     }
 }
 
