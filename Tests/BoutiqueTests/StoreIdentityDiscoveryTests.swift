@@ -16,21 +16,33 @@ struct StoreIdentityDiscoveryTests {
             .map { IdentityScenario(form: $0, prefix: $1, suffix: $2, payload: $3, commands: $4) }
     }
 
-    @Test(.shrinking, arguments: ["disk", "sqlite"])
-    func exactRepresentationControls(backend: String) async throws {
-        try await DiscoveryProperty.check("identity-exact-\(backend)", count: DiscoveryProperty.backendCases,
-            input: scenarios()) { scenario, coverage in
-            try await replay(scenario, backend: backend, equivalent: false, coverage: coverage)
-        }
+    @Test(.shrinking)
+    func exactRepresentationDiskControls() async throws {
+        try await check(backend: "disk", equivalent: false)
+    }
+
+    @Test(.shrinking)
+    func exactRepresentationSQLiteControls() async throws {
+        try await check(backend: "sqlite", equivalent: false)
     }
 
     @Test(.shrinking,
-          .enabled(if: ProcessInfo.processInfo.environment["BOUTIQUE_STORE_IDENTITY_SEARCH"] == "1"),
-          arguments: ["disk", "sqlite"])
-    func equivalentRepresentationHistories(backend: String) async throws {
-        try await DiscoveryProperty.check("identity-equivalent-\(backend)", count: DiscoveryProperty.backendCases,
+          .enabled(if: ProcessInfo.processInfo.environment["BOUTIQUE_STORE_IDENTITY_SEARCH"] == "1"))
+    func equivalentRepresentationDiskHistories() async throws {
+        try await check(backend: "disk", equivalent: true)
+    }
+
+    @Test(.shrinking,
+          .enabled(if: ProcessInfo.processInfo.environment["BOUTIQUE_STORE_IDENTITY_SEARCH"] == "1"))
+    func equivalentRepresentationSQLiteHistories() async throws {
+        try await check(backend: "sqlite", equivalent: true)
+    }
+
+    private func check(backend: String, equivalent: Bool) async throws {
+        let suite = "identity-\(equivalent ? "equivalent" : "exact")-\(backend)"
+        try await DiscoveryProperty.check(suite, count: DiscoveryProperty.backendCases,
             input: scenarios()) { scenario, coverage in
-            try await replay(scenario, backend: backend, equivalent: true, coverage: coverage)
+            try await replay(scenario, backend: backend, equivalent: equivalent, coverage: coverage)
         }
     }
 

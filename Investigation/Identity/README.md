@@ -17,8 +17,17 @@ Commands (set `BOUTIQUE_SWIFT`/`DEVELOPER_DIR` for the discovery toolchain as do
 
 ```sh
 Scripts/property-tests.sh --filter StoreIdentityDiscoveryTests
-BOUTIQUE_STORE_IDENTITY_SEARCH=1 Scripts/property-tests.sh --filter equivalentRepresentationHistories
+BOUTIQUE_STORE_IDENTITY_SEARCH=1 Scripts/property-tests.sh --filter equivalentRepresentation.*Histories
 BOUTIQUE_STORE_IDENTITY_WITNESSES=1 Scripts/property-tests.sh --filter equivalentRepresentationWitnesses
 ```
 
 The generated failing search and deterministic witnesses are opt-in. Controls remain enabled. No production repair is included; a repair needs one consistent identifier equivalence policy across writes, removals, reloads, and existing persisted data.
+
+Replay a preserved concrete failure independently of generation or library seeds:
+
+```sh
+BOUTIQUE_STORE_IDENTITY_SEARCH=1 BOUTIQUE_PROPERTY_REPLAY=Investigation/Identity/DiskFailure.json Scripts/property-tests.sh --filter equivalentRepresentationDiskHistories
+BOUTIQUE_STORE_IDENTITY_SEARCH=1 BOUTIQUE_PROPERTY_REPLAY=Investigation/Identity/SQLiteFailure.json Scripts/property-tests.sh --filter equivalentRepresentationSQLiteHistories
+```
+
+Each replay intentionally exits unsuccessfully at `identity.persisted-multiplicity` until repaired. Separate backend test entry points prevent an unrelated suite/schema mismatch during replay.
