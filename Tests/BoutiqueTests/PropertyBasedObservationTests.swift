@@ -159,19 +159,15 @@ struct PropertyBasedObservationTests {
 }
 
 private struct ObservationGenerator {
-    private var state: UInt64
+    private var random: DiscoveryRandom
 
     init(seed: UInt64) {
-        self.state = seed
+        random = DiscoveryRandom(seed: seed)
     }
 
     mutating func next(upperBound: Int) -> Int {
         precondition(upperBound > 0)
-        self.state &+= 0x9E3779B97F4A7C15
-        var value = self.state
-        value = (value ^ (value >> 30)) &* 0xBF58476D1CE4E5B9
-        value = (value ^ (value >> 27)) &* 0x94D049BB133111EB
-        value ^= value >> 31
+        let value = random.next()
         return Int(value % UInt64(upperBound))
     }
 }

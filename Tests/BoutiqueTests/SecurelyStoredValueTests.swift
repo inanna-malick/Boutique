@@ -5,7 +5,7 @@ import SwiftUI
 import Testing
 
 @MainActor
-@Suite("@SecurelyStoredValue Tests")
+@Suite("@SecurelyStoredValue Tests", IsolatedTestKeychain())
 struct SecurelyStoredValueTests {
     @SecurelyStoredValue<String>(key: "securePassword", service: .test)
     private var storedPassword
@@ -45,9 +45,10 @@ struct SecurelyStoredValueTests {
         try self.$storedGroupValue.remove()
     }
 
-    @Test("Test that the previous SecurelyStoredValue was persisted")
+    @Test("A reconstructed SecurelyStoredValue reads persisted content")
     func testPersistedValueExists() {
-        // Ensure that values not explicitly removed from the keychain continue to persist across runs
+        let reopened = SecurelyStoredValue<String>(key: "Boutique.SecurelyStoredValue.Test", service: .test)
+        #expect(reopened.wrappedValue == "Existence")
         #expect(self.storedExistingValue != nil)
     }
 

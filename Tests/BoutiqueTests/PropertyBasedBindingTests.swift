@@ -16,21 +16,16 @@ private struct PropertyRecord: Codable, Sendable, Equatable {
     }
 }
 
-/// Small deterministic generator so the tests don't depend on a third-party package
-/// or on Swift Testing's randomized scheduling.
+/// Domain adapter around the shared library RNG for retained seeded sweeps.
 private struct RecordGenerator {
-    private var state: UInt64
+    private var random: DiscoveryRandom
 
     init(seed: UInt64) {
-        self.state = seed
+        random = DiscoveryRandom(seed: seed)
     }
 
     mutating func next() -> UInt64 {
-        self.state &+= 0x9E3779B97F4A7C15
-        var value = self.state
-        value = (value ^ (value >> 30)) &* 0xBF58476D1CE4E5B9
-        value = (value ^ (value >> 27)) &* 0x94D049BB133111EB
-        return value ^ (value >> 31)
+        return random.next()
     }
 
     mutating func int(_ upperBound: Int) -> Int {
@@ -91,8 +86,10 @@ struct PropertyBasedBindingTests {
         ), storage: defaults)
         var generator = RecordGenerator(seed: 0x12D5_48A9_72E1_C301)
 
+        var expected = PropertyRecord(name: "initial",
+            settings: .init(theme: "light", notificationsEnabled: false, retryLimit: 3),
+            tags: ["preserve-me"], score: 0)
         for index in 0..<600 {
-            var expected = value.wrappedValue
             switch generator.int(6) {
             case 0:
                 let update = generator.string()

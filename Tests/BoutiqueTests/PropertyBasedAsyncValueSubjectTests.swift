@@ -22,17 +22,13 @@ struct PropertyBasedAsyncValueSubjectTests {
 
     }
 
-    private struct SplitMix64 {
-        private var state: UInt64
+    private struct SubjectTraceGenerator {
+        private var random: DiscoveryRandom
 
-        init(seed: UInt64) { state = seed }
+        init(seed: UInt64) { random = DiscoveryRandom(seed: seed) }
 
         mutating func next() -> UInt64 {
-            state &+= 0x9E3779B97F4A7C15
-            var value = state
-            value = (value ^ (value >> 30)) &* 0xBF58476D1CE4E5B9
-            value = (value ^ (value >> 27)) &* 0x94D049BB133111EB
-            return value ^ (value >> 31)
+            return random.next()
         }
 
         mutating func int(in range: ClosedRange<Int>) -> Int {
@@ -70,19 +66,18 @@ struct PropertyBasedAsyncValueSubjectTests {
     }
 
     private func collect(_ stream: AsyncStream<Int>, count: Int) async -> [Int] {
-        var iterator = stream.makeAsyncIterator()
-        var values: [Int] = []
-        for _ in 0..<count {
-            guard let value = await iterator.next() else { break }
-            values.append(value)
+        do {
+            return try await discoveryCollect(stream, count: count)
+        } catch {
+            Issue.record("Missing expected stream value: \(error)")
+            return []
         }
-        return values
     }
 
     @Test("Generated sequential mutation traces match replay and publication model")
     func generatedSequentialMutationTraces() async {
         for seed in 0..<80 {
-            var generator = SplitMix64(seed: UInt64(seed) &+ 0xA51CE)
+            var generator = SubjectTraceGenerator(seed: UInt64(seed) &+ 0xA51CE)
             let trace = generator.trace(length: 1 + (seed % 40))
             let subject = AsyncValueSubject<Int>(0)
             let stream = subject.values
@@ -166,34 +161,37 @@ struct PropertyBasedAsyncValueSubjectTests {
     @Test("Independent subscribers each receive their own replay and later sends")
     func multipleSubscribersHaveIndependentHistories() async {
         for seed in 0..<64 {
-            var generator = SplitMix64(seed: UInt64(seed) &+ 0xC0FFEE)
-            let subject = AsyncValueSubject<Int>(generator.int(in: -10...10))
-            var expectedFirst = [subject.value]
+            var generator = SubjectTraceGenerator(seed: UInt64(seed) &+ 0xC0FFEE)
+            var modelValue = generator.int(in: -10...10)
+            let subject = AsyncValueSubject<Int>(modelValue)
+            var expectedFirst = [modelValue]
             var expectedSecond: [Int] = []
             let first = subject.values
             let prefix = generator.trace(length: 1 + (seed % 12))
 
             for mutation in prefix {
                 switch mutation {
-                case .send(let value): expectedFirst.append(value)
-                case .assign: break
-                case .add(let delta): expectedFirst.append(subject.value + delta)
+                case .send(let value): modelValue = value; expectedFirst.append(value)
+                case .assign(let value): modelValue = value
+                case .add(let delta): modelValue += delta; expectedFirst.append(modelValue)
                 }
                 _ = apply(mutation, to: subject)
             }
 
-            expectedSecond.append(subject.value)
+            expectedSecond.append(modelValue)
             let second = subject.values
             let suffix = generator.trace(length: 1 + (seed % 12))
             for mutation in suffix {
                 switch mutation {
                 case .send(let value):
+                    modelValue = value
                     expectedFirst.append(value)
                     expectedSecond.append(value)
-                case .assign: break
+                case .assign(let value): modelValue = value
                 case .add(let delta):
-                    expectedFirst.append(subject.value + delta)
-                    expectedSecond.append(subject.value + delta)
+                    modelValue += delta
+                    expectedFirst.append(modelValue)
+                    expectedSecond.append(modelValue)
                 }
                 _ = apply(mutation, to: subject)
             }

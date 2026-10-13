@@ -17,16 +17,16 @@ struct StorePropertyMirrorTests {
         ]
         try await store.insert(initial)
         #expect(store.items == initial)
-        #expect(await storage.decodedItems() == Dictionary(uniqueKeysWithValues: initial.map { ($0.id, $0) }))
+        #expect(try await storage.decodedItems() == Dictionary(uniqueKeysWithValues: initial.map { ($0.id, $0) }))
 
         var operation = try await enqueue(.removeAll, on: store)
         operation = try await enqueue(.insertMany([]), on: operation)
         #expect(store.items == initial)
-        #expect(await storage.decodedItems() == Dictionary(uniqueKeysWithValues: initial.map { ($0.id, $0) }))
+        #expect(try await storage.decodedItems() == Dictionary(uniqueKeysWithValues: initial.map { ($0.id, $0) }))
         try await operation.run()
 
         #expect(store.items.isEmpty)
-        #expect(await storage.decodedItems().isEmpty)
+        #expect(try await storage.decodedItems().isEmpty)
     }
 
     @Test("generated operation chains match replaying the same operations one by one")
@@ -60,7 +60,7 @@ struct StorePropertyMirrorTests {
             for command in commands { model.apply(command) }
 
             #expect(store.items == model.items, "seed=\(seed), commands=\(commands)")
-            #expect(await storage.decodedItems() == model.byID,
+            #expect(try await storage.decodedItems() == model.byID,
                     "persisted values diverged: seed=\(seed), commands=\(commands)")
             let reloaded = try await Store<StorePropertyItem>(storage: storage, cacheIdentifier: \.id)
             #expect(Dictionary(uniqueKeysWithValues: reloaded.items.map { ($0.id, $0) }) == model.byID,
@@ -102,7 +102,7 @@ struct StorePropertyMirrorTests {
             for command in history { model.apply(command) }
 
             #expect(store.items == model.items, "trace=\(history)")
-            #expect(await storage.decodedItems() == model.byID, "persisted trace=\(history)")
+            #expect(try await storage.decodedItems() == model.byID, "persisted trace=\(history)")
         }
     }
 
@@ -130,8 +130,8 @@ struct StorePropertyMirrorTests {
                     try await convenience.removeAll(); try await explicit.removeAll()
                 }
                 #expect(convenience.items == explicit.items, "seed=\(seed)")
-                let conveniencePersisted = await convenienceStorage.decodedStringItems()
-                let explicitPersisted = await explicitStorage.decodedStringItems()
+                let conveniencePersisted = try await convenienceStorage.decodedStringItems()
+                let explicitPersisted = try await explicitStorage.decodedStringItems()
                 #expect(conveniencePersisted == explicitPersisted, "persistence seed=\(seed)")
             }
         }
@@ -186,8 +186,8 @@ struct StorePropertyMirrorTests {
                         "convenience UUID state seed=\(seed)")
                 #expect(Dictionary(uniqueKeysWithValues: explicit.items.map { ($0.id, $0) }) == model,
                         "explicit UUID state seed=\(seed)")
-                let conveniencePersisted = await convenienceStorage.decodedUUIDItems()
-                let explicitPersisted = await explicitStorage.decodedUUIDItems()
+                let conveniencePersisted = try await convenienceStorage.decodedUUIDItems()
+                let explicitPersisted = try await explicitStorage.decodedUUIDItems()
                 #expect(conveniencePersisted == explicitPersisted, "UUID persistence seed=\(seed)")
             }
         }
@@ -306,15 +306,11 @@ private struct StorePropertyModel {
 }
 
 private struct StorePropertyRandom {
-    private var state: UInt64
-    init(seed: UInt64) { state = seed }
+    private var random: DiscoveryRandom
+    init(seed: UInt64) { random = DiscoveryRandom(seed: seed) }
 
     private mutating func next() -> UInt64 {
-        state &+= 0x9E3779B97F4A7C15
-        var value = state
-        value = (value ^ (value >> 30)) &* 0xBF58476D1CE4E5B9
-        value = (value ^ (value >> 27)) &* 0x94D049BB133111EB
-        return value ^ (value >> 31)
+        return random.next()
     }
 
     mutating func int(_ lower: Int, _ upper: Int) -> Int { lower + Int(next() % UInt64(upper - lower + 1)) }
@@ -440,26 +436,24 @@ private actor StorePropertyStorage: StorageEngine {
     func createdAt(key: CacheKey) async -> Date? { nil }
     func updatedAt(key: CacheKey) async -> Date? { nil }
 
-    private func decodeStoreItems() throws -> [String: StorePropertyItem] {
-        try Dictionary(uniqueKeysWithValues: values.values.map {
-            let item = try JSONCoders.decoder.decode(StorePropertyItem.self, from: $0)
-            return (item.id, item)
-        })
+    private func decoded<T: Decodable>(_ type: T.Type, id: (T) -> String) throws -> [String: T] {
+        var result: [String: T] = [:]
+        for bytes in values.values {
+            let item = try JSONDecoder().decode(type, from: bytes)
+            let key = id(item)
+            try #require(result[key] == nil, "Duplicate persisted identity: \(key)")
+            result[key] = item
+        }
+        return result
     }
-    func decodedItems() async -> [String: StorePropertyItem] {
-        (try? decodeStoreItems()) ?? [:]
+    func decodedItems() throws -> [String: StorePropertyItem] {
+        try decoded(StorePropertyItem.self, id: { $0.id })
     }
-    func decodedStringItems() -> [String: StringIDPropertyItem] {
-        (try? Dictionary(uniqueKeysWithValues: values.values.map {
-            let item = try JSONCoders.decoder.decode(StringIDPropertyItem.self, from: $0)
-            return (item.id, item)
-        })) ?? [:]
+    func decodedStringItems() throws -> [String: StringIDPropertyItem] {
+        try decoded(StringIDPropertyItem.self, id: { $0.id })
     }
-    func decodedUUIDItems() -> [String: UUIDIDPropertyItem] {
-        (try? Dictionary(uniqueKeysWithValues: values.values.map {
-            let item = try JSONCoders.decoder.decode(UUIDIDPropertyItem.self, from: $0)
-            return (item.id.uuidString, item)
-        })) ?? [:]
+    func decodedUUIDItems() throws -> [String: UUIDIDPropertyItem] {
+        try decoded(UUIDIDPropertyItem.self, id: { $0.id.uuidString })
     }
 }
 

@@ -18,6 +18,9 @@ func discoveryRequire(_ condition: Bool, _ invariant: String, step: Int, _ detai
 final class DiscoveryCoverage {
     private(set) var counts: [String: Int] = [:]
     func hit(_ event: String, by amount: Int = 1) { counts[event, default: 0] += amount }
+    func merge(_ other: DiscoveryCoverage) {
+        for (event, count) in other.counts { hit(event, by: count) }
+    }
 }
 
 private struct DiscoveryArtifact<Scenario: Codable>: Codable {
@@ -65,10 +68,16 @@ enum DiscoveryProperty {
 
         var artifact: DiscoveryArtifact<S>?
         var successes = 0
+        var attempts = 0
         await propertyCheck(count: count ?? cases, input: input) { scenario in
+            attempts += 1
+            let attemptCoverage = DiscoveryCoverage()
             do {
-                try await body(scenario, coverage)
-                successes += 1
+                try await body(scenario, attemptCoverage)
+                if artifact == nil {
+                    successes += 1
+                    coverage.merge(attemptCoverage)
+                }
             } catch {
                 let failure = (error as? DiscoveryFailure) ?? DiscoveryFailure(
                     invariant: "unexpected.\(String(reflecting: type(of: error)))", step: -1,
@@ -96,6 +105,6 @@ enum DiscoveryProperty {
             }
         }
         let counters = coverage.counts.keys.sorted().map { "\($0)=\(coverage.counts[$0]!)" }.joined(separator: ", ")
-        print("PROPERTY \(name): successful attempts=\(successes); \(counters)")
+        print("PROPERTY \(name): successful generated histories=\(successes), total attempts including shrinking=\(attempts); \(counters)")
     }
 }

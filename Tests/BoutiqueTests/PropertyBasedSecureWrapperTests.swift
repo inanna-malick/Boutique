@@ -150,18 +150,14 @@ private struct GeneratedReadFailure: Error {}
 /// Small deterministic generator. Failure messages include seed and the consumed random
 /// choices, so a case can be replayed even if strategy code later changes.
 private struct PropertyRandom {
-    private var state: UInt64
+    private var random: DiscoveryRandom
     private(set) var trace: [Int] = []
 
-    init(seed: UInt64) { self.state = seed }
+    init(seed: UInt64) { random = DiscoveryRandom(seed: seed) }
 
     mutating func pick(_ upperBound: Int) -> Int {
         precondition(upperBound > 0)
-        self.state &+= 0x9E3779B97F4A7C15
-        var mixed = self.state
-        mixed = (mixed ^ (mixed >> 30)) &* 0xBF58476D1CE4E5B9
-        mixed = (mixed ^ (mixed >> 27)) &* 0x94D049BB133111EB
-        mixed ^= mixed >> 31
+        let mixed = random.next()
         let choice = Int(mixed % UInt64(upperBound))
         self.trace.append(choice)
         return choice
