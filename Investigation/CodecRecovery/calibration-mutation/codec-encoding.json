@@ -1,0 +1,135 @@
+{
+  "failure" : {
+    "detail" : "",
+    "invariant" : "codec.recovery.mutation",
+    "step" : 0
+  },
+  "original" : {
+    "commands" : [
+      {
+        "key" : 0,
+        "kind" : 1,
+        "payload" : 9
+      },
+      {
+        "key" : 1,
+        "kind" : 2,
+        "payload" : -10
+      },
+      {
+        "key" : 1,
+        "kind" : 4,
+        "payload" : 8
+      },
+      {
+        "key" : 0,
+        "kind" : 4,
+        "payload" : -4
+      },
+      {
+        "key" : 1,
+        "kind" : 4,
+        "payload" : 9
+      },
+      {
+        "key" : 0,
+        "kind" : 6,
+        "payload" : -6
+      },
+      {
+        "key" : 0,
+        "kind" : 3,
+        "payload" : 4
+      },
+      {
+        "key" : 1,
+        "kind" : 2,
+        "payload" : 6
+      },
+      {
+        "key" : 1,
+        "kind" : 3,
+        "payload" : 3
+      },
+      {
+        "key" : 1,
+        "kind" : 5,
+        "payload" : -3
+      },
+      {
+        "key" : 0,
+        "kind" : 5,
+        "payload" : 6
+      },
+      {
+        "key" : 1,
+        "kind" : 1,
+        "payload" : -3
+      },
+      {
+        "key" : 0,
+        "kind" : 5,
+        "payload" : -3
+      },
+      {
+        "key" : 0,
+        "kind" : 2,
+        "payload" : -2
+      },
+      {
+        "key" : 1,
+        "kind" : 6,
+        "payload" : -10
+      },
+      {
+        "key" : 0,
+        "kind" : 1,
+        "payload" : 8
+      },
+      {
+        "key" : 0,
+        "kind" : 2,
+        "payload" : -5
+      },
+      {
+        "key" : 0,
+        "kind" : 3,
+        "payload" : 7
+      },
+      {
+        "key" : 0,
+        "kind" : 6,
+        "payload" : 10
+      },
+      {
+        "key" : 0,
+        "kind" : 5,
+        "payload" : -2
+      }
+    ],
+    "duplicate" : 1,
+    "fused" : true,
+    "malformed" : 0,
+    "payload" : -66,
+    "position" : 1,
+    "repeats" : 1
+  },
+  "reduced" : {
+    "commands" : [
+      {
+        "key" : 0,
+        "kind" : 0,
+        "payload" : 0
+      }
+    ],
+    "duplicate" : 0,
+    "fused" : false,
+    "malformed" : 0,
+    "payload" : 0,
+    "position" : 0,
+    "repeats" : 1
+  },
+  "revision" : "7c7545b7df2172f767c3deaa47ccf67d590f20f9-dirty",
+  "suite" : "codec-encoding",
+  "version" : 1
+}

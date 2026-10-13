@@ -1,0 +1,26 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/5] Write sources
+[3/5] Write swift-version-6FAF900280F264CA.txt
+[5/7] Compiling BoutiqueTests CodecRecoveryDiscoveryTests.swift
+[6/7] Emitting module BoutiqueTests
+[6/8] Write Objects.LinkFileList
+[7/8] Linking BoutiquePackageTests
+Build complete! (11.74s)
+Test Suite 'Selected tests' started at 2026-10-12 22:45:24.423.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:45:24.424.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:45:24.424.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:45:24.424.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Codec recovery discovery" started.
+◇ Test encodingRecoveryHistories() started.
+PROPERTY REPLAY codec-encoding: passed
+✔ Test encodingRecoveryHistories() passed after 0.003 seconds.
+✔ Suite "Codec recovery discovery" passed after 0.003 seconds.
+✔ Test run with 1 test in 1 suite passed after 0.003 seconds.

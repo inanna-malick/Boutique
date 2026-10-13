@@ -1,0 +1,36 @@
+Another instance of SwiftPM (PID: 36271) is already running using '/Users/inannamalick/dev/botique-proptest/worktrees/codec-recovery/.build', waiting until that process has finished execution...[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.37s)
+Test Suite 'Selected tests' started at 2026-10-12 22:45:30.913.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:45:30.914.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:45:30.914.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:45:30.914.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Codec recovery discovery" started.
+◇ Test authoredRawLoadRecovery() started.
+PROPERTY codec-load: successful generated histories=10000, total attempts including shrinking=10000; decodeFailure=10000, exactDecodingError=10000, malformed.0=3291, malformed.1=3302, malformed.2=3407, retryRetainedFailure=10000
+✔ Test authoredRawLoadRecovery() passed after 3.671 seconds.
+◇ Test backendCorruptReadRepairReconstruct() started.
+PROPERTY codec-read: successful generated histories=10000, total attempts including shrinking=10000; corruptRead=10000, exactDecodingError=10000, malformed.0=3373, malformed.1=3311, malformed.2=3316, retryRetainedFailure=10000
+✔ Test backendCorruptReadRepairReconstruct() passed after 3.804 seconds.
+◇ Test realBackendMalformedRecovery(backend:) started.
+◇ Test case passing 1 argument backend → "disk" to realBackendMalformedRecovery(backend:) started.
+PROPERTY codec-load-disk: successful generated histories=1000, total attempts including shrinking=1000; decodeFailure=1000, exactDecodingError=1000, malformed.0=361, malformed.1=303, malformed.2=336, retryRetainedFailure=1000
+◇ Test case passing 1 argument backend → "sqlite" to realBackendMalformedRecovery(backend:) started.
+PROPERTY codec-load-sqlite: successful generated histories=1000, total attempts including shrinking=1000; decodeFailure=1000, exactDecodingError=1000, malformed.0=305, malformed.1=359, malformed.2=336, retryRetainedFailure=1000
+✔ Test realBackendMalformedRecovery(backend:) with 2 test cases passed after 4.750 seconds.
+◇ Test encodingRecoveryHistories() started.
+PROPERTY codec-encoding: successful generated histories=10000, total attempts including shrinking=10000; command.0=55463, command.1=55186, command.2=54965, command.3=55995, command.4=56013, command.5=55295, command.6=56390, continuation.0=55463, continuation.1=55186, continuation.2=54965, continuation.3=55995, continuation.4=56013, continuation.5=55295, continuation.6=56390, continuedBeforeReopen=25044, directClear=12705, duplicateMasksRejectedValue=8261, fusedClear=12339, historyRejected=56390, position.0=5561, position.1=5489, position.2=5733, rejected=16783, reopen=25044
+✔ Test encodingRecoveryHistories() passed after 61.845 seconds.
+◇ Test boundedEncodingMatrix() started.
+PROPERTY codec-matrix: combinations=18, two-command histories=49
+✔ Test boundedEncodingMatrix() passed after 0.041 seconds.
+✔ Suite "Codec recovery discovery" passed after 74.113 seconds.
+✔ Test run with 5 tests in 1 suite passed after 74.114 seconds.

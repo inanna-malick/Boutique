@@ -1,0 +1,44 @@
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/5] Write sources
+[3/5] Write swift-version-6FAF900280F264CA.txt
+[5/7] Compiling BoutiqueTests CodecRecoveryDiscoveryTests.swift
+[6/7] Emitting module BoutiqueTests
+[7/11] Compiling BoutiqueTests OperationLifecycleDiscoveryTests.swift
+[8/11] Compiling BoutiqueTests StoreDiscoveryHistoryTests.swift
+[9/11] Compiling BoutiqueTests StoreDiscoveryInterleavingTests.swift
+[10/11] Compiling BoutiqueTests StoreIdentityDiscoveryTests.swift
+[10/12] Write Objects.LinkFileList
+[11/12] Linking BoutiquePackageTests
+Build complete! (3.93s)
+Test Suite 'Selected tests' started at 2026-10-12 22:42:15.544.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:42:15.545.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:42:15.545.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:42:15.545.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Codec recovery discovery" started.
+◇ Test authoredRawLoadRecovery() started.
+PROPERTY codec-load: successful generated histories=5, total attempts including shrinking=5; decodeFailure=5, exactDecodingError=5, malformed.0=2, malformed.1=1, malformed.2=2, retryRetainedFailure=5
+✔ Test authoredRawLoadRecovery() passed after 0.003 seconds.
+◇ Test backendCorruptReadRepairReconstruct() started.
+PROPERTY codec-read: successful generated histories=5, total attempts including shrinking=5; corruptRead=5, exactDecodingError=5, malformed.0=1, malformed.1=2, malformed.2=2, retryRetainedFailure=5
+✔ Test backendCorruptReadRepairReconstruct() passed after 0.001 seconds.
+◇ Test realBackendMalformedRecovery(backend:) started.
+◇ Test case passing 1 argument backend → "disk" to realBackendMalformedRecovery(backend:) started.
+PROPERTY codec-load-disk: successful generated histories=2, total attempts including shrinking=2; decodeFailure=2, exactDecodingError=2, malformed.0=1, malformed.1=1, retryRetainedFailure=2
+◇ Test case passing 1 argument backend → "sqlite" to realBackendMalformedRecovery(backend:) started.
+PROPERTY codec-load-sqlite: successful generated histories=2, total attempts including shrinking=2; decodeFailure=2, exactDecodingError=2, malformed.2=2, retryRetainedFailure=2
+✔ Test realBackendMalformedRecovery(backend:) with 2 test cases passed after 0.010 seconds.
+◇ Test encodingRecoveryHistories() started.
+PROPERTY codec-encoding: successful generated histories=5, total attempts including shrinking=5; command.0=25, command.1=7, command.2=37, command.3=7, command.4=14, command.5=12, command.6=8, continuedBeforeReopen=9, duplicateMasksRejectedValue=1, fusedClear=9, historyRejected=8, position.0=1, position.1=6, position.2=1, rejected=8, reopen=9
+✔ Test encodingRecoveryHistories() passed after 0.008 seconds.
+◇ Test boundedEncodingMatrix() started.
+PROPERTY codec-matrix: combinations=18, two-command histories=49
+✔ Test boundedEncodingMatrix() passed after 0.036 seconds.
+✔ Suite "Codec recovery discovery" passed after 0.059 seconds.
+✔ Test run with 5 tests in 1 suite passed after 0.059 seconds.

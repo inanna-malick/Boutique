@@ -1,0 +1,28 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.67s)
+Test Suite 'Selected tests' started at 2026-10-12 22:44:59.683.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:44:59.683.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:44:59.683.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:44:59.683.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Codec recovery discovery" started.
+◇ Test authoredRawLoadRecovery() started.
+✘ Test authoredRawLoadRecovery() recorded an issue at DiscoveryProperty.swift:119:29: Issue recorded
+↳ codec.load.reconstruct at step 1:
+✘ Test authoredRawLoadRecovery() recorded an issue at DiscoveryProperty.swift:87:28: Issue recorded
+↳ Failure occured with input CodecScenario(payload: 0, malformed: 0, position: 0, duplicate: 0, fused: false, repeats: 1, commands: [BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 0, key: 0, payload: 0)]).
+  (shrunk down from CodecScenario(payload: 97, malformed: 2, position: 2, duplicate: 1, fused: false, repeats: 3, commands: [BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 5, key: 1, payload: -8), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 1, key: 1, payload: 3), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 2, key: 0, payload: -4), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 6, key: 0, payload: -10), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 0, key: 1, payload: -7), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 3, key: 0, payload: 2), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 3, key: 1, payload: 5), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 3, key: 1, payload: -3), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 1, key: 1, payload: -10), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 4, key: 1, payload: -3), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 1, key: 1, payload: 10), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 4, key: 0, payload: -2), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 0, key: 0, payload: 1), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 4, key: 0, payload: 10), BoutiqueTests.(unknown context at $1017f6770).CodecCommand(kind: 6, key: 0, payload: -4)]) after 21 iterations)
+
+  Add `.fixedSeed("XDssrHCedQsT5sWCi44WxAog6r3FQJtNkoPD7psH3bI=")` to the Test to reproduce this issue.
+PROPERTY codec-load: successful generated histories=0, total attempts including shrinking=23;
+✘ Test authoredRawLoadRecovery() failed after 0.014 seconds with 2 issues.
+✘ Suite "Codec recovery discovery" failed after 0.014 seconds with 2 issues.
+✘ Test run with 1 test in 1 suite failed after 0.015 seconds with 2 issues.

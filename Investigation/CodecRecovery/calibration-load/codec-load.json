@@ -1,0 +1,110 @@
+{
+  "failure" : {
+    "detail" : "",
+    "invariant" : "codec.load.reconstruct",
+    "step" : 1
+  },
+  "original" : {
+    "commands" : [
+      {
+        "key" : 1,
+        "kind" : 5,
+        "payload" : -8
+      },
+      {
+        "key" : 1,
+        "kind" : 1,
+        "payload" : 3
+      },
+      {
+        "key" : 0,
+        "kind" : 2,
+        "payload" : -4
+      },
+      {
+        "key" : 0,
+        "kind" : 6,
+        "payload" : -10
+      },
+      {
+        "key" : 1,
+        "kind" : 0,
+        "payload" : -7
+      },
+      {
+        "key" : 0,
+        "kind" : 3,
+        "payload" : 2
+      },
+      {
+        "key" : 1,
+        "kind" : 3,
+        "payload" : 5
+      },
+      {
+        "key" : 1,
+        "kind" : 3,
+        "payload" : -3
+      },
+      {
+        "key" : 1,
+        "kind" : 1,
+        "payload" : -10
+      },
+      {
+        "key" : 1,
+        "kind" : 4,
+        "payload" : -3
+      },
+      {
+        "key" : 1,
+        "kind" : 1,
+        "payload" : 10
+      },
+      {
+        "key" : 0,
+        "kind" : 4,
+        "payload" : -2
+      },
+      {
+        "key" : 0,
+        "kind" : 0,
+        "payload" : 1
+      },
+      {
+        "key" : 0,
+        "kind" : 4,
+        "payload" : 10
+      },
+      {
+        "key" : 0,
+        "kind" : 6,
+        "payload" : -4
+      }
+    ],
+    "duplicate" : 1,
+    "fused" : false,
+    "malformed" : 2,
+    "payload" : 97,
+    "position" : 2,
+    "repeats" : 3
+  },
+  "reduced" : {
+    "commands" : [
+      {
+        "key" : 0,
+        "kind" : 0,
+        "payload" : 0
+      }
+    ],
+    "duplicate" : 0,
+    "fused" : false,
+    "malformed" : 0,
+    "payload" : 0,
+    "position" : 0,
+    "repeats" : 1
+  },
+  "revision" : "7c7545b7df2172f767c3deaa47ccf67d590f20f9-dirty",
+  "suite" : "codec-load",
+  "version" : 1
+}

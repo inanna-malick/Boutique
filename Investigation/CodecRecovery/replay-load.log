@@ -1,0 +1,21 @@
+Another instance of SwiftPM (PID: 36638) is already running using '/Users/inannamalick/dev/botique-proptest/worktrees/codec-recovery/.build', waiting until that process has finished execution...[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (10.27s)
+Test Suite 'Selected tests' started at 2026-10-12 22:46:55.816.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:46:55.818.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:46:55.818.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:46:55.818.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.002) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Codec recovery discovery" started.
+◇ Test authoredRawLoadRecovery() started.
+PROPERTY REPLAY codec-load: passed
+✔ Test authoredRawLoadRecovery() passed after 0.004 seconds.
+✔ Suite "Codec recovery discovery" passed after 0.004 seconds.
+✔ Test run with 1 test in 1 suite passed after 0.004 seconds.
