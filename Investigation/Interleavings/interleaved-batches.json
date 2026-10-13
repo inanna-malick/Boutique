@@ -1,0 +1,126 @@
+{
+  "failure" : {
+    "detail" : "commits=[first:write:key-0=1, second:write:key-0=2, second:write:key-1=2, first:write:key-1=1]; actual=[BoutiqueTests.StoreDiscoveryItem(id: \"key-0\", payload: 1), BoutiqueTests.StoreDiscoveryItem(id: \"key-1\", payload: 1)]; expected=[BoutiqueTests.StoreDiscoveryItem(id: \"key-0\", payload: 2), BoutiqueTests.StoreDiscoveryItem(id: \"key-1\", payload: 1)]",
+    "invariant" : "store.element.memory",
+    "step" : 4
+  },
+  "original" : {
+    "first" : {
+      "items" : [
+        {
+          "id" : "key-0",
+          "payload" : 8
+        },
+        {
+          "id" : "key-1",
+          "payload" : 8
+        },
+        {
+          "id" : "key-2",
+          "payload" : 8
+        }
+      ],
+      "kind" : "batch",
+      "removals" : [
+        {
+          "id" : "key-0",
+          "payload" : 7
+        }
+      ]
+    },
+    "initial" : [
+      {
+        "id" : "key-0",
+        "payload" : 7
+      },
+      {
+        "id" : "key-1",
+        "payload" : 7
+      }
+    ],
+    "schedule" : {
+      "firstBoundary" : 0,
+      "firstPhase" : "after",
+      "releaseFirst" : false,
+      "serialized" : false
+    },
+    "second" : {
+      "items" : [
+        {
+          "id" : "key-1",
+          "payload" : 9
+        },
+        {
+          "id" : "key-2",
+          "payload" : 9
+        },
+        {
+          "id" : "key-3",
+          "payload" : 9
+        }
+      ],
+      "kind" : "batch",
+      "removals" : [
+        {
+          "id" : "key-0",
+          "payload" : 7
+        }
+      ]
+    }
+  },
+  "reduced" : {
+    "first" : {
+      "items" : [
+        {
+          "id" : "key-0",
+          "payload" : 1
+        },
+        {
+          "id" : "key-1",
+          "payload" : 1
+        }
+      ],
+      "kind" : "batch",
+      "removals" : [
+        {
+          "id" : "key-0",
+          "payload" : 0
+        }
+      ]
+    },
+    "initial" : [
+      {
+        "id" : "key-0",
+        "payload" : 0
+      }
+    ],
+    "schedule" : {
+      "firstBoundary" : 0,
+      "firstPhase" : "after",
+      "releaseFirst" : false,
+      "serialized" : false
+    },
+    "second" : {
+      "items" : [
+        {
+          "id" : "key-0",
+          "payload" : 2
+        },
+        {
+          "id" : "key-1",
+          "payload" : 2
+        }
+      ],
+      "kind" : "batch",
+      "removals" : [
+        {
+          "id" : "key-0",
+          "payload" : 0
+        }
+      ]
+    }
+  },
+  "revision" : "e717aa55a65404e99f2f9780e5a3f0e7826b9c27-dirty",
+  "suite" : "store-interleaved-batches",
+  "version" : 1
+}

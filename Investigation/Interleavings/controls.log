@@ -1,0 +1,25 @@
+[0/1] Planning build
+Test Suite 'Selected tests' started at 2026-10-12 22:16:07.126.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:16:07.126.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:16:07.126.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:16:07.126.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "StoreDiscovery per-element interleavings" started.
+➜ Test interleavedBatchSearch() skipped.
+➜ Test extractedElementWitness(_:) skipped.
+◇ Test serializedCommitControls() started.
+◇ Test sameIdentityAtomicControls() started.
+➜ Test generatedElementInterleavings() skipped.
+◇ Test internallySerializedControlIsExplicitlyInfeasible() started.
+➜ Test sameIdentityCommitReturnSearch() skipped.
+✔ Test internallySerializedControlIsExplicitlyInfeasible() passed after 0.022 seconds.
+PROPERTY store-element-serialized: successful generated histories=1000, total attempts including shrinking=1000; both-committed=1000, commits=4772, first-batch=250, first-fusedClearInsert=258, first-fusedRemoveInsert=230, first-insert=262, gate-after-0=287, gate-after-1=103, gate-after-2=54, gate-after-3=17, gate-after-4=11, gate-after-5=5, gate-after-6=1, gate-before-0=342, gate-before-1=99, gate-before-2=48, gate-before-3=19, gate-before-4=9, gate-before-5=4, gate-before-6=1, keysets.disjoint=495, keysets.equal=267, keysets.overlap=238, same-id-unequal-payload-overwrite=993, schedule.serialized=1000, second-batch=135, second-clear=147, second-fusedClearInsert=136, second-fusedRemoveInsert=144, second-insert=143, second-remove=163, second-removeBatch=132
+✔ Test serializedCommitControls() passed after 0.710 seconds.
+PROPERTY store-same-id-atomic: successful generated histories=1000, total attempts including shrinking=1000; both-committed=1000, commits=2000, first-batch=515, first-insert=485, gate-before-0=1000, keysets.equal=1000, same-id-unequal-payload-overwrite=2000, schedule.reached=1000, second-batch=487, second-insert=513
+✔ Test sameIdentityAtomicControls() passed after 0.713 seconds.
+✔ Suite "StoreDiscovery per-element interleavings" passed after 0.713 seconds.
+✔ Test run with 7 tests in 1 suite passed after 0.713 seconds.

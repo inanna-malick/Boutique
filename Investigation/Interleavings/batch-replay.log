@@ -1,0 +1,16 @@
+Another instance of SwiftPM (PID: 25227) is already running using '/Users/inannamalick/dev/botique-proptest/worktrees/same-id-overlap/.build', waiting until that process has finished execution...[0/1] Planning build
+Test Suite 'Selected tests' started at 2026-10-12 22:16:11.573.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:16:11.574.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:16:11.574.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:16:11.574.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "StoreDiscovery per-element interleavings" started.
+◇ Test interleavedBatchSearch() started.
+✘ Test interleavedBatchSearch() recorded an issue at StoreDiscoveryInterleavingTests.swift:162:6: Caught error: store.element.memory at step 4: commits=[first:write:key-0=1, second:write:key-0=2, second:write:key-1=2, first:write:key-1=1]; actual=[BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 1), BoutiqueTests.StoreDiscoveryItem(id: "key-1", payload: 1)]; expected=[BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 2), BoutiqueTests.StoreDiscoveryItem(id: "key-1", payload: 1)]
+✘ Test interleavedBatchSearch() failed after 0.002 seconds with 1 issue.
+✘ Suite "StoreDiscovery per-element interleavings" failed after 0.002 seconds with 1 issue.
+✘ Test run with 1 test in 1 suite failed after 0.002 seconds with 1 issue.

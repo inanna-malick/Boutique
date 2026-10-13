@@ -1,0 +1,27 @@
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (0.10s)
+Test Suite 'Selected tests' started at 2026-10-12 22:13:54.888.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:13:54.889.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:13:54.889.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:13:54.889.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "StoreDiscovery per-element interleavings" started.
+◇ Test interleavedBatchSearch() started.
+✘ Test interleavedBatchSearch() recorded an issue at DiscoveryProperty.swift:119:29: Issue recorded
+↳ store.element.memory at step 4: commits=[first:write:key-0=1, second:write:key-0=2, second:write:key-1=2, first:write:key-1=1]; actual=[BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 1), BoutiqueTests.StoreDiscoveryItem(id: "key-1", payload: 1)]; expected=[BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 2), BoutiqueTests.StoreDiscoveryItem(id: "key-1", payload: 1)]
+✘ Test interleavedBatchSearch() recorded an issue at DiscoveryProperty.swift:87:28: Issue recorded
+↳ Failure occured with input StoreInterleavingScenario(initial: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 0)], first: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Operation(kind: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Operation.Kind.batch, items: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 1), BoutiqueTests.StoreDiscoveryItem(id: "key-1", payload: 1)], removals: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 0)]), second: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Operation(kind: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Operation.Kind.batch, items: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 2), BoutiqueTests.StoreDiscoveryItem(id: "key-1", payload: 2)], removals: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 0)]), schedule: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Schedule(serialized: false, firstBoundary: 0, firstPhase: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Schedule.Phase.after, releaseFirst: false)).
+  (shrunk down from StoreInterleavingScenario(initial: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 7), BoutiqueTests.StoreDiscoveryItem(id: "key-1", payload: 7)], first: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Operation(kind: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Operation.Kind.batch, items: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 8), BoutiqueTests.StoreDiscoveryItem(id: "key-1", payload: 8), BoutiqueTests.StoreDiscoveryItem(id: "key-2", payload: 8)], removals: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 7)]), second: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Operation(kind: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Operation.Kind.batch, items: [BoutiqueTests.StoreDiscoveryItem(id: "key-1", payload: 9), BoutiqueTests.StoreDiscoveryItem(id: "key-2", payload: 9), BoutiqueTests.StoreDiscoveryItem(id: "key-3", payload: 9)], removals: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 7)]), schedule: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Schedule(serialized: false, firstBoundary: 0, firstPhase: BoutiqueTests.(unknown context at $101a90e54).StoreInterleavingScenario.Schedule.Phase.after, releaseFirst: false)) after 4 iterations)
+
+  Add `.fixedSeed("paKg1Pe8VJbGlmLMb0Ydnf0D/2fMzm6asgYnaUaigZU=")` to the Test to reproduce this issue.
+PROPERTY store-interleaved-batches: successful generated histories=0, total attempts including shrinking=6;
+✘ Test interleavedBatchSearch() failed after 0.008 seconds with 2 issues.
+✘ Suite "StoreDiscovery per-element interleavings" failed after 0.008 seconds with 2 issues.
+✘ Test run with 1 test in 1 suite failed after 0.008 seconds with 2 issues.

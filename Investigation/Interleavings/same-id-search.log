@@ -1,0 +1,28 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.08s)
+Test Suite 'Selected tests' started at 2026-10-12 22:13:47.863.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:13:47.864.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:13:47.864.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:13:47.864.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "StoreDiscovery per-element interleavings" started.
+◇ Test sameIdentityCommitReturnSearch() started.
+✘ Test sameIdentityCommitReturnSearch() recorded an issue at DiscoveryProperty.swift:119:29: Issue recorded
+↳ store.element.memory at step 2: commits=[first:write:key-0=1, second:write:key-0=2]; actual=[BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 1)]; expected=[BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 2)]
+✘ Test sameIdentityCommitReturnSearch() recorded an issue at DiscoveryProperty.swift:87:28: Issue recorded
+↳ Failure occured with input StoreInterleavingScenario(initial: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 0)], first: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Operation(kind: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Operation.Kind.insert, items: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 1)], removals: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 0)]), second: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Operation(kind: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Operation.Kind.insert, items: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 2)], removals: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 0)]), schedule: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Schedule(serialized: false, firstBoundary: 0, firstPhase: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Schedule.Phase.after, releaseFirst: false)).
+  (shrunk down from StoreInterleavingScenario(initial: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 12)], first: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Operation(kind: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Operation.Kind.insert, items: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 13)], removals: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 12)]), second: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Operation(kind: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Operation.Kind.batch, items: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 14)], removals: [BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 12)]), schedule: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Schedule(serialized: false, firstBoundary: 0, firstPhase: BoutiqueTests.(unknown context at $103044e54).StoreInterleavingScenario.Schedule.Phase.after, releaseFirst: false)) after 4 iterations)
+
+  Add `.fixedSeed("Ge43rh7iE3pDotc9M3qKarmsNY6Zrdopzix0GdltmZM=")` to the Test to reproduce this issue.
+PROPERTY store-same-id-commit-return: successful generated histories=0, total attempts including shrinking=6;
+✘ Test sameIdentityCommitReturnSearch() failed after 0.006 seconds with 2 issues.
+✘ Suite "StoreDiscovery per-element interleavings" failed after 0.007 seconds with 2 issues.
+✘ Test run with 1 test in 1 suite failed after 0.007 seconds with 2 issues.
