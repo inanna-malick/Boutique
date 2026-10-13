@@ -16,7 +16,7 @@ Store traces use an explicit command AST: `insertOne`, `insertMany`, `removeOne`
 
 Other finite sweeps exhaust every length-four history over a seven-command Store alphabet (2,401 traces), every length-three history over the 9-command subject alphabet at each subscription point, and every three-status Keychain retry trace for both starting operations (128 traces). These bounded suites complement the longer seeded histories; they do not cover unbounded traces.
 
-The local test environment currently cannot fetch the package's GitHub dependencies, so the full SwiftPM test run is blocked until dependency resolution works. Swift frontend parsing and `git diff --check` are still useful syntax and whitespace checks, but they do not replace a build or test run.
+The suite builds with the repository's current Xcode 16.2 / Swift 6.0.3 toolchain. On 2026-10-12, `swift test` passed all 103 tests, including the generated discovery suites. Dependency resolution now works in this environment.
 
 ## Framework choice
 
@@ -33,7 +33,7 @@ SwiftQC is the best candidate for a later smoke-tested integration because it of
 
 | Area | Independent oracle and current discovery coverage | Follow-up leads |
 | --- | --- | --- |
-| `Store` contents and persistence | Ordered `Array` model; explicit operation AST; model-aware operand generation for existing, absent, fresh, and stale IDs; single/batch insert and remove, clear, reload, event payloads, batch-vs-single metamorphism, deferred operation chains, 2,401 exhaustive four-step histories, malformed persisted-data load failures and recovery | Load/mutation overlap; compare operation events around fused chains; extend generated fault schedules across bulk operations |
+| `Store` contents and persistence | Ordered `Array` model; explicit operation AST; model-aware operand generation for existing, absent, fresh, and stale IDs; single/batch insert and remove, clear, reload, event payloads, batch-vs-single metamorphism, deferred operation chains, 2,401 exhaustive four-step histories, malformed persisted-data load failures and recovery. Found a fused-removal cache-key mismatch that left stale persisted values; a deterministic empty-batch-after-clear regression now passes with the fix. | Load/mutation overlap; compare operation events around fused chains; extend generated fault schedules across bulk operations |
 | `StoredValue` | Plain array/dictionary models; model-aware append/toggle/replace/set/reset/update histories; reopen checks; default/valid/malformed/wrong-shape initialization; nested optional dictionaries; integer boundaries; boxed Codable round trips; cache reads and replacements | Throwing encoders and documented failure behavior; observation event policy |
 | `SecurelyStoredValue` | Generated set/remove/reopen and collection-helper histories against optional-value, array, and dictionary models; generated `refreshValue` success/nil/error traces; key-path and Binding laws; observation invalidation; all 128 three-status Keychain retry traces across both initial operations | Actual Keychain-backed runs need unique service/key isolation and Apple-host execution; clarify cross-wrapper cache visibility and initial read-failure behavior |
 | `AsyncValueSubject` and streams | Generated and bounded exhaustive serialized `send`, direct assignment, and `inout` mutation traces; replay at every subscription point; multiple subscribers; bounded buffering | Check cancellation/termination cleanup and wrapper-level stream traces; concurrent send ordering is not asserted without a documented contract |
