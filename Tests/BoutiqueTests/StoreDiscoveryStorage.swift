@@ -48,7 +48,7 @@ actor StoreDiscoveryStorage: StorageEngine {
     }
     private func enter(_ kind: String, keys: [CacheKey] = []) async {
         calls.append(Call(kind: kind, keys: keys.map(\.value)))
-        if gatedKind == kind {
+        if gatedKind == kind || (gatedKind == "mutation" && ["write", "batch", "remove", "removeBatch", "clear"].contains(kind)) {
             gatedKind = nil
             await withCheckedContinuation { continuation in
                 gates.append(continuation); reached = true
@@ -100,6 +100,8 @@ actor StoreDiscoveryStorage: StorageEngine {
 actor StoreDiscoveryCompletion {
     private var result: Result<Void, Error>?
     private var waiters: [UUID: CheckedContinuation<Void, Error>] = [:]
+
+    func hasFinished() -> Bool { result != nil }
 
     func finish(_ result: Result<Void, Error>) {
         self.result = result

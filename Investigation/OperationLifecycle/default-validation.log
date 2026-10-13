@@ -1,0 +1,30 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (5.27s)
+Test Suite 'Selected tests' started at 2026-10-12 22:15:23.654.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:15:23.655.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:15:23.655.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:15:23.655.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "OperationLifecycleDiscovery" started.
+◇ Test acceptedQueueHistories() started.
+PROPERTY operation-lifecycle: successful generated histories=1000, total attempts including shrinking=1000; append-batch=5055, append-clear=4952, append-insert=4967, append-remove=4986, append-removeBatch=5116, concurrent-run-while-gated=344, empty-operands=3791, initial-0=249, initial-1=233, initial-2=261, initial-3=257, logical-commands=16859, repeat-successful-run=990, run-concurrent=344, run-never=330, run-serial=326, write-effects=6773
+✔ Test acceptedQueueHistories() passed after 1.451 seconds.
+◇ Test finiteQueueAndRunMatrix() started.
+PROPERTY operation-lifecycle finite histories=750; ["run-never": 250, "empty-operands": 900, "initial-0": 375, "append-removeBatch": 450, "run-serial": 250, "concurrent-run-while-gated": 250, "logical-commands": 1500, "initial-1": 375, "append-batch": 450, "repeat-successful-run": 1000, "append-clear": 450, "append-insert": 900, "run-concurrent": 250, "write-effects": 600]
+✔ Test finiteQueueAndRunMatrix() passed after 0.238 seconds.
+◇ Test waitingFollowerHarnessControl() started.
+✔ Test waitingFollowerHarnessControl() passed after 0.001 seconds.
+➜ Test ambiguousLifecycleProbes() skipped.
+➜ Test ambiguousScheduleMatrix() skipped.
+◇ Test queueDoesNotInvokeCodecs() started.
+✔ Test queueDoesNotInvokeCodecs() passed after 0.001 seconds.
+✔ Suite "OperationLifecycleDiscovery" passed after 1.690 seconds.
+✔ Test run with 6 tests in 1 suite passed after 1.690 seconds.

@@ -1,0 +1,42 @@
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/5] Write sources
+[3/5] Write swift-version-6FAF900280F264CA.txt
+[5/8] Emitting module BoutiqueTests
+[6/8] Compiling BoutiqueTests StoreDiscoveryStorage.swift
+[7/8] Compiling BoutiqueTests OperationLifecycleDiscoveryTests.swift
+[8/11] Compiling BoutiqueTests StoreIdentityDiscoveryTests.swift
+[9/11] Compiling BoutiqueTests StoreDiscoveryHistoryTests.swift
+[10/11] Compiling BoutiqueTests StoreDiscoveryScheduleTests.swift
+[10/12] Write Objects.LinkFileList
+[11/12] Linking BoutiquePackageTests
+Build complete! (3.55s)
+Test Suite 'Selected tests' started at 2026-10-12 22:13:54.489.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:13:54.490.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:13:54.490.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:13:54.490.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "OperationLifecycleDiscovery" started.
+◇ Test acceptedQueueHistories() started.
+✔ Test acceptedQueueHistories() passed after 1.433 seconds.
+◇ Test finiteQueueAndRunMatrix() started.
+PROPERTY operation-lifecycle: successful generated histories=1000, total attempts including shrinking=1000; append-batch=5006, append-clear=5133, append-insert=5022, append-remove=5112, append-removeBatch=4996, concurrent-run-while-gated=319, empty-operands=3848, initial-0=254, initial-1=249, initial-2=241, initial-3=256, logical-commands=16599, repeat-successful-run=1042, run-concurrent=319, run-never=344, run-serial=337, write-effects=6535
+PROPERTY operation-lifecycle finite histories=750; ["append-removeBatch": 450, "run-never": 250, "append-insert": 900, "repeat-successful-run": 1000, "append-clear": 450, "empty-operands": 900, "run-serial": 250, "concurrent-run-while-gated": 250, "initial-0": 375, "write-effects": 600, "initial-1": 375, "run-concurrent": 250, "append-batch": 450, "logical-commands": 1500]
+✔ Test finiteQueueAndRunMatrix() passed after 0.205 seconds.
+◇ Test waitingFollowerHarnessControl() started.
+✔ Test waitingFollowerHarnessControl() passed after 0.001 seconds.
+◇ Test ambiguousLifecycleProbes() started.
+PROPERTY operation-lifecycle-probes: successful generated histories=1000, total attempts including shrinking=1000; appended-items-absent=2473, appended-items-persisted=0, failed-after-commit=184, failed-before-commit=158, later-run-no-effects=1000, memory-only-original-queue=658, queued-items-persisted-after-failure=184, schedule-appendAfterRun=321, schedule-appendDuringRun=337, schedule-retryAfterFailure=342, second-run-returned-before-first=1000
+✔ Test ambiguousLifecycleProbes() passed after 0.302 seconds.
+◇ Test ambiguousScheduleMatrix() started.
+PROPERTY operation-lifecycle probes finite schedules=24; ["appended-items-absent": 36, "second-run-returned-before-first": 24, "schedule-retryAfterFailure": 8, "schedule-appendDuringRun": 8, "failed-before-commit": 4, "failed-after-commit": 4, "later-run-no-effects": 24, "queued-items-persisted-after-failure": 4, "memory-only-original-queue": 16, "schedule-appendAfterRun": 8, "appended-items-persisted": 0]
+✔ Test ambiguousScheduleMatrix() passed after 0.005 seconds.
+◇ Test queueDoesNotInvokeCodecs() started.
+✔ Test queueDoesNotInvokeCodecs() passed after 0.001 seconds.
+✔ Suite "OperationLifecycleDiscovery" passed after 1.947 seconds.
+✔ Test run with 6 tests in 1 suite passed after 1.947 seconds.
