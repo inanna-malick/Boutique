@@ -18,6 +18,8 @@ Other finite sweeps exhaust every length-four history over a seven-command Store
 
 The suite builds with the repository's current Xcode 16.2 / Swift 6.0.3 toolchain. On 2026-10-12, `swift test` passed all 103 tests, including the generated discovery suites. Dependency resolution now works in this environment.
 
+The focused regression in [PR #84](https://github.com/mergesort/Boutique/pull/84) now checks 18 fixed combinations against real Disk and SQLite engines: clear or selective batch removal followed by single, batch, or empty insertion. It checks memory, persisted record count, and values loaded through a fresh engine. All nine Disk cases fail with the original key construction and pass with the fix; SQLite uses raw identifiers and passes both versions.
+
 ## Framework choice
 
 Boutique's existing test target uses Swift Testing and needs async, actor-isolated model tests. The current discovery suite uses deterministic in-repository generators and bounded enumeration so it adds no dependency or toolchain floor. Its main limitation is the lack of automatic shrinking; failure output therefore records seeds and traces for manual reduction.
