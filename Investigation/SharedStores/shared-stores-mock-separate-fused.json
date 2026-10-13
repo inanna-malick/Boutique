@@ -1,0 +1,638 @@
+{
+  "failure" : {
+    "detail" : "expected=[BoutiqueTests.StoreDiscoveryItem(id: \"replacement\", payload: 0)], actual=[BoutiqueTests.StoreDiscoveryItem(id: \"key0\", payload: 0), BoutiqueTests.StoreDiscoveryItem(id: \"replacement\", payload: 0)]",
+    "invariant" : "shared.persisted",
+    "step" : 1
+  },
+  "original" : {
+    "late" : true,
+    "owners" : 2,
+    "steps" : [
+      {
+        "key" : 0,
+        "kind" : 3,
+        "owner" : 0,
+        "payload" : -20,
+        "reconstruct" : true
+      },
+      {
+        "key" : 3,
+        "kind" : 3,
+        "owner" : 0,
+        "payload" : 17,
+        "reconstruct" : true
+      },
+      {
+        "key" : 1,
+        "kind" : 0,
+        "owner" : 0,
+        "payload" : 10,
+        "reconstruct" : false
+      },
+      {
+        "key" : 3,
+        "kind" : 5,
+        "owner" : 1,
+        "payload" : 1,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 2,
+        "owner" : 0,
+        "payload" : 17,
+        "reconstruct" : true
+      },
+      {
+        "key" : 2,
+        "kind" : 3,
+        "owner" : 2,
+        "payload" : -3,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 3,
+        "owner" : 2,
+        "payload" : -14,
+        "reconstruct" : true
+      },
+      {
+        "key" : 3,
+        "kind" : 5,
+        "owner" : 0,
+        "payload" : 0,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 5,
+        "owner" : 0,
+        "payload" : 8,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 5,
+        "owner" : 2,
+        "payload" : -8,
+        "reconstruct" : true
+      },
+      {
+        "key" : 3,
+        "kind" : 4,
+        "owner" : 2,
+        "payload" : -15,
+        "reconstruct" : true
+      },
+      {
+        "key" : 3,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : -10,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : -10,
+        "reconstruct" : false
+      },
+      {
+        "key" : 0,
+        "kind" : 3,
+        "owner" : 2,
+        "payload" : 6,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 2,
+        "owner" : 2,
+        "payload" : -16,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 1,
+        "owner" : 2,
+        "payload" : 6,
+        "reconstruct" : false
+      },
+      {
+        "key" : 3,
+        "kind" : 3,
+        "owner" : 0,
+        "payload" : 5,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 4,
+        "owner" : 2,
+        "payload" : -11,
+        "reconstruct" : false
+      },
+      {
+        "key" : 2,
+        "kind" : 0,
+        "owner" : 1,
+        "payload" : 7,
+        "reconstruct" : false
+      },
+      {
+        "key" : 3,
+        "kind" : 3,
+        "owner" : 0,
+        "payload" : -13,
+        "reconstruct" : true
+      },
+      {
+        "key" : 1,
+        "kind" : 3,
+        "owner" : 0,
+        "payload" : -3,
+        "reconstruct" : true
+      },
+      {
+        "key" : 1,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : 13,
+        "reconstruct" : false
+      },
+      {
+        "key" : 2,
+        "kind" : 4,
+        "owner" : 2,
+        "payload" : -8,
+        "reconstruct" : true
+      },
+      {
+        "key" : 1,
+        "kind" : 3,
+        "owner" : 2,
+        "payload" : 16,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 4,
+        "owner" : 0,
+        "payload" : 7,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 0,
+        "owner" : 1,
+        "payload" : 9,
+        "reconstruct" : false
+      },
+      {
+        "key" : 2,
+        "kind" : 4,
+        "owner" : 1,
+        "payload" : 9,
+        "reconstruct" : true
+      },
+      {
+        "key" : 1,
+        "kind" : 2,
+        "owner" : 2,
+        "payload" : -1,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 3,
+        "owner" : 0,
+        "payload" : -18,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 4,
+        "owner" : 1,
+        "payload" : -19,
+        "reconstruct" : false
+      },
+      {
+        "key" : 3,
+        "kind" : 3,
+        "owner" : 1,
+        "payload" : 1,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 2,
+        "owner" : 2,
+        "payload" : 10,
+        "reconstruct" : true
+      },
+      {
+        "key" : 1,
+        "kind" : 5,
+        "owner" : 0,
+        "payload" : 2,
+        "reconstruct" : true
+      },
+      {
+        "key" : 3,
+        "kind" : 4,
+        "owner" : 2,
+        "payload" : -20,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 4,
+        "owner" : 1,
+        "payload" : -9,
+        "reconstruct" : true
+      },
+      {
+        "key" : 2,
+        "kind" : 5,
+        "owner" : 1,
+        "payload" : -9,
+        "reconstruct" : true
+      },
+      {
+        "key" : 2,
+        "kind" : 4,
+        "owner" : 1,
+        "payload" : 4,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : -13,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : 11,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 4,
+        "owner" : 2,
+        "payload" : -12,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 3,
+        "owner" : 0,
+        "payload" : -14,
+        "reconstruct" : false
+      },
+      {
+        "key" : 2,
+        "kind" : 3,
+        "owner" : 1,
+        "payload" : -6,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 4,
+        "owner" : 1,
+        "payload" : 18,
+        "reconstruct" : true
+      },
+      {
+        "key" : 2,
+        "kind" : 4,
+        "owner" : 1,
+        "payload" : -16,
+        "reconstruct" : false
+      },
+      {
+        "key" : 0,
+        "kind" : 2,
+        "owner" : 2,
+        "payload" : -11,
+        "reconstruct" : false
+      },
+      {
+        "key" : 3,
+        "kind" : 1,
+        "owner" : 2,
+        "payload" : -20,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 3,
+        "owner" : 0,
+        "payload" : -3,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 1,
+        "owner" : 2,
+        "payload" : -2,
+        "reconstruct" : false
+      },
+      {
+        "key" : 2,
+        "kind" : 3,
+        "owner" : 2,
+        "payload" : 14,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 0,
+        "owner" : 1,
+        "payload" : -14,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 1,
+        "owner" : 0,
+        "payload" : 12,
+        "reconstruct" : false
+      },
+      {
+        "key" : 3,
+        "kind" : 2,
+        "owner" : 0,
+        "payload" : 4,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : 4,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 1,
+        "owner" : 0,
+        "payload" : -6,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 1,
+        "owner" : 0,
+        "payload" : -13,
+        "reconstruct" : false
+      },
+      {
+        "key" : 3,
+        "kind" : 3,
+        "owner" : 0,
+        "payload" : 0,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 4,
+        "owner" : 1,
+        "payload" : -19,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 0,
+        "owner" : 2,
+        "payload" : 11,
+        "reconstruct" : true
+      },
+      {
+        "key" : 2,
+        "kind" : 1,
+        "owner" : 1,
+        "payload" : -3,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 5,
+        "owner" : 0,
+        "payload" : 12,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 1,
+        "owner" : 2,
+        "payload" : -16,
+        "reconstruct" : true
+      },
+      {
+        "key" : 2,
+        "kind" : 0,
+        "owner" : 2,
+        "payload" : -7,
+        "reconstruct" : false
+      },
+      {
+        "key" : 2,
+        "kind" : 0,
+        "owner" : 1,
+        "payload" : 14,
+        "reconstruct" : false
+      },
+      {
+        "key" : 3,
+        "kind" : 0,
+        "owner" : 0,
+        "payload" : -14,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 0,
+        "owner" : 2,
+        "payload" : 3,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : 10,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 4,
+        "owner" : 1,
+        "payload" : 12,
+        "reconstruct" : false
+      },
+      {
+        "key" : 2,
+        "kind" : 0,
+        "owner" : 0,
+        "payload" : 14,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 2,
+        "owner" : 0,
+        "payload" : 7,
+        "reconstruct" : false
+      },
+      {
+        "key" : 3,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : 1,
+        "reconstruct" : true
+      },
+      {
+        "key" : 2,
+        "kind" : 0,
+        "owner" : 0,
+        "payload" : 1,
+        "reconstruct" : false
+      },
+      {
+        "key" : 2,
+        "kind" : 0,
+        "owner" : 1,
+        "payload" : -14,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : 10,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 3,
+        "owner" : 1,
+        "payload" : -19,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 1,
+        "owner" : 0,
+        "payload" : -15,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : 6,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 4,
+        "owner" : 1,
+        "payload" : -7,
+        "reconstruct" : true
+      },
+      {
+        "key" : 3,
+        "kind" : 4,
+        "owner" : 2,
+        "payload" : -4,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 2,
+        "owner" : 0,
+        "payload" : -13,
+        "reconstruct" : true
+      },
+      {
+        "key" : 1,
+        "kind" : 3,
+        "owner" : 2,
+        "payload" : 10,
+        "reconstruct" : true
+      },
+      {
+        "key" : 1,
+        "kind" : 4,
+        "owner" : 2,
+        "payload" : 5,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 4,
+        "owner" : 1,
+        "payload" : 4,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 1,
+        "owner" : 2,
+        "payload" : -2,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : -17,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 0,
+        "owner" : 0,
+        "payload" : 6,
+        "reconstruct" : false
+      },
+      {
+        "key" : 3,
+        "kind" : 3,
+        "owner" : 0,
+        "payload" : 5,
+        "reconstruct" : false
+      }
+    ]
+  },
+  "reduced" : {
+    "late" : false,
+    "owners" : 2,
+    "steps" : [
+      {
+        "key" : 0,
+        "kind" : 0,
+        "owner" : 0,
+        "payload" : 0,
+        "reconstruct" : false
+      },
+      {
+        "key" : 0,
+        "kind" : 5,
+        "owner" : 1,
+        "payload" : 0,
+        "reconstruct" : false
+      }
+    ]
+  },
+  "revision" : "7c7545b7df2172f767c3deaa47ccf67d590f20f9-dirty",
+  "suite" : "shared-stores-mock-separate-fused",
+  "version" : 1
+}

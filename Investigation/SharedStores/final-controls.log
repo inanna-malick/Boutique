@@ -1,0 +1,37 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.01s)
+Test Suite 'Selected tests' started at 2026-10-12 22:49:17.513.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:49:17.514.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:49:17.514.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:49:17.514.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Shared Store persistence discovery" started.
+◇ Test instrumentedControls() started.
+PROPERTY shared-stores-mock-shared-direct: successful generated histories=1000, total attempts including shrinking=1000; checkpoint=51600, clear-insert=8669, current-writer=37437, early-construction=506, empty-batch=224, instances.2=497, instances.3=503, late-construction=494, operation.0=8613, operation.1=8535, operation.2=8587, operation.3=8709, operation.4=8487, operation.5=8669, owner.0=25548, owner.1=17254, owner.2=8798, reconstruct=25896, selective-fusion=8709, stale-direct-clear=2380, stale-selective-removal=2416, stale-writer=14163
+✔ Test instrumentedControls() passed after 6.893 seconds.
+◇ Test backendControls(backend:separate:) started.
+◇ Test case passing 2 arguments backend → "disk", separate → false to backendControls(backend:separate:) started.
+PROPERTY shared-stores-disk-shared-direct: successful generated histories=100, total attempts including shrinking=100; checkpoint=1955, clear-insert=333, current-writer=1444, early-construction=54, empty-batch=9, instances.2=53, instances.3=47, late-construction=46, operation.0=307, operation.1=362, operation.2=324, operation.3=299, operation.4=330, operation.5=333, owner.0=983, owner.1=645, owner.2=327, reconstruct=942, selective-fusion=299, stale-direct-clear=94, stale-selective-removal=66, stale-writer=511
+◇ Test case passing 2 arguments backend → "disk", separate → true to backendControls(backend:separate:) started.
+PROPERTY shared-stores-disk-separate-direct: successful generated histories=100, total attempts including shrinking=100; checkpoint=2108, clear-insert=383, current-writer=1518, early-construction=58, empty-batch=10, instances.2=49, instances.3=51, late-construction=42, operation.0=356, operation.1=351, operation.2=359, operation.3=338, operation.4=321, operation.5=383, owner.0=993, owner.1=755, owner.2=360, reconstruct=1031, selective-fusion=338, stale-direct-clear=80, stale-selective-removal=98, stale-writer=590
+◇ Test case passing 2 arguments backend → "sqlite", separate → false to backendControls(backend:separate:) started.
+PROPERTY shared-stores-sqlite-shared-direct: successful generated histories=100, total attempts including shrinking=100; checkpoint=2011, clear-insert=341, current-writer=1488, early-construction=60, empty-batch=4, instances.2=50, instances.3=50, late-construction=40, operation.0=324, operation.1=315, operation.2=351, operation.3=336, operation.4=344, operation.5=341, owner.0=1015, owner.1=668, owner.2=328, reconstruct=989, selective-fusion=336, stale-direct-clear=85, stale-selective-removal=95, stale-writer=523
+◇ Test case passing 2 arguments backend → "sqlite", separate → true to backendControls(backend:separate:) started.
+PROPERTY shared-stores-sqlite-separate-direct: successful generated histories=100, total attempts including shrinking=100; checkpoint=2149, clear-insert=364, current-writer=1509, early-construction=53, empty-batch=7, instances.2=41, instances.3=59, late-construction=47, operation.0=368, operation.1=357, operation.2=356, operation.3=365, operation.4=339, operation.5=364, owner.0=1002, owner.1=715, owner.2=432, reconstruct=1050, selective-fusion=365, stale-direct-clear=98, stale-selective-removal=109, stale-writer=640
+✔ Test backendControls(backend:separate:) with 4 test cases passed after 7.903 seconds.
+➜ Test fusedClearSearch(backend:separate:) skipped.
+➜ Test instrumentedFusedClearReplay() skipped.
+➜ Test pairedClearWitness(backend:separate:) skipped.
+◇ Test boundedMatrix() started.
+PROPERTY shared-stores matrix: 336 histories; ["operation.4": 56, "early-construction": 312, "operation.1": 152, "stale-direct-clear": 20, "operation.3": 104, "late-construction": 24, "checkpoint": 720, "instances.3": 24, "operation.0": 200, "owner.1": 336, "stale-writer": 144, "operation.2": 152, "owner.0": 384, "selective-fusion": 104, "reconstruct": 48, "clear-insert": 56, "stale-selective-removal": 44, "operation.5": 56, "current-writer": 576, "instances.2": 312]
+✔ Test boundedMatrix() passed after 0.122 seconds.
+✔ Suite "Shared Store persistence discovery" passed after 14.919 seconds.
+✔ Test run with 6 tests in 1 suite passed after 14.920 seconds.

@@ -1,0 +1,21 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.19s)
+Test Suite 'Selected tests' started at 2026-10-12 22:44:48.625.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:44:48.626.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:44:48.626.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:44:48.626.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Shared Store persistence discovery" started.
+◇ Test instrumentedControls() started.
+PROPERTY REPLAY shared-stores-mock-shared-direct: passed
+✔ Test instrumentedControls() passed after 0.002 seconds.
+✔ Suite "Shared Store persistence discovery" passed after 0.002 seconds.
+✔ Test run with 1 test in 1 suite passed after 0.002 seconds.

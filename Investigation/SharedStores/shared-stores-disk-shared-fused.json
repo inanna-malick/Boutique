@@ -1,0 +1,197 @@
+{
+  "failure" : {
+    "detail" : "expected=[BoutiqueTests.StoreDiscoveryItem(id: \"replacement\", payload: 0)], actual=[BoutiqueTests.StoreDiscoveryItem(id: \"key0\", payload: 0), BoutiqueTests.StoreDiscoveryItem(id: \"replacement\", payload: 0)]",
+    "invariant" : "shared.persisted",
+    "step" : 1
+  },
+  "original" : {
+    "late" : true,
+    "owners" : 3,
+    "steps" : [
+      {
+        "key" : 4,
+        "kind" : 0,
+        "owner" : 2,
+        "payload" : -2,
+        "reconstruct" : true
+      },
+      {
+        "key" : 2,
+        "kind" : 2,
+        "owner" : 0,
+        "payload" : -5,
+        "reconstruct" : false
+      },
+      {
+        "key" : 0,
+        "kind" : 4,
+        "owner" : 2,
+        "payload" : -1,
+        "reconstruct" : false
+      },
+      {
+        "key" : 2,
+        "kind" : 1,
+        "owner" : 0,
+        "payload" : 8,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 3,
+        "owner" : 0,
+        "payload" : -9,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 1,
+        "owner" : 1,
+        "payload" : -19,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 1,
+        "owner" : 0,
+        "payload" : 4,
+        "reconstruct" : true
+      },
+      {
+        "key" : 0,
+        "kind" : 5,
+        "owner" : 0,
+        "payload" : -19,
+        "reconstruct" : true
+      },
+      {
+        "key" : 2,
+        "kind" : 0,
+        "owner" : 1,
+        "payload" : 16,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 3,
+        "owner" : 1,
+        "payload" : 9,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 2,
+        "owner" : 1,
+        "payload" : -3,
+        "reconstruct" : true
+      },
+      {
+        "key" : 1,
+        "kind" : 5,
+        "owner" : 0,
+        "payload" : 6,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 0,
+        "owner" : 1,
+        "payload" : -5,
+        "reconstruct" : true
+      },
+      {
+        "key" : 4,
+        "kind" : 4,
+        "owner" : 1,
+        "payload" : -1,
+        "reconstruct" : false
+      },
+      {
+        "key" : 0,
+        "kind" : 2,
+        "owner" : 2,
+        "payload" : -1,
+        "reconstruct" : true
+      },
+      {
+        "key" : 3,
+        "kind" : 5,
+        "owner" : 1,
+        "payload" : -17,
+        "reconstruct" : false
+      },
+      {
+        "key" : 2,
+        "kind" : 3,
+        "owner" : 2,
+        "payload" : -18,
+        "reconstruct" : false
+      },
+      {
+        "key" : 0,
+        "kind" : 5,
+        "owner" : 1,
+        "payload" : 18,
+        "reconstruct" : true
+      },
+      {
+        "key" : 2,
+        "kind" : 1,
+        "owner" : 2,
+        "payload" : -8,
+        "reconstruct" : false
+      },
+      {
+        "key" : 4,
+        "kind" : 5,
+        "owner" : 0,
+        "payload" : 13,
+        "reconstruct" : false
+      },
+      {
+        "key" : 1,
+        "kind" : 4,
+        "owner" : 0,
+        "payload" : -7,
+        "reconstruct" : true
+      },
+      {
+        "key" : 2,
+        "kind" : 0,
+        "owner" : 2,
+        "payload" : -7,
+        "reconstruct" : false
+      },
+      {
+        "key" : 0,
+        "kind" : 4,
+        "owner" : 0,
+        "payload" : -1,
+        "reconstruct" : false
+      }
+    ]
+  },
+  "reduced" : {
+    "late" : false,
+    "owners" : 2,
+    "steps" : [
+      {
+        "key" : 0,
+        "kind" : 0,
+        "owner" : 1,
+        "payload" : 0,
+        "reconstruct" : false
+      },
+      {
+        "key" : 0,
+        "kind" : 5,
+        "owner" : 0,
+        "payload" : 0,
+        "reconstruct" : false
+      }
+    ]
+  },
+  "revision" : "7c7545b7df2172f767c3deaa47ccf67d590f20f9-dirty",
+  "suite" : "shared-stores-disk-shared-fused",
+  "version" : 1
+}

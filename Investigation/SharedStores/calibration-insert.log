@@ -1,0 +1,28 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.82s)
+Test Suite 'Selected tests' started at 2026-10-12 22:44:23.627.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:44:23.628.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:44:23.628.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:44:23.628.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Shared Store persistence discovery" started.
+◇ Test instrumentedControls() started.
+✘ Test instrumentedControls() recorded an issue at DiscoveryProperty.swift:119:29: Issue recorded
+↳ shared.writer-memory at step 0:
+✘ Test instrumentedControls() recorded an issue at DiscoveryProperty.swift:87:28: Issue recorded
+↳ Failure occured with input SharedStoreScenario(owners: 2, late: false, steps: [BoutiqueTests.SharedStoreScenario.Step(owner: 0, kind: 0, key: 0, payload: 0, reconstruct: false)]).
+  (shrunk down from SharedStoreScenario(owners: 3, late: true, steps: [BoutiqueTests.SharedStoreScenario.Step(owner: 1, kind: 2, key: 1, payload: -13, reconstruct: false), BoutiqueTests.SharedStoreScenario.Step(owner: 1, kind: 0, key: 3, payload: -1, reconstruct: false), BoutiqueTests.SharedStoreScenario.Step(owner: 1, kind: 5, key: 2, payload: 1, reconstruct: false), BoutiqueTests.SharedStoreScenario.Step(owner: 0, kind: 1, key: 0, payload: -5, reconstruct: false), BoutiqueTests.SharedStoreScenario.Step(owner: 1, kind: 4, key: 1, payload: -4, reconstruct: true), BoutiqueTests.SharedStoreScenario.Step(owner: 0, kind: 0, key: 4, payload: 18, reconstruct: true), BoutiqueTests.SharedStoreScenario.Step(owner: 0, kind: 5, key: 1, payload: -4, reconstruct: false), BoutiqueTests.SharedStoreScenario.Step(owner: 0, kind: 3, key: 2, payload: -8, reconstruct: true), BoutiqueTests.SharedStoreScenario.Step(owner: 0, kind: 1, key: 3, payload: -1, reconstruct: true), BoutiqueTests.SharedStoreScenario.Step(owner: 2, kind: 5, key: 0, payload: -10, reconstruct: false), BoutiqueTests.SharedStoreScenario.Step(owner: 2, kind: 1, key: 1, payload: -15, reconstruct: false), BoutiqueTests.SharedStoreScenario.Step(owner: 2, kind: 1, key: 2, payload: -15, reconstruct: false), BoutiqueTests.SharedStoreScenario.Step(owner: 0, kind: 1, key: 0, payload: -2, reconstruct: false), BoutiqueTests.SharedStoreScenario.Step(owner: 2, kind: 5, key: 1, payload: 13, reconstruct: true), BoutiqueTests.SharedStoreScenario.Step(owner: 0, kind: 3, key: 1, payload: 14, reconstruct: true)]) after 19 iterations)
+
+  Add `.fixedSeed("DvgVnle+JBb8Jfy9l7O6EZKVJ8KQB4OkIRJUQhll++s=")` to the Test to reproduce this issue.
+PROPERTY shared-stores-mock-shared-direct: successful generated histories=0, total attempts including shrinking=30;
+✘ Test instrumentedControls() failed after 0.028 seconds with 2 issues.
+✘ Suite "Shared Store persistence discovery" failed after 0.028 seconds with 2 issues.
+✘ Test run with 1 test in 1 suite failed after 0.028 seconds with 2 issues.
