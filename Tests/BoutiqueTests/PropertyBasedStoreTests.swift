@@ -27,11 +27,13 @@ struct PropertyBasedStoreTests {
 
                 let persisted = await storage.readAllData()
                 let persistedItems = try persisted.map { try JSONDecoder().decode(PropertyItem.self, from: $0) }
+                try #require(Set(persistedItems.map(\.id)).count == persistedItems.count, "Duplicate persisted identities: \(trace)")
                 #expect(Dictionary(uniqueKeysWithValues: persistedItems.map { ($0.id, $0.payload) }) == model.payloadsByID,
                         "persistence diverged: \(trace)")
 
                 if step.isMultiple(of: 11) {
                     let reloaded = try await Store<PropertyItem>(storage: storage, cacheIdentifier: \.id)
+                    try #require(Set(reloaded.items.map(\.id)).count == reloaded.items.count, "Duplicate reloaded identities: \(trace)")
                     let reloadedByID = Dictionary(uniqueKeysWithValues: reloaded.items.map { ($0.id, $0.payload) })
                     #expect(reloadedByID == model.payloadsByID, "reload diverged: \(trace)")
                 }

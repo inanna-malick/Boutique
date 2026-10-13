@@ -1,0 +1,344 @@
+{
+  "failure" : {
+    "detail" : "",
+    "invariant" : "wrapper.persisted",
+    "step" : 1
+  },
+  "original" : {
+    "commands" : [
+      {
+        "kind" : "theme",
+        "operand" : -12
+      },
+      {
+        "kind" : "reopen",
+        "operand" : -4
+      },
+      {
+        "kind" : "tags",
+        "operand" : -11
+      },
+      {
+        "kind" : "tags",
+        "operand" : -8
+      },
+      {
+        "kind" : "tags",
+        "operand" : -9
+      },
+      {
+        "kind" : "observe",
+        "operand" : -2
+      },
+      {
+        "kind" : "tags",
+        "operand" : -12
+      },
+      {
+        "kind" : "observe",
+        "operand" : 7
+      },
+      {
+        "kind" : "theme",
+        "operand" : -2
+      },
+      {
+        "kind" : "read",
+        "operand" : -10
+      },
+      {
+        "kind" : "reopen",
+        "operand" : 2
+      },
+      {
+        "kind" : "theme",
+        "operand" : -5
+      },
+      {
+        "kind" : "bindingSet",
+        "operand" : 3
+      },
+      {
+        "kind" : "reopen",
+        "operand" : 2
+      },
+      {
+        "kind" : "set",
+        "operand" : 8
+      },
+      {
+        "kind" : "reopen",
+        "operand" : -11
+      },
+      {
+        "kind" : "theme",
+        "operand" : -9
+      },
+      {
+        "kind" : "reopen",
+        "operand" : 1
+      },
+      {
+        "kind" : "reset",
+        "operand" : -1
+      },
+      {
+        "kind" : "observe",
+        "operand" : -5
+      },
+      {
+        "kind" : "theme",
+        "operand" : -4
+      },
+      {
+        "kind" : "reopen",
+        "operand" : 9
+      },
+      {
+        "kind" : "rejectEncoding",
+        "operand" : -6
+      },
+      {
+        "kind" : "bindingRead",
+        "operand" : 7
+      },
+      {
+        "kind" : "read",
+        "operand" : 12
+      },
+      {
+        "kind" : "bindingRead",
+        "operand" : -9
+      },
+      {
+        "kind" : "tags",
+        "operand" : 0
+      },
+      {
+        "kind" : "rejectEncoding",
+        "operand" : 6
+      },
+      {
+        "kind" : "reopen",
+        "operand" : 9
+      },
+      {
+        "kind" : "reset",
+        "operand" : 10
+      },
+      {
+        "kind" : "bindingRead",
+        "operand" : -6
+      },
+      {
+        "kind" : "read",
+        "operand" : -5
+      },
+      {
+        "kind" : "read",
+        "operand" : -10
+      },
+      {
+        "kind" : "rejectEncoding",
+        "operand" : -6
+      },
+      {
+        "kind" : "rejectEncoding",
+        "operand" : 8
+      },
+      {
+        "kind" : "bindingRead",
+        "operand" : 2
+      },
+      {
+        "kind" : "rejectEncoding",
+        "operand" : 8
+      },
+      {
+        "kind" : "bindingSet",
+        "operand" : -4
+      },
+      {
+        "kind" : "bindingSet",
+        "operand" : 9
+      },
+      {
+        "kind" : "read",
+        "operand" : -11
+      },
+      {
+        "kind" : "rejectEncoding",
+        "operand" : 2
+      },
+      {
+        "kind" : "bindingRead",
+        "operand" : 2
+      },
+      {
+        "kind" : "reopen",
+        "operand" : -4
+      },
+      {
+        "kind" : "set",
+        "operand" : -7
+      },
+      {
+        "kind" : "bindingSet",
+        "operand" : 6
+      },
+      {
+        "kind" : "observe",
+        "operand" : 2
+      },
+      {
+        "kind" : "reopen",
+        "operand" : 0
+      },
+      {
+        "kind" : "set",
+        "operand" : 8
+      },
+      {
+        "kind" : "bindingSet",
+        "operand" : -1
+      },
+      {
+        "kind" : "theme",
+        "operand" : 12
+      },
+      {
+        "kind" : "bindingRead",
+        "operand" : -1
+      },
+      {
+        "kind" : "reopen",
+        "operand" : -3
+      },
+      {
+        "kind" : "reset",
+        "operand" : -1
+      },
+      {
+        "kind" : "reset",
+        "operand" : -1
+      },
+      {
+        "kind" : "observe",
+        "operand" : -1
+      },
+      {
+        "kind" : "reopen",
+        "operand" : 0
+      },
+      {
+        "kind" : "read",
+        "operand" : 0
+      },
+      {
+        "kind" : "observe",
+        "operand" : 0
+      },
+      {
+        "kind" : "read",
+        "operand" : 0
+      },
+      {
+        "kind" : "observe",
+        "operand" : 0
+      },
+      {
+        "kind" : "theme",
+        "operand" : 2
+      },
+      {
+        "kind" : "observe",
+        "operand" : 0
+      },
+      {
+        "kind" : "set",
+        "operand" : 3
+      },
+      {
+        "kind" : "rejectEncoding",
+        "operand" : 1
+      },
+      {
+        "kind" : "bindingSet",
+        "operand" : 4
+      },
+      {
+        "kind" : "reopen",
+        "operand" : 1
+      },
+      {
+        "kind" : "read",
+        "operand" : 0
+      }
+    ],
+    "initial" : 7
+  },
+  "reduced" : {
+    "commands" : [
+      {
+        "kind" : "bindingSet",
+        "operand" : -1
+      },
+      {
+        "kind" : "theme",
+        "operand" : 0
+      },
+      {
+        "kind" : "reopen",
+        "operand" : 0
+      },
+      {
+        "kind" : "read",
+        "operand" : 0
+      },
+      {
+        "kind" : "observe",
+        "operand" : 0
+      },
+      {
+        "kind" : "read",
+        "operand" : 0
+      },
+      {
+        "kind" : "observe",
+        "operand" : 0
+      },
+      {
+        "kind" : "theme",
+        "operand" : 2
+      },
+      {
+        "kind" : "observe",
+        "operand" : 0
+      },
+      {
+        "kind" : "set",
+        "operand" : 3
+      },
+      {
+        "kind" : "rejectEncoding",
+        "operand" : 1
+      },
+      {
+        "kind" : "bindingSet",
+        "operand" : 4
+      },
+      {
+        "kind" : "reopen",
+        "operand" : 1
+      },
+      {
+        "kind" : "read",
+        "operand" : 0
+      }
+    ],
+    "initial" : 0
+  },
+  "revision" : "b740dd56a5ab7e5f09013c6c454f6c50ccb77483",
+  "suite" : "wrapper-records",
+  "version" : 1
+}

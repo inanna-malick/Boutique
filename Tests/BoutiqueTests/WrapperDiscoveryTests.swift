@@ -49,7 +49,7 @@ struct WrapperDiscoveryTests {
                 .init(kind: .reopen, operand: 1), .init(kind: .read, operand: 0)]) }
         try await DiscoveryProperty.check("wrapper-records", input: scenarios) { scenario, coverage in
             let suite = "Boutique.WrapperDiscovery.\(UUID())"
-            let defaults = try #require(UserDefaults(suiteName: suite))
+            let defaults = try discoveryUnwrap(UserDefaults(suiteName: suite), "fixture.user-defaults")
             defer { defaults.removePersistentDomain(forName: suite) }
             var fallback = WrapperRecord.make(scenario.initial)
             var model = fallback
@@ -113,7 +113,7 @@ struct WrapperDiscoveryTests {
                     }
                 }
                 if let persisted {
-                    let data = try #require(defaults.data(forKey: "record"))
+                    let data = try discoveryUnwrap(defaults.data(forKey: "record"), "wrapper.persisted-data-present")
                     let decoded = try JSONDecoder().decode(WrapperBox<WrapperRecord>.self, from: data).value
                     try discoveryRequire(decoded == persisted, "wrapper.persisted", step: step)
                 } else {
@@ -173,7 +173,7 @@ struct WrapperDiscoveryTests {
         let command = zip(Gen.int(in: 0...5), Gen.int(in: -3...3)).map { WrapperCommand(kind: [.insertValue, .insertNil, .removeKey, .reset, .reopen, .bindingSet][$0], operand: $1) }
         try await DiscoveryProperty.check("wrapper-optionals", input: command.array(of: 1...DiscoveryProperty.steps)) { commands, coverage in
             let suite = "Boutique.WrapperOptionals.\(UUID())"
-            let defaults = try #require(UserDefaults(suiteName: suite))
+            let defaults = try discoveryUnwrap(UserDefaults(suiteName: suite), "fixture.user-defaults")
             defer { defaults.removePersistentDomain(forName: suite) }
             var wrapper = StoredValue<[String: Int?]>(key: "value", default: [:], storage: defaults)
             var model: [String: Int?] = [:]
@@ -209,7 +209,7 @@ struct WrapperDiscoveryTests {
             .init(kind: .replace, operand: 2)] }
         try await DiscoveryProperty.check("wrapper-arrays", input: histories) { commands, coverage in
             let suite = "Boutique.WrapperArray.\(UUID())"
-            let defaults = try #require(UserDefaults(suiteName: suite))
+            let defaults = try discoveryUnwrap(UserDefaults(suiteName: suite), "fixture.user-defaults")
             defer { defaults.removePersistentDomain(forName: suite) }
             var wrapper = StoredValue<[Int]>(key: "array", default: [], storage: defaults)
             var model: [Int] = []
@@ -253,7 +253,7 @@ struct WrapperDiscoveryTests {
                 "tags": record.tags, "score": record.score]]
             let valid = try JSONSerialization.data(withJSONObject: wire, options: [.sortedKeys])
             let suite = "Boutique.WrapperWire.\(UUID())"
-            let defaults = try #require(UserDefaults(suiteName: suite))
+            let defaults = try discoveryUnwrap(UserDefaults(suiteName: suite), "fixture.user-defaults")
             defer { defaults.removePersistentDomain(forName: suite) }
             var data = valid
             switch command.kind {
@@ -269,7 +269,7 @@ struct WrapperDiscoveryTests {
             try discoveryRequire(wrapper.wrappedValue == (command.kind == 0 ? record : fallback),
                                  "wire.initial", step: 0)
             wrapper.set(record)
-            let persisted = try #require(defaults.data(forKey: "record"))
+            let persisted = try discoveryUnwrap(defaults.data(forKey: "record"), "wrapper.persisted-data-present")
             let object = try JSONSerialization.jsonObject(with: persisted) as? NSDictionary
             let expected = try JSONSerialization.jsonObject(with: valid) as? NSDictionary
             try discoveryRequire(object == expected, "wire.semantic-shape", step: 1)

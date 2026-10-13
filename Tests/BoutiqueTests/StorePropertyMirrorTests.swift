@@ -63,6 +63,7 @@ struct StorePropertyMirrorTests {
             #expect(try await storage.decodedItems() == model.byID,
                     "persisted values diverged: seed=\(seed), commands=\(commands)")
             let reloaded = try await Store<StorePropertyItem>(storage: storage, cacheIdentifier: \.id)
+            try #require(Set(reloaded.items.map(\.id)).count == reloaded.items.count)
             #expect(Dictionary(uniqueKeysWithValues: reloaded.items.map { ($0.id, $0) }) == model.byID,
                     "reloaded values diverged: seed=\(seed), commands=\(commands)")
         }
@@ -153,8 +154,10 @@ struct StorePropertyMirrorTests {
 
             var expected: [String: StringIDPropertyItem] = [:]
             for item in expectedItems { expected[item.id] = item }
+            try #require(Set(convenience.items.map(\.id)).count == convenience.items.count)
             #expect(Dictionary(uniqueKeysWithValues: convenience.items.map { ($0.id, $0) }) == expected,
                     "sync convenience load seed=\(seed)")
+            try #require(Set(explicit.items.map(\.id)).count == explicit.items.count)
             #expect(Dictionary(uniqueKeysWithValues: explicit.items.map { ($0.id, $0) }) == expected,
                     "sync explicit load seed=\(seed)")
         }
@@ -182,8 +185,10 @@ struct StorePropertyMirrorTests {
                     try await explicit.insert(item)
                     model[item.id] = item
                 }
+                try #require(Set(convenience.items.map(\.id)).count == convenience.items.count)
                 #expect(Dictionary(uniqueKeysWithValues: convenience.items.map { ($0.id, $0) }) == model,
                         "convenience UUID state seed=\(seed)")
+                try #require(Set(explicit.items.map(\.id)).count == explicit.items.count)
                 #expect(Dictionary(uniqueKeysWithValues: explicit.items.map { ($0.id, $0) }) == model,
                         "explicit UUID state seed=\(seed)")
                 let conveniencePersisted = try await convenienceStorage.decodedUUIDItems()

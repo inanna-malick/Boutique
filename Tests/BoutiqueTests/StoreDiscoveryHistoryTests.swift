@@ -92,15 +92,17 @@ struct StoreDiscoveryHistoryTests {
         }
     }
 
-    @Test(.shrinking, arguments: ["disk", "sqlite"])
-    func backendHistories(backend: String) async throws {
+    @Test(.shrinking) func diskHistories() async throws { try await backendHistories(backend: "disk") }
+    @Test(.shrinking) func sqliteHistories() async throws { try await backendHistories(backend: "sqlite") }
+
+    private func backendHistories(backend: String) async throws {
         try await DiscoveryProperty.check("store-history-\(backend)", count: DiscoveryProperty.backendCases, input: generator(steps: 40)) { scenario, coverage in
             let directory = FileManager.Directory.temporary(appendingPath: "StoreDiscovery-\(UUID().uuidString)")
             defer { try? FileManager.default.removeItem(at: directory.url) }
-            let storage: any StorageEngine = backend == "disk" ? DiskStorageEngine(directory: directory) : try #require(SQLiteStorageEngine(directory: directory))
+            let storage: any StorageEngine = backend == "disk" ? DiskStorageEngine(directory: directory) : try discoveryUnwrap(SQLiteStorageEngine(directory: directory), "fixture.sqlite")
             try await replay(scenario, storage: storage, coverage: coverage, reopenStorage: {
                 if backend == "disk" { return DiskStorageEngine(directory: directory) }
-                return try #require(SQLiteStorageEngine(directory: directory))
+                return try discoveryUnwrap(SQLiteStorageEngine(directory: directory), "fixture.sqlite")
             })
         }
     }

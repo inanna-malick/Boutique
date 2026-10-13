@@ -1,0 +1,98 @@
+{
+  "attempts" : 51,
+  "createdFixtures" : 51,
+  "finalFailure" : {
+    "firstDivergence" : 1,
+    "operations" : [
+      {
+        "put" : {
+          "key" : 2,
+          "payload" : 0
+        }
+      },
+      {
+        "put" : {
+          "key" : 2,
+          "payload" : 1
+        }
+      }
+    ]
+  },
+  "mutation" : true,
+  "originalFailure" : {
+    "firstDivergence" : 9,
+    "operations" : [
+      {
+        "remove" : {
+          "key" : 0
+        }
+      },
+      {
+        "put" : {
+          "key" : 2,
+          "payload" : 8
+        }
+      },
+      {
+        "remove" : {
+          "key" : 0
+        }
+      },
+      {
+        "remove" : {
+          "key" : 1
+        }
+      },
+      {
+        "read" : {
+
+        }
+      },
+      {
+        "read" : {
+
+        }
+      },
+      {
+        "read" : {
+
+        }
+      },
+      {
+        "put" : {
+          "key" : 0,
+          "payload" : 6
+        }
+      },
+      {
+        "remove" : {
+          "key" : 0
+        }
+      },
+      {
+        "put" : {
+          "key" : 2,
+          "payload" : 19
+        }
+      },
+      {
+        "read" : {
+
+        }
+      },
+      {
+        "remove" : {
+          "key" : 0
+        }
+      },
+      {
+        "put" : {
+          "key" : 2,
+          "payload" : 6
+        }
+      }
+    ]
+  },
+  "removedFixtures" : 51,
+  "schemaVersion" : 1
+}

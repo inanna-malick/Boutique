@@ -14,6 +14,11 @@ func discoveryRequire(_ condition: Bool, _ invariant: String, step: Int, _ detai
     if !condition { throw DiscoveryFailure(invariant: invariant, step: step, detail: detail) }
 }
 
+func discoveryUnwrap<T>(_ value: T?, _ invariant: String) throws -> T {
+    guard let value else { throw DiscoveryFailure(invariant: invariant, step: -1, detail: "Required fixture is nil") }
+    return value
+}
+
 @MainActor
 final class DiscoveryCoverage {
     private(set) var counts: [String: Int] = [:]
@@ -66,6 +71,16 @@ enum DiscoveryProperty {
             return
         }
 
+        // Concrete regressions survive changes to generator distributions and seeds.
+        let corpus = URL(fileURLWithPath: env["BOUTIQUE_PROPERTY_CORPUS"] ?? "PropertyTesting/Corpus")
+            .appendingPathComponent("\(name).json")
+        if FileManager.default.fileExists(atPath: corpus.path) {
+            let saved = try JSONDecoder().decode(DiscoveryArtifact<S>.self, from: Data(contentsOf: corpus))
+            try discoveryRequire(saved.version == 1 && saved.suite == name, "corpus.schema", step: -1)
+            try await body(saved.reduced, DiscoveryCoverage())
+            print("PROPERTY CORPUS \(name): passed")
+        }
+
         var artifact: DiscoveryArtifact<S>?
         var successes = 0
         var attempts = 0
@@ -80,7 +95,7 @@ enum DiscoveryProperty {
                 }
             } catch {
                 let failure = (error as? DiscoveryFailure) ?? DiscoveryFailure(
-                    invariant: "unexpected.\(String(reflecting: type(of: error)))", step: -1,
+                    invariant: "unexpected.\(String(reflecting: type(of: error))).\(String(describing: error))", step: -1,
                     detail: String(describing: error))
                 // An unrelated failure does not justify accepting this shrink candidate.
                 if let original = artifact, original.failure.invariant != failure.invariant { return }

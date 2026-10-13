@@ -13,7 +13,7 @@ struct StreamDiscoveryStoredValueTests {
         try await DiscoveryProperty.check("stored-value-streams",
             input: command.array(of: 1...DiscoveryProperty.steps)) { history, coverage in
             let suite = "Boutique.StreamDiscovery.\(UUID())"
-            let defaults = try #require(UserDefaults(suiteName: suite))
+            let defaults = try discoveryUnwrap(UserDefaults(suiteName: suite), "fixture.user-defaults")
             defer { defaults.removePersistentDomain(forName: suite) }
             let initial = StreamValue(payload: 0, rejectsEncoding: false)
             var wrapper = StoredValue(key: "value", default: initial, storage: defaults)

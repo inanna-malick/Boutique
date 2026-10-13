@@ -1,48 +1,102 @@
 # Property-testing discovery
 
-This branch holds broad investigative tests and independent reference models for Boutique. These tests increase confidence across bounded and generated input spaces; they do not constitute a formal proof of correctness. Any confirmed defect should be reduced to a focused deterministic regression test and fix on its own branch.
+This branch contains investigative property tests, independent models, and replayable findings. These are randomized and bounded exhaustive checks, not a formal proof. Production fixes and their small deterministic regressions belong in separate PRs; PR #84 remains independent of this expansion.
 
-## Running and reproducing
+## Framework and toolchain
 
-Run the discovery suite with:
+The discovery test target now depends on **PropertyBased 2.0.1**, pinned in Package.swift and Package.resolved. The library owns composable generation, automatic shrinking, failure detection, and seed replay. Boutique-specific reference models, operation interpreters, fixture isolation, and concrete JSON artifacts are test code in this repository. Swift 5 language mode is preserved; the discovery manifest requires Swift tools 6.2.
 
-```sh
-swift test
+Xcode 26 is the straightforward supported development setup. This host has Xcode 16.2/macOS 15.1, so validation uses an isolated, signature-verified Swift.org 6.2.4 toolchain with the installed macOS 15.2 SDK. No global Xcode selection or OS setting was changed. The compiler executable used here is:
+
+```
+/private/tmp/boutique-swift-6.2.4-expanded/swift-6.2.4-RELEASE-osx-package.pkg/Payload/usr/bin/swift
 ```
 
-The generated tests use fixed SplitMix64 seeds. A failed expectation prints its seed and, for Store histories, the full operation prefix. Re-run the named test unchanged to reproduce the same trace. The bounded Store and Keychain retry checks enumerate their complete declared finite spaces.
+That temporary path is local setup, not a portable requirement. On an Xcode 26 host, use the normal `swift` executable. With an alternate toolchain, set `BOUTIQUE_SWIFT` to its executable and `DEVELOPER_DIR` to the intended Xcode's Developer directory.
 
-Store traces use an explicit command AST: `insertOne`, `insertMany`, `removeOne`, `removeMany`, and `removeAll`. The generator keeps IDs in a small domain and chooses many operands from the independent model's current contents, while also producing absent IDs, stale payloads, duplicates inside batches, and fresh IDs when available. That makes overwrites and successful removals common in short traces. Operation-chain histories are first generated against a shadow model, then queued on the real Store and replayed only after `run()`. Collection-wrapper generators similarly bias replacement and dictionary updates toward current model keys while retaining misses and duplicate elements.
+## Run and reproduce
 
-Other finite sweeps exhaust every length-four history over a seven-command Store alphabet (2,401 traces), every length-three history over the 9-command subject alphabet at each subscription point, and every three-status Keychain retry trace for both starting operations (128 traces). These bounded suites complement the longer seeded histories; they do not cover unbounded traces.
+```sh
+# Thorough default, including the original tests and new property suites.
+Scripts/property-tests.sh
 
-The suite builds with the repository's current Xcode 16.2 / Swift 6.0.3 toolchain. On 2026-10-12, `swift test` passed all 103 tests, including the generated discovery suites. Dependency resolution now works in this environment.
+# New property suites only.
+Scripts/property-tests.sh --filter Discovery
 
-The focused regression in [PR #84](https://github.com/mergesort/Boutique/pull/84) now checks 18 fixed combinations against real Disk and SQLite engines: clear or selective batch removal followed by single, batch, or empty insertion. It checks memory, persisted record count, and values loaded through a fresh engine. All nine Disk cases fail with the original key construction and pass with the fix; SQLite uses raw identifiers and passes both versions.
+# Short development run; this is not the acceptance budget.
+BOUTIQUE_PROPERTY_CASES=20 BOUTIQUE_BACKEND_CASES=5 BOUTIQUE_PROPERTY_STEPS=20 \
+  Scripts/property-tests.sh --filter Discovery
 
-## Framework choice
+# Extend searches with fresh library-generated seeds.
+BOUTIQUE_PROPERTY_CASES=10000 BOUTIQUE_BACKEND_CASES=1000 \
+  Scripts/property-tests.sh --filter Discovery
 
-Boutique's existing test target uses Swift Testing and needs async, actor-isolated model tests. The current discovery suite uses deterministic in-repository generators and bounded enumeration so it adds no dependency or toolchain floor. Its main limitation is the lack of automatic shrinking; failure output therefore records seeds and traces for manual reduction.
+# Replay a concrete failure independently of the generator.
+BOUTIQUE_PROPERTY_REPLAY=.build/property-artifacts/wrapper-records.json \
+  Scripts/property-tests.sh --filter WrapperDiscoveryTests/recordHistories
+```
 
-SwiftQC is the best candidate for a later smoke-tested integration because it offers seeded async properties and stateful command sequences with shrinking. Before adding it, verify that its Swift Testing package dependency can coexist with the toolchain-provided `Testing` module and that its concurrency constraints accept Boutique's `@MainActor` APIs. SwiftQC requires Swift tools 6.0 while Boutique currently declares tools 5.10. PropertyBased offers a close Swift Testing integration but currently requires Swift 6.2/Xcode 26 (with limited Swift 6.1 support). SwiftCheck is the mature option for synchronous properties and custom generators/shrinkers; its documented `forAll` closures return `Testable` values and fit pure helpers better than Boutique's async Store traces. These options do randomized search, not proof.
+Default budgets are 1,000 cases for inexpensive model suites and 100 for backend suites. Random history lengths range up to 100 commands (40 for real-backend histories); some suites add targeted interaction suffixes. Counts are cases/histories, not individual operations. Wire-format cases are fixtures rather than histories. Actual executed operations and interactions are printed as `PROPERTY` counters.
 
-- [SwiftQC](https://github.com/Aristide021/SwiftQC)
-- [PropertyBased](https://github.com/x-sheep/swift-property-based)
-- [SwiftCheck](https://github.com/typelift/SwiftCheck)
-- [Swift Testing asynchronous code](https://docs.swift.org/latest/documentation/testing/testing-asynchronous-code/)
+`DiscoveryProperty` records versioned JSON with suite, tested revision (including a dirty marker), original scenario, reduced scenario, invariant, and first-divergence step. Failure files go to `.build/property-artifacts`, configurable with `BOUTIQUE_PROPERTY_ARTIFACTS`. Each suite has its own filename; independent processes sharing an output directory should use separate artifact directories. Library seeds are printed in the native failure log, so retain that log alongside the JSON.
+
+PropertyBased's `.fixedSeed` is a debugging trait: it deliberately reports an issue even when the repaired case passes. Do not commit it as a passing regression. Use the printed seed for temporary reproduction, then retain the concrete scenario. Passing corpus artifacts in `PropertyTesting/Corpus/<suite>.json` replay before fresh generation. Known failing investigations are stored separately and run explicitly.
+
+The shared adapter preserves the first `DiscoveryFailure.invariant` while shrinking. Expected checks in property bodies must use `discoveryRequire`, not direct `#expect` calls that bypass this filtering. Never label unrelated mechanisms with the same invariant. Constructed interaction suffixes survive shrinking: these reduce the generated prefix and operands, not necessarily the globally shortest concrete history. Save and manually reduce confirmed defects for focused regression tests.
+
+## Library acceptance and calibration
+
+The async `@MainActor` acceptance suite exercises a real Disk Store with a fresh directory on every attempt. A deliberate adapter mutation that ignores overwrites failed, reduced a 13-operation history to `put(2, 0); put(2, 1)`, and reproduced identical original/reduced traces with the library seed. All 51 generation/shrink fixtures were removed. Concrete replay failed with the mutation and passed with it disabled. Cancellation and subscriber cleanup also passed.
+
+Evidence is retained in `PropertyTesting/Acceptance`. To repeat the negative check:
+
+```sh
+BOUTIQUE_ACCEPTANCE_IGNORE_OVERWRITE=1 \
+BOUTIQUE_ACCEPTANCE_ARTIFACT=/tmp/boutique-acceptance.json \
+  Scripts/property-tests.sh --filter PropertyLibraryAcceptanceTests/asyncStoreHistoriesShrinkAndReplay
+
+BOUTIQUE_ACCEPTANCE_REPLAY=PropertyTesting/Acceptance/overwrite-reduced.json \
+  Scripts/property-tests.sh --filter PropertyLibraryAcceptanceTests/asyncStoreHistoriesShrinkAndReplay
+```
+
+The first command must fail; the second must pass. Additional calibrations temporarily restored PR #84's bad key construction, omitted the StoredValue cache update, and omitted subject publication. Each mutation must be detected, reverted, and followed by a clean run. Missing stream values use bounded collection and cancellation rather than hanging on `next()`.
 
 ## Coverage map
 
-| Area | Independent oracle and current discovery coverage | Follow-up leads |
-| --- | --- | --- |
-| `Store` contents and persistence | Ordered `Array` model; explicit operation AST; model-aware operand generation for existing, absent, fresh, and stale IDs; single/batch insert and remove, clear, reload, event payloads, batch-vs-single metamorphism, deferred operation chains, 2,401 exhaustive four-step histories, malformed persisted-data load failures and recovery. Found a fused-removal cache-key mismatch that left stale persisted values; a deterministic empty-batch-after-clear regression now passes with the fix. | Load/mutation overlap; compare operation events around fused chains; extend generated fault schedules across bulk operations |
-| `StoredValue` | Plain array/dictionary models; model-aware append/toggle/replace/set/reset/update histories; reopen checks; default/valid/malformed/wrong-shape initialization; nested optional dictionaries; integer boundaries; boxed Codable round trips; cache reads and replacements | Throwing encoders and documented failure behavior; observation event policy |
-| `SecurelyStoredValue` | Generated set/remove/reopen and collection-helper histories against optional-value, array, and dictionary models; generated `refreshValue` success/nil/error traces; key-path and Binding laws; observation invalidation; all 128 three-status Keychain retry traces across both initial operations | Actual Keychain-backed runs need unique service/key isolation and Apple-host execution; clarify cross-wrapper cache visibility and initial read-failure behavior |
-| `AsyncValueSubject` and streams | Generated and bounded exhaustive serialized `send`, direct assignment, and `inout` mutation traces; replay at every subscription point; multiple subscribers; bounded buffering | Check cancellation/termination cleanup and wrapper-level stream traces; concurrent send ordering is not asserted without a documented contract |
-| Bindings and key paths | Generated `StoredValue` and secure-wrapper field setters preserve untouched fields; Binding get/set round trips; secure Binding's documented error suppression | Add nested key paths and reference-valued fields if their mutation semantics are intended to be supported |
-| Observation and `Stored` projection | Generated Store-to-`@Stored` projection equivalence; fresh observation trackers verify invalidation after Store, StoredValue, and secure-wrapper mutations | Clarify whether equal-value writes should invalidate; test observation over batched Store chains after the contract is established |
-| Serialization helpers | Generated boxed value round trips and invalid initial data fallback; malformed Store payload coverage | Add recursive nested Codable shapes and independent semantic checks for any normalization |
+| Mechanism | Expanded properties and observable evidence |
+| --- | --- |
+| Store histories | Independent ordered Array model; state-aware operands; direct and arbitrary queued operations; clear/selective removal fusion; duplicate and empty batches; stale removal payloads; repeated chain execution; explicit reopen and delayed persistence inspection. Fresh-biased growth and overwrite/removal mixes exercise different histories. Compare memory order, persisted contents and multiplicity, and reloaded contents without assuming backend load order. |
+| Identifier equivalence | Generated Unicode canonical-equivalence families, prefixes/suffixes, payloads, and single/batch insert/remove histories against Disk and SQLite. Exact-spelling controls pass; alternate representations expose persisted multiplicity disagreements. |
+| Backend equivalence | The same successful scenario interpreter runs against the instrumented actor, Disk, and SQLite. Decode persisted bytes independently with JSONDecoder and reject duplicate identities explicitly. |
+| Fault schedules | Generated operation kinds, bulk sizes, and committed-prefix failure positions. Check exact injected errors, observable persisted partial effects, reopen, continued use, and explicit reset/recovery. No invented transaction rollback guarantee. |
+| Overlap schedules | Explicit gate acknowledgements and bounded cleanup replace timing luck. Generated configuration covers load/mutation overlap and competing mutations, with serialized controls. Original and reduced failing scenarios are retained separately. |
+| StoredValue and bindings | Mixed full writes, binding writes, nested keypaths, reset, reconstruction, cold/warm reads, observation arming/re-arming, rejected encoding, and recovery. Independent retained models and independently decoded bytes. |
+| Collections and serialization | Array helper histories include duplicates and present/missing replacement return values. Optional dictionaries distinguish missing keys, nil payloads, and removal. Independently authored nested Unicode JSON fixtures cover malformed/truncated/wrong-shape inputs and recovery. |
+| Secure wrappers | Isolated real-Keychain histories include peer writes/removals, reconstruction, keypath updates on absent/present values, rejected encoding, and binding error suppression. Existing read-failure and bounded retry tests remain. |
+| Streams | Independent per-subscriber queues across unbounded/oldest/newest buffering, zero/positive capacities, send/assignment/inout, consumption, cancellation, and resubscription. Wrapper histories add rejected writes and reconstruction. Sentinel checks expose extra events where buffering retains them; bounded waits expose missing events. |
 
-## Contract notes
+The original finite sweeps remain: 2,401 four-command Store histories, 216 short queued chains, subject three-command histories at every subscription point, and 128 Keychain retry-status histories. Legacy seeded sweeps now use a shared library RNG rather than duplicated SplitMix implementations. Their seed mapping changed; historical seeds alone are not promised to reproduce pre-migration input streams.
 
-Keep uncertain behavior separate from assertions. In particular, current docs do not clearly define whether equal-value writes count as stream changes, whether writes through a second wrapper refresh an existing `StoredValue` cache, or how initial Keychain read failures should be exposed. Generated tests should first record and investigate these behaviors rather than silently turning observations into promised contracts.
+Legacy oracle repairs remove decoding-error-to-empty-dictionary fallbacks and expected values sourced from the production getter. Legacy subject collection is bounded. Existing Keychain tests now use per-test service namespaces with cleanup, avoiding access prompts for records owned by older test executables.
+
+## Contracts and remaining limits
+
+- Concurrent event ordering, failed-write observation, and equal-value invalidation remain unspecified; generated assertions do not manufacture promises for them.
+- Secure wrapper reads across shared keys have existing tests establishing current persisted-value visibility. StoredValue cross-wrapper cache refresh does not have that established contract.
+- A backend can partially commit before throwing. The fault model verifies the chosen backend schedule, not unsupported rollback behavior.
+- Reload ordering is unspecified. Verify identities/payloads first, then preserve model-owned payloads while adopting only observed ordering for subsequent ordered operations.
+- Buffer-dropped events are inherently unobservable. Zero-capacity waiting-reader behavior needs explicit rendezvous tests rather than a buffered queue oracle alone.
+- Reference-valued Codable aliasing and unbounded concurrent linearizability remain future work. The current stream model asserts sequential publication semantics.
+- Random search stops at its first failure. Split invariant families or replay parameters to continue exploring independent mechanisms; longer runs alone cannot fix missing generator support.
+
+## Validation and findings
+
+The integrated run passed **130 tests in 23 suites in 64.334 seconds**, with code coverage enabled on Swift 6.2.4. It executed **9,700 new generated cases** through the shared discovery runner, plus the library acceptance cases, original seeded/exhaustive checks, calibration matrices, and two passing corpus replays. This includes wire fixtures as well as operation histories. The subsequent backend entrypoint split was checked with the focused identity controls and a failing concrete replay.
+
+Observed behavioral counts include 19,196 Store overwrites, 8,927 removals of existing items, 1,233 Store reopens, all queued chain lengths 1–8, 4,057 empty batches, 4,366 armed observation mutations, and partial stream reads across subject, wrapper, and Store event suites. These counts demonstrate reached interactions; they do not establish exhaustive state-space coverage.
+
+The full run executed **92.80% of production lines and 91.93% of regions**. This combines original and discovery tests; no pre-expansion percentage was measured, so it is not a coverage-delta claim. Store.swift reached 93.75% line coverage; AsyncValueSubject, StoredValue, collection helpers (except the Bool helper), and bindings reached 100%. SwiftUI view-loading helpers in Store+Observation.swift remain unexecuted. The production-source report and generated-case counters are retained in `PropertyTesting/Validation/`. Swift's report supplied no branch counts.
+
+Generated searches confirmed three retained failure families: competing mutations lose in-memory updates, loading overlaps lose loaded/new items, and canonically equivalent Unicode IDs disagree between memory and persistence on both real backends. See [Store schedule findings](Investigation/StoreDiscoveryFindings.md) and [identity findings](Investigation/Identity/README.md) for models, reduced artifacts, and runnable opt-in commands. These known-failing searches remain explicitly runnable; their production repairs are separate work.
+
+Mutation calibrations detected a removed cache update, omitted subject publication, and PR #84's original key-construction defect. Their deliberate production changes were reverted. This expansion changes test infrastructure and the discovery manifest, not production implementation.
