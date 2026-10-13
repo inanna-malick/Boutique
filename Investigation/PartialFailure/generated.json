@@ -1,0 +1,780 @@
+{
+  "failure" : {
+    "detail" : "expected [BoutiqueTests.StoreDiscoveryItem(id: \"replacement\", payload: 100)]; actual [BoutiqueTests.StoreDiscoveryItem(id: \"fault0\", payload: 2), BoutiqueTests.StoreDiscoveryItem(id: \"replacement\", payload: 100)]; commands [BoutiqueTests.StoreDiscoveryCommand.Kind.clear, BoutiqueTests.StoreDiscoveryCommand.Kind.batch]",
+    "invariant" : "partial.successful.persistence",
+    "step" : 2
+  },
+  "original" : {
+    "continuation" : [
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k1",
+                "payload" : -4
+              }
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "k1",
+                "payload" : 3
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k4",
+                "payload" : 0
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k4",
+                "payload" : -2
+              },
+              {
+                "id" : "k4",
+                "payload" : 0
+              },
+              {
+                "id" : "k0",
+                "payload" : -1
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k1",
+                "payload" : -2
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : true
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k0",
+                "payload" : 3
+              }
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "k3",
+                "payload" : -10
+              }
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+
+            ],
+            "kind" : "removeBatch"
+          },
+          {
+            "items" : [
+              {
+                "id" : "k3",
+                "payload" : -7
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k4",
+                "payload" : 3
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k2",
+                "payload" : -8
+              },
+              {
+                "id" : "k2",
+                "payload" : -6
+              },
+              {
+                "id" : "k3",
+                "payload" : -7
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k4",
+                "payload" : -5
+              },
+              {
+                "id" : "k4",
+                "payload" : -3
+              },
+              {
+                "id" : "k0",
+                "payload" : -4
+              }
+            ],
+            "kind" : "removeBatch"
+          },
+          {
+            "items" : [
+              {
+                "id" : "k1",
+                "payload" : 5
+              },
+              {
+                "id" : "k1",
+                "payload" : 7
+              },
+              {
+                "id" : "k2",
+                "payload" : 6
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k3",
+                "payload" : 9
+              },
+              {
+                "id" : "k3",
+                "payload" : 11
+              },
+              {
+                "id" : "k4",
+                "payload" : 10
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k0",
+                "payload" : 0
+              },
+              {
+                "id" : "k0",
+                "payload" : 2
+              },
+              {
+                "id" : "k1",
+                "payload" : 1
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k2",
+                "payload" : 6
+              }
+            ],
+            "kind" : "clear"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : true
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k2",
+                "payload" : 9
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k3",
+                "payload" : 1
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k0",
+                "payload" : 3
+              }
+            ],
+            "kind" : "clear"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k2",
+                "payload" : 9
+              },
+              {
+                "id" : "k2",
+                "payload" : 11
+              },
+              {
+                "id" : "k3",
+                "payload" : 10
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k0",
+                "payload" : 3
+              }
+            ],
+            "kind" : "clear"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k1",
+                "payload" : 5
+              }
+            ],
+            "kind" : "clear"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k0",
+                "payload" : -4
+              }
+            ],
+            "kind" : "clear"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k0",
+                "payload" : 4
+              },
+              {
+                "id" : "k0",
+                "payload" : 6
+              },
+              {
+                "id" : "k1",
+                "payload" : 5
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k2",
+                "payload" : 1
+              }
+            ],
+            "kind" : "clear"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k1",
+                "payload" : 8
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k2",
+                "payload" : -5
+              }
+            ],
+            "kind" : "clear"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k0",
+                "payload" : -3
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k0",
+                "payload" : 2
+              },
+              {
+                "id" : "k0",
+                "payload" : 4
+              },
+              {
+                "id" : "k1",
+                "payload" : 3
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k4",
+                "payload" : -6
+              },
+              {
+                "id" : "k4",
+                "payload" : -4
+              },
+              {
+                "id" : "k0",
+                "payload" : -5
+              }
+            ],
+            "kind" : "removeBatch"
+          },
+          {
+            "items" : [
+              {
+                "id" : "k2",
+                "payload" : -1
+              },
+              {
+                "id" : "k2",
+                "payload" : 1
+              },
+              {
+                "id" : "k3",
+                "payload" : 0
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k3",
+                "payload" : 0
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : true
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "replacement",
+                "payload" : 102
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : true
+      }
+    ],
+    "fault" : "insertSingle",
+    "payload" : 2,
+    "position" : 13,
+    "prefix" : [
+      {
+        "items" : [
+          {
+            "id" : "k0",
+            "payload" : 8
+          },
+          {
+            "id" : "k0",
+            "payload" : 10
+          },
+          {
+            "id" : "k1",
+            "payload" : 9
+          }
+        ],
+        "kind" : "removeBatch"
+      },
+      {
+        "items" : [
+          {
+            "id" : "k4",
+            "payload" : 7
+          }
+        ],
+        "kind" : "insert"
+      },
+      {
+        "items" : [
+
+        ],
+        "kind" : "batch"
+      },
+      {
+        "items" : [
+          {
+            "id" : "k4",
+            "payload" : 7
+          },
+          {
+            "id" : "k4",
+            "payload" : 9
+          },
+          {
+            "id" : "k0",
+            "payload" : 8
+          }
+        ],
+        "kind" : "removeBatch"
+      },
+      {
+        "items" : [
+          {
+            "id" : "k1",
+            "payload" : 3
+          }
+        ],
+        "kind" : "insert"
+      }
+    ]
+  },
+  "reduced" : {
+    "continuation" : [
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k0",
+                "payload" : 0
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "replacement",
+                "payload" : 100
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : true
+      }
+    ],
+    "fault" : "insertSingle",
+    "payload" : 0,
+    "position" : 7,
+    "prefix" : [
+
+    ]
+  },
+  "revision" : "e717aa55a65404e99f2f9780e5a3f0e7826b9c27-dirty",
+  "suite" : "partial-failure-fused",
+  "version" : 1
+}

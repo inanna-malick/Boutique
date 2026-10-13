@@ -1,0 +1,317 @@
+{
+  "failure" : {
+    "detail" : "expected [BoutiqueTests.StoreDiscoveryItem(id: \"replacement\", payload: 100)]; actual []",
+    "invariant" : "partial.successful.memory",
+    "step" : 2
+  },
+  "original" : {
+    "continuation" : [
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k4",
+                "payload" : -6
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : true
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k1",
+                "payload" : 8
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k4",
+                "payload" : -4
+              }
+            ],
+            "kind" : "remove"
+          },
+          {
+            "items" : [
+              {
+                "id" : "k4",
+                "payload" : 5
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : false,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k2",
+                "payload" : 9
+              },
+              {
+                "id" : "k2",
+                "payload" : 11
+              },
+              {
+                "id" : "k3",
+                "payload" : 10
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k1",
+                "payload" : 0
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k4",
+                "payload" : -1
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k4",
+                "payload" : 3
+              }
+            ],
+            "kind" : "remove"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k4",
+                "payload" : 6
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k2",
+                "payload" : 0
+              },
+              {
+                "id" : "k2",
+                "payload" : 2
+              },
+              {
+                "id" : "k3",
+                "payload" : 1
+              }
+            ],
+            "kind" : "removeBatch"
+          }
+        ],
+        "observe" : false,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k1",
+                "payload" : 3
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : false,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "replacement",
+                "payload" : 109
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : true
+      }
+    ],
+    "fault" : "fusedClearRemoval",
+    "payload" : 9,
+    "position" : 9,
+    "prefix" : [
+      {
+        "items" : [
+          {
+            "id" : "k2",
+            "payload" : 0
+          },
+          {
+            "id" : "k2",
+            "payload" : 2
+          },
+          {
+            "id" : "k3",
+            "payload" : 1
+          }
+        ],
+        "kind" : "batch"
+      }
+    ]
+  },
+  "reduced" : {
+    "continuation" : [
+      {
+        "commands" : [
+          {
+            "items" : [
+              {
+                "id" : "k0",
+                "payload" : 0
+              }
+            ],
+            "kind" : "insert"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : false
+      },
+      {
+        "commands" : [
+          {
+            "items" : [
+
+            ],
+            "kind" : "clear"
+          },
+          {
+            "items" : [
+              {
+                "id" : "replacement",
+                "payload" : 100
+              }
+            ],
+            "kind" : "batch"
+          }
+        ],
+        "observe" : true,
+        "queued" : true,
+        "reopen" : true
+      }
+    ],
+    "fault" : "insertSingle",
+    "payload" : 0,
+    "position" : 0,
+    "prefix" : [
+
+    ]
+  },
+  "revision" : "e717aa55a65404e99f2f9780e5a3f0e7826b9c27-dirty",
+  "suite" : "partial-failure-direct",
+  "version" : 1
+}

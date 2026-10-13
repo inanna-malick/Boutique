@@ -1,0 +1,25 @@
+Another instance of SwiftPM (PID: 24768) is already running using '/Users/inannamalick/dev/botique-proptest/worktrees/partial-failure-histories/.build', waiting until that process has finished execution...[0/1] Planning build
+Test Suite 'Selected tests' started at 2026-10-12 22:16:04.287.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:16:04.288.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:16:04.288.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:16:04.288.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Partial failure clear standalone reproduction" started.
+◇ Test successfulFusedClearRemovesPartiallyCommittedRecord(batchReplacement:) started.
+◇ Test case passing 1 argument batchReplacement → true to successfulFusedClearRemovesPartiallyCommittedRecord(batchReplacement:) started.
+◇ Test case passing 1 argument batchReplacement → false to successfulFusedClearRemovesPartiallyCommittedRecord(batchReplacement:) started.
+✘ Test successfulFusedClearRemovesPartiallyCommittedRecord(batchReplacement:) recorded an issue with 1 argument batchReplacement → false at StorePartialFailureClearReproductionTests.swift:77:9: Expectation failed: (persisted → [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "committed", payload: 1), BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "replacement", payload: 3)]) == ([replacement] → [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "replacement", payload: 3)])
+± inserted [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "committed", payload: 1)]
+✘ Test successfulFusedClearRemovesPartiallyCommittedRecord(batchReplacement:) recorded an issue with 1 argument batchReplacement → true at StorePartialFailureClearReproductionTests.swift:77:9: Expectation failed: (persisted → [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "committed", payload: 1), BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "replacement", payload: 3)]) == ([replacement] → [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "replacement", payload: 3)])
+± inserted [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "committed", payload: 1)]
+✘ Test successfulFusedClearRemovesPartiallyCommittedRecord(batchReplacement:) recorded an issue with 1 argument batchReplacement → false at StorePartialFailureClearReproductionTests.swift:79:9: Expectation failed: (reopened.items → [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "committed", payload: 1), BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "replacement", payload: 3)]) == ([replacement] → [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "replacement", payload: 3)])
+± inserted [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "committed", payload: 1)]
+✘ Test successfulFusedClearRemovesPartiallyCommittedRecord(batchReplacement:) recorded an issue with 1 argument batchReplacement → true at StorePartialFailureClearReproductionTests.swift:79:9: Expectation failed: (reopened.items → [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "committed", payload: 1), BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "replacement", payload: 3)]) == ([replacement] → [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "replacement", payload: 3)])
+± inserted [BoutiqueTests.(unknown context at $10347d8a4).PartialClearRecord(id: "committed", payload: 1)]
+✘ Test successfulFusedClearRemovesPartiallyCommittedRecord(batchReplacement:) with 2 test cases failed after 0.002 seconds with 4 issues.
+✘ Suite "Partial failure clear standalone reproduction" failed after 0.002 seconds with 4 issues.
+✘ Test run with 1 test in 1 suite failed after 0.002 seconds with 4 issues.

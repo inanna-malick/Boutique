@@ -1,0 +1,66 @@
+{
+  "failure": {
+    "detail": "Manually authored partial-batch variant: successful fused clear leaves fault0(payload 3) persisted.",
+    "invariant": "partial.successful.persistence",
+    "step": 1
+  },
+  "original": {
+    "continuation": [
+      {
+        "commands": [
+          {
+            "items": [],
+            "kind": "clear"
+          },
+          {
+            "items": [
+              {
+                "id": "replacement",
+                "payload": 100
+              }
+            ],
+            "kind": "batch"
+          }
+        ],
+        "observe": true,
+        "queued": true,
+        "reopen": true
+      }
+    ],
+    "fault": "insertBatch",
+    "payload": 0,
+    "position": 2,
+    "prefix": []
+  },
+  "reduced": {
+    "continuation": [
+      {
+        "commands": [
+          {
+            "items": [],
+            "kind": "clear"
+          },
+          {
+            "items": [
+              {
+                "id": "replacement",
+                "payload": 100
+              }
+            ],
+            "kind": "batch"
+          }
+        ],
+        "observe": true,
+        "queued": true,
+        "reopen": true
+      }
+    ],
+    "fault": "insertBatch",
+    "payload": 0,
+    "position": 2,
+    "prefix": []
+  },
+  "revision": "e717aa55a65404e99f2f9780e5a3f0e7826b9c27-dirty",
+  "suite": "partial-failure-fused",
+  "version": 1
+}

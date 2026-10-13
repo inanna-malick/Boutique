@@ -1,0 +1,34 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (5.14s)
+Test Suite 'Selected tests' started at 2026-10-12 22:17:58.849.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:17:58.850.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:17:58.850.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:17:58.850.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Store partial failure histories" started.
+◇ Suite "Partial failure clear standalone reproduction" started.
+◇ Test reopenedContinuationControls() started.
+◇ Test directClearContinuationControls() started.
+➜ Test successfulFusedClearRemovesPartiallyCommittedRecord(batchReplacement:) skipped.
+◇ Test directClearRemovesPartiallyCommittedRecord(batchReplacement:) started.
+➜ Test fusedClearContinuationSearch() skipped.
+◇ Test case passing 1 argument batchReplacement → false to directClearRemovesPartiallyCommittedRecord(batchReplacement:) started.
+◇ Test case passing 1 argument batchReplacement → true to directClearRemovesPartiallyCommittedRecord(batchReplacement:) started.
+✔ Test directClearRemovesPartiallyCommittedRecord(batchReplacement:) with 2 test cases passed after 0.004 seconds.
+✔ Suite "Partial failure clear standalone reproduction" passed after 0.004 seconds.
+PROPERTY CORPUS partial-failure-direct: passed
+PROPERTY CORPUS partial-failure-reopened: passed
+PROPERTY partial-failure-reopened: successful generated histories=20, total attempts including shrinking=20; chain-length-1=37, chain-length-2=28, chain-length-4=2, chain-length-6=1, committed-0=7, committed-1=8, committed-2=3, committed-3=2, continuation-batch=53, continuation-clear=54, continuation-insert=47, continuation-remove=31, continuation-removeBatch=38, continuation-reopen=32, delayed-read=78, duplicate-operands=52, empty-operands=39, fault-clear=1, fault-fusedClearRemoval=2, fault-fusedClearWrite=4, fault-fusedSelectiveRemoval=2, fault-fusedSelectiveWrite=2, fault-insertBatch=2, fault-insertSingle=5, fault-removeBatch=2, full-commit-before-error=4, partial-commit=9, persistence-read=106, prefix-operation=120, queued-chain=68, reopen-recovery=20, unequal-overwrite=81, zero-commit=7
+✔ Test reopenedContinuationControls() passed after 0.069 seconds.
+PROPERTY partial-failure-direct: successful generated histories=20, total attempts including shrinking=20; chain-length-1=28, chain-length-2=6, chain-length-3=3, chain-length-4=1, committed-0=7, committed-1=6, committed-2=3, committed-3=3, committed-4=1, continuation-batch=67, continuation-clear=63, continuation-insert=43, continuation-remove=47, continuation-removeBatch=40, continuation-reopen=33, delayed-read=101, duplicate-operands=67, empty-operands=40, fault-clear=2, fault-fusedClearRemoval=2, fault-fusedClearWrite=2, fault-fusedSelectiveRemoval=1, fault-fusedSelectiveWrite=4, fault-insertBatch=2, fault-insertSingle=5, fault-removeBatch=2, full-commit-before-error=9, memory-persistence-differ=15, partial-commit=4, persistence-read=113, prefix-operation=152, queued-chain=38, unequal-overwrite=109, unreconciled-continuation=20, zero-commit=7
+✔ Test directClearContinuationControls() passed after 0.071 seconds.
+✔ Suite "Store partial failure histories" passed after 0.071 seconds.
+✔ Test run with 5 tests in 2 suites passed after 0.071 seconds.

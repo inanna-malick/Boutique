@@ -1,0 +1,16 @@
+[0/1] Planning build
+Test Suite 'Selected tests' started at 2026-10-12 22:16:04.105.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:16:04.106.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:16:04.106.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:16:04.106.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Store partial failure histories" started.
+◇ Test fusedClearContinuationSearch() started.
+✘ Test fusedClearContinuationSearch() recorded an issue at StorePartialFailureHistoryTests.swift:58:6: Caught error: partial.successful.persistence at step 1: expected [BoutiqueTests.StoreDiscoveryItem(id: "replacement", payload: 100)]; actual [BoutiqueTests.StoreDiscoveryItem(id: "fault0", payload: 3), BoutiqueTests.StoreDiscoveryItem(id: "replacement", payload: 100)]; commands [BoutiqueTests.StoreDiscoveryCommand.Kind.clear, BoutiqueTests.StoreDiscoveryCommand.Kind.batch]
+✘ Test fusedClearContinuationSearch() failed after 0.002 seconds with 1 issue.
+✘ Suite "Store partial failure histories" failed after 0.002 seconds with 1 issue.
+✘ Test run with 1 test in 1 suite failed after 0.002 seconds with 1 issue.

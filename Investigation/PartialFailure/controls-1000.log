@@ -1,0 +1,37 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/5] Write sources
+[3/5] Write swift-version-6FAF900280F264CA.txt
+[5/7] Emitting module BoutiqueTests
+[6/7] Compiling BoutiqueTests StorePartialFailureHistoryTests.swift
+[6/8] Write Objects.LinkFileList
+[7/8] Linking BoutiquePackageTests
+Build complete! (8.38s)
+Test Suite 'Selected tests' started at 2026-10-12 22:15:08.190.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:15:08.191.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:15:08.191.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:15:08.191.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Store partial failure histories" started.
+◇ Suite "Partial failure clear standalone reproduction" started.
+➜ Test fusedClearContinuationSearch() skipped.
+◇ Test directClearContinuationControls() started.
+◇ Test reopenedContinuationControls() started.
+◇ Test directClearRemovesPartiallyCommittedRecord(batchReplacement:) started.
+◇ Test case passing 1 argument batchReplacement → false to directClearRemovesPartiallyCommittedRecord(batchReplacement:) started.
+◇ Test case passing 1 argument batchReplacement → true to directClearRemovesPartiallyCommittedRecord(batchReplacement:) started.
+➜ Test successfulFusedClearRemovesPartiallyCommittedRecord(batchReplacement:) skipped.
+✔ Test directClearRemovesPartiallyCommittedRecord(batchReplacement:) with 2 test cases passed after 0.003 seconds.
+✔ Suite "Partial failure clear standalone reproduction" passed after 0.003 seconds.
+PROPERTY partial-failure-direct: successful generated histories=1000, total attempts including shrinking=1000; chain-length-1=6038, chain-length-2=1775, chain-length-3=507, chain-length-4=153, chain-length-5=38, chain-length-6=20, committed-0=410, committed-1=275, committed-2=161, committed-3=131, committed-4=21, committed-5=2, continuation-batch=11004, continuation-clear=11016, continuation-insert=9884, continuation-remove=10093, continuation-removeBatch=9981, continuation-reopen=4142, delayed-read=21661, duplicate-operands=15043, empty-operands=5942, fault-clear=120, fault-fusedClearRemoval=114, fault-fusedClearWrite=98, fault-fusedSelectiveRemoval=98, fault-fusedSelectiveWrite=125, fault-insertBatch=123, fault-insertSingle=116, fault-removeBatch=98, fault-removeSingle=108, full-commit-before-error=311, memory-persistence-differ=667, partial-commit=279, persistence-read=22496, prefix-operation=6053, queued-chain=8531, unequal-overwrite=19486, unreconciled-continuation=1000, zero-commit=410
+✔ Test directClearContinuationControls() passed after 10.251 seconds.
+PROPERTY partial-failure-reopened: successful generated histories=1000, total attempts including shrinking=1000; chain-length-1=7605, chain-length-2=3821, chain-length-3=994, chain-length-4=409, chain-length-5=143, chain-length-6=63, committed-0=358, committed-1=317, committed-2=177, committed-3=121, committed-4=27, continuation-batch=10950, continuation-clear=11140, continuation-insert=10223, continuation-remove=10220, continuation-removeBatch=9991, continuation-reopen=4139, delayed-read=21727, duplicate-operands=15040, empty-operands=5901, fault-clear=109, fault-fusedClearRemoval=106, fault-fusedClearWrite=104, fault-fusedSelectiveRemoval=127, fault-fusedSelectiveWrite=123, fault-insertBatch=111, fault-insertSingle=107, fault-removeBatch=119, fault-removeSingle=94, full-commit-before-error=297, partial-commit=345, persistence-read=22874, prefix-operation=5921, queued-chain=13035, reopen-recovery=1000, unequal-overwrite=18699, zero-commit=358
+✔ Test reopenedContinuationControls() passed after 10.607 seconds.
+✔ Suite "Store partial failure histories" passed after 10.608 seconds.
+✔ Test run with 5 tests in 2 suites passed after 10.608 seconds.
