@@ -1,0 +1,35 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/5] Write sources
+[3/5] Write swift-version-6FAF900280F264CA.txt
+[5/7] Compiling BoutiqueTests StoreConcurrentFaultDiscoveryTests.swift
+[6/7] Emitting module BoutiqueTests
+[7/8] Compiling BoutiqueTests StoreDiscoveryHistoryTests.swift
+[7/9] Write Objects.LinkFileList
+[8/9] Linking BoutiquePackageTests
+Build complete! (13.17s)
+Test Suite 'Selected tests' started at 2026-10-12 22:46:57.265.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:46:57.266.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:46:57.266.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:46:57.266.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Store concurrent repeated faults discovery" started.
+◇ Test directClearContinuedUseHistories() started.
+◇ Test persistenceAndReopenedRecoveryHistories() started.
+◇ Test boundedSmallMatrix() started.
+➜ Test unreconciledFusedClearSearch() skipped.
+➜ Test successfulConcurrentMemorySearch() skipped.
+PROPERTY concurrent-fault-matrix: ["release.permutation.1": 294, "operation.remove": 210, "operation.clear": 210, "operation.fusedRemoveInsert": 210, "release.permutation.0": 294, "operation.fusedClearInsert": 210, "operation.batch": 210, "failures.2": 588, "fault.before": 392, "gate.after.ack": 196, "operation.removeBatch": 210, "matrix.histories": 588, "owners.3": 294, "fault.full-commit": 448, "commits": 1638, "gate.before.ack": 1666, "commit.interleaved": 96, "operation.insert": 210, "recovery.fusedClearInsert": 588, "fault.prefix.0": 392, "fault.partial": 336, "fault.prefix.2": 224, "fault.prefix.1": 560, "owners.2": 294]
+✔ Test boundedSmallMatrix() passed after 1.207 seconds.
+PROPERTY store-concurrent-fault-direct-recovery: successful generated histories=1000, total attempts including shrinking=1000; commit.interleaved=305, commits=3508, failures.0=346, failures.1=366, failures.2=288, fault.before=348, fault.full-commit=364, fault.partial=230, fault.prefix.0=348, fault.prefix.1=360, fault.prefix.2=159, fault.prefix.3=57, fault.prefix.4=18, gate.after.ack=517, gate.before.ack=2674, operands.duplicate=1361, operands.empty=461, operation.batch=391, operation.clear=384, operation.fusedClearInsert=371, operation.fusedRemoveInsert=309, operation.insert=335, operation.remove=330, operation.removeBatch=367, owners.2=513, owners.3=487, recovery.batch=2124, recovery.clear=2172, recovery.fusedClearInsert=2011, recovery.fusedRemoveInsert=2092, recovery.insert=2127, recovery.original-instance-direct-clear=1000, recovery.remove=2098, recovery.removeBatch=2064, release.permutation.0=334, release.permutation.1=352, release.permutation.2=114, release.permutation.3=80, release.permutation.4=60, release.permutation.5=60, schedule.infeasible.empty=222
+✔ Test directClearContinuedUseHistories() passed after 5.519 seconds.
+PROPERTY store-concurrent-fault-recovery: successful generated histories=1000, total attempts including shrinking=1000; commit.interleaved=298, commits=3657, failures.0=356, failures.1=358, failures.2=286, fault.before=332, fault.full-commit=368, fault.partial=230, fault.prefix.0=332, fault.prefix.1=365, fault.prefix.2=133, fault.prefix.3=77, fault.prefix.4=23, gate.after.ack=559, gate.before.ack=2692, operands.duplicate=1358, operands.empty=446, operation.batch=376, operation.clear=377, operation.fusedClearInsert=369, operation.fusedRemoveInsert=351, operation.insert=385, operation.remove=349, operation.removeBatch=331, owners.2=462, owners.3=538, recovery.batch=2107, recovery.clear=2093, recovery.fusedClearInsert=2169, recovery.fusedRemoveInsert=2155, recovery.insert=2107, recovery.remove=2105, recovery.removeBatch=2253, release.permutation.0=321, release.permutation.1=338, release.permutation.2=98, release.permutation.3=108, release.permutation.4=70, release.permutation.5=65, schedule.infeasible.empty=218
+✔ Test persistenceAndReopenedRecoveryHistories() passed after 5.633 seconds.
+✔ Suite "Store concurrent repeated faults discovery" passed after 5.633 seconds.
+✔ Test run with 5 tests in 1 suite passed after 5.633 seconds.

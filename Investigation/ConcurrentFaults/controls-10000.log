@@ -1,0 +1,24 @@
+Another instance of SwiftPM (PID: 38636) is already running using '/Users/inannamalick/dev/botique-proptest/worktrees/concurrent-faults/.build', waiting until that process has finished execution...[0/1] Planning build
+Test Suite 'Selected tests' started at 2026-10-12 22:48:31.327.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:48:31.328.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:48:31.328.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:48:31.328.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Store concurrent repeated faults discovery" started.
+◇ Test boundedSmallMatrix() started.
+➜ Test unreconciledFusedClearSearch() skipped.
+◇ Test persistenceAndReopenedRecoveryHistories() started.
+➜ Test successfulConcurrentMemorySearch() skipped.
+◇ Test directClearContinuedUseHistories() started.
+PROPERTY concurrent-fault-matrix: ["recovery.fusedClearInsert": 588, "fault.prefix.1": 560, "fault.prefix.0": 392, "operation.batch": 210, "owners.3": 294, "matrix.histories": 588, "operation.insert": 210, "fault.prefix.2": 224, "operation.clear": 210, "operation.fusedRemoveInsert": 210, "operation.remove": 210, "fault.full-commit": 448, "release.permutation.1": 294, "gate.after.ack": 196, "release.permutation.0": 294, "failures.2": 588, "operation.removeBatch": 210, "fault.partial": 336, "commit.interleaved": 96, "operation.fusedClearInsert": 210, "owners.2": 294, "fault.before": 392, "gate.before.ack": 1666, "commits": 1638]
+✔ Test boundedSmallMatrix() passed after 1.155 seconds.
+PROPERTY store-concurrent-fault-direct-recovery: successful generated histories=10000, total attempts including shrinking=10000; commit.interleaved=2986, commits=35835, failures.0=3633, failures.1=3547, failures.2=2820, fault.before=3427, fault.full-commit=3454, fault.partial=2306, fault.prefix.0=3427, fault.prefix.1=3589, fault.prefix.2=1302, fault.prefix.3=620, fault.prefix.4=249, gate.after.ack=5231, gate.before.ack=26659, operands.duplicate=13332, operands.empty=4503, operation.batch=3609, operation.clear=3584, operation.fusedClearInsert=3544, operation.fusedRemoveInsert=3501, operation.insert=3548, operation.remove=3626, operation.removeBatch=3597, owners.2=4991, owners.3=5009, recovery.batch=21399, recovery.clear=21238, recovery.fusedClearInsert=21083, recovery.fusedRemoveInsert=21393, recovery.insert=21109, recovery.original-instance-direct-clear=10000, recovery.remove=21247, recovery.removeBatch=21399, release.permutation.0=3393, release.permutation.1=3488, release.permutation.2=887, release.permutation.3=934, release.permutation.4=677, release.permutation.5=621, schedule.infeasible.empty=2244
+✔ Test directClearContinuedUseHistories() passed after 50.266 seconds.
+PROPERTY store-concurrent-fault-recovery: successful generated histories=10000, total attempts including shrinking=10000; commit.interleaved=3002, commits=36112, failures.0=3682, failures.1=3547, failures.2=2771, fault.before=3409, fault.full-commit=3453, fault.partial=2227, fault.prefix.0=3409, fault.prefix.1=3525, fault.prefix.2=1246, fault.prefix.3=640, fault.prefix.4=269, gate.after.ack=5310, gate.before.ack=26798, operands.duplicate=13371, operands.empty=4475, operation.batch=3641, operation.clear=3537, operation.fusedClearInsert=3672, operation.fusedRemoveInsert=3422, operation.insert=3500, operation.remove=3638, operation.removeBatch=3574, owners.2=5016, owners.3=4984, recovery.batch=21238, recovery.clear=21572, recovery.fusedClearInsert=21471, recovery.fusedRemoveInsert=21750, recovery.insert=21703, recovery.remove=21211, recovery.removeBatch=21589, release.permutation.0=3427, release.permutation.1=3450, release.permutation.2=922, release.permutation.3=937, release.permutation.4=599, release.permutation.5=665, schedule.infeasible.empty=2180
+✔ Test persistenceAndReopenedRecoveryHistories() passed after 51.174 seconds.
+✔ Suite "Store concurrent repeated faults discovery" passed after 51.174 seconds.
+✔ Test run with 5 tests in 1 suite passed after 51.174 seconds.

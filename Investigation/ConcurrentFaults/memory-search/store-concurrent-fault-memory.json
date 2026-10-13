@@ -1,0 +1,587 @@
+{
+  "failure" : {
+    "detail" : "commits=[B:write:key-0=0, A:write:key-1=0]; actual=[BoutiqueTests.StoreDiscoveryItem(id: \"seed-0\", payload: 0), BoutiqueTests.StoreDiscoveryItem(id: \"key-1\", payload: 0)]; expected=[BoutiqueTests.StoreDiscoveryItem(id: \"seed-0\", payload: 0), BoutiqueTests.StoreDiscoveryItem(id: \"key-0\", payload: 0), BoutiqueTests.StoreDiscoveryItem(id: \"key-1\", payload: 0)]",
+    "invariant" : "concurrent.known-pr86-memory",
+    "step" : 2
+  },
+  "original" : {
+    "initial" : [
+      {
+        "id" : "seed-0",
+        "payload" : -6
+      },
+      {
+        "id" : "seed-1",
+        "payload" : -6
+      }
+    ],
+    "owners" : [
+      {
+        "id" : "A",
+        "operation" : {
+          "items" : [
+            {
+              "id" : "key-1",
+              "payload" : -6
+            },
+            {
+              "id" : "key-1",
+              "payload" : -5
+            },
+            {
+              "id" : "key-2",
+              "payload" : -4
+            }
+          ],
+          "kind" : "removeBatch",
+          "removals" : [
+            {
+              "id" : "key-0",
+              "payload" : 999
+            },
+            {
+              "id" : "key-0",
+              "payload" : -999
+            }
+          ]
+        },
+        "phase" : "after"
+      },
+      {
+        "id" : "B",
+        "operation" : {
+          "items" : [
+            {
+              "id" : "key-2",
+              "payload" : 5
+            },
+            {
+              "id" : "key-2",
+              "payload" : 6
+            },
+            {
+              "id" : "key-3",
+              "payload" : 7
+            }
+          ],
+          "kind" : "fusedClearInsert",
+          "removals" : [
+            {
+              "id" : "key-0",
+              "payload" : 999
+            },
+            {
+              "id" : "key-0",
+              "payload" : -999
+            }
+          ]
+        },
+        "phase" : "before"
+      },
+      {
+        "id" : "C",
+        "operation" : {
+          "items" : [
+
+          ],
+          "kind" : "fusedRemoveInsert",
+          "removals" : [
+            {
+              "id" : "key-0",
+              "payload" : 999
+            },
+            {
+              "id" : "key-0",
+              "payload" : -999
+            }
+          ]
+        },
+        "phase" : "before"
+      }
+    ],
+    "permutation" : 5,
+    "tail" : [
+      {
+        "items" : [
+          {
+            "id" : "key-1",
+            "payload" : 2
+          }
+        ],
+        "kind" : "remove",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+
+        ],
+        "kind" : "removeBatch",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-2",
+            "payload" : 9
+          },
+          {
+            "id" : "key-2",
+            "payload" : 10
+          },
+          {
+            "id" : "key-3",
+            "payload" : 11
+          }
+        ],
+        "kind" : "fusedRemoveInsert",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-2",
+            "payload" : -20
+          }
+        ],
+        "kind" : "remove",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-0",
+            "payload" : 19
+          }
+        ],
+        "kind" : "remove",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+
+        ],
+        "kind" : "fusedClearInsert",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+
+        ],
+        "kind" : "batch",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-2",
+            "payload" : -16
+          }
+        ],
+        "kind" : "remove",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-3",
+            "payload" : -14
+          },
+          {
+            "id" : "key-3",
+            "payload" : -13
+          },
+          {
+            "id" : "key-0",
+            "payload" : -12
+          }
+        ],
+        "kind" : "removeBatch",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+
+        ],
+        "kind" : "removeBatch",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-0",
+            "payload" : 4
+          }
+        ],
+        "kind" : "insert",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-3",
+            "payload" : 4
+          }
+        ],
+        "kind" : "remove",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-1",
+            "payload" : -10
+          },
+          {
+            "id" : "key-1",
+            "payload" : -9
+          },
+          {
+            "id" : "key-2",
+            "payload" : -8
+          }
+        ],
+        "kind" : "removeBatch",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-2",
+            "payload" : 18
+          },
+          {
+            "id" : "key-2",
+            "payload" : 19
+          },
+          {
+            "id" : "key-3",
+            "payload" : 20
+          }
+        ],
+        "kind" : "batch",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+
+        ],
+        "kind" : "batch",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-2",
+            "payload" : 3
+          }
+        ],
+        "kind" : "remove",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+
+        ],
+        "kind" : "removeBatch",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-1",
+            "payload" : -3
+          },
+          {
+            "id" : "key-1",
+            "payload" : -2
+          },
+          {
+            "id" : "key-2",
+            "payload" : -1
+          }
+        ],
+        "kind" : "clear",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-3",
+            "payload" : 12
+          },
+          {
+            "id" : "key-3",
+            "payload" : 13
+          },
+          {
+            "id" : "key-0",
+            "payload" : 14
+          }
+        ],
+        "kind" : "clear",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      },
+      {
+        "items" : [
+          {
+            "id" : "key-3",
+            "payload" : 7
+          },
+          {
+            "id" : "key-3",
+            "payload" : 8
+          },
+          {
+            "id" : "key-0",
+            "payload" : 9
+          }
+        ],
+        "kind" : "removeBatch",
+        "removals" : [
+          {
+            "id" : "key-0",
+            "payload" : 999
+          },
+          {
+            "id" : "key-0",
+            "payload" : -999
+          }
+        ]
+      }
+    ]
+  },
+  "reduced" : {
+    "initial" : [
+      {
+        "id" : "seed-0",
+        "payload" : 0
+      }
+    ],
+    "owners" : [
+      {
+        "id" : "A",
+        "operation" : {
+          "items" : [
+            {
+              "id" : "key-1",
+              "payload" : 0
+            }
+          ],
+          "kind" : "insert",
+          "removals" : [
+            {
+              "id" : "key-0",
+              "payload" : 999
+            },
+            {
+              "id" : "key-0",
+              "payload" : -999
+            }
+          ]
+        },
+        "phase" : "after"
+      },
+      {
+        "id" : "B",
+        "operation" : {
+          "items" : [
+            {
+              "id" : "key-0",
+              "payload" : 0
+            }
+          ],
+          "kind" : "insert",
+          "removals" : [
+            {
+              "id" : "key-0",
+              "payload" : 999
+            },
+            {
+              "id" : "key-0",
+              "payload" : -999
+            }
+          ]
+        },
+        "phase" : "before"
+      }
+    ],
+    "permutation" : 1,
+    "tail" : [
+
+    ]
+  },
+  "revision" : "7c7545b7df2172f767c3deaa47ccf67d590f20f9-dirty",
+  "suite" : "store-concurrent-fault-memory",
+  "version" : 1
+}

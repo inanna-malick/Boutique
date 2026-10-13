@@ -1,0 +1,16 @@
+[0/1] Planning build
+Test Suite 'Selected tests' started at 2026-10-12 22:49:33.347.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:49:33.349.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:49:33.349.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:49:33.349.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Store concurrent repeated faults discovery" started.
+◇ Test unreconciledFusedClearSearch() started.
+✘ Test unreconciledFusedClearSearch() recorded an issue at StoreConcurrentFaultDiscoveryTests.swift:210:6: Caught error: concurrent.persistence at step 0: commits=[B:write:key-0=0, A:write:key-1=0]; actual=[BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 0)]; expected=[]
+✘ Test unreconciledFusedClearSearch() failed after 0.004 seconds with 1 issue.
+✘ Suite "Store concurrent repeated faults discovery" failed after 0.004 seconds with 1 issue.
+✘ Test run with 1 test in 1 suite failed after 0.004 seconds with 1 issue.

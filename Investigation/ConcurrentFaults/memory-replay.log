@@ -1,0 +1,16 @@
+Another instance of SwiftPM (PID: 38637) is already running using '/Users/inannamalick/dev/botique-proptest/worktrees/concurrent-faults/.build', waiting until that process has finished execution...[0/1] Planning build
+Test Suite 'Selected tests' started at 2026-10-12 22:49:37.098.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:49:37.099.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:49:37.099.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:49:37.099.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Store concurrent repeated faults discovery" started.
+◇ Test successfulConcurrentMemorySearch() started.
+✘ Test successfulConcurrentMemorySearch() recorded an issue at StoreConcurrentFaultDiscoveryTests.swift:203:6: Caught error: concurrent.known-pr86-memory at step 2: commits=[B:write:key-0=0, A:write:key-1=0]; actual=[BoutiqueTests.StoreDiscoveryItem(id: "seed-0", payload: 0), BoutiqueTests.StoreDiscoveryItem(id: "key-1", payload: 0)]; expected=[BoutiqueTests.StoreDiscoveryItem(id: "seed-0", payload: 0), BoutiqueTests.StoreDiscoveryItem(id: "key-0", payload: 0), BoutiqueTests.StoreDiscoveryItem(id: "key-1", payload: 0)]
+✘ Test successfulConcurrentMemorySearch() failed after 0.002 seconds with 1 issue.
+✘ Suite "Store concurrent repeated faults discovery" failed after 0.002 seconds with 1 issue.
+✘ Test run with 1 test in 1 suite failed after 0.002 seconds with 1 issue.
