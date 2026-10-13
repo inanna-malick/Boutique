@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "classification": "contract-dependent identity-policy migration; not a supported new defect",
+  "reduction": "hand-authored minimal characterization, original equals reduced; no automatic shrinking claim",
+  "operations": [
+    {"kind": "construct", "keypath": "id"},
+    {"kind": "insert", "item": {"id": "old-0", "alternate": "new-0", "payload": 0}},
+    {"kind": "reconstruct", "keypath": "alternate"},
+    {"kind": "insert", "item": {"id": "old-0", "alternate": "new-0", "payload": 1}},
+    {"kind": "reconstruct", "keypath": "alternate"},
+    {"kind": "insert", "item": {"id": "old-1", "alternate": "new-1", "payload": 2}}
+  ]
+}

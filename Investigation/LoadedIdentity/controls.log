@@ -1,0 +1,228 @@
+Fetching https://github.com/apple/swift-collections from cache
+Fetching https://github.com/mergesort/Bodega.git from cache
+Fetching https://github.com/stephencelis/SQLite.swift.git from cache
+Fetching https://github.com/x-sheep/swift-property-based.git from cache
+Fetching https://github.com/apple/swift-docc-plugin from cache
+Fetched https://github.com/x-sheep/swift-property-based.git from cache (0.33s)
+Fetched https://github.com/apple/swift-docc-plugin from cache (0.33s)
+Fetched https://github.com/stephencelis/SQLite.swift.git from cache (0.33s)
+Fetched https://github.com/mergesort/Bodega.git from cache (0.34s)
+Fetched https://github.com/apple/swift-collections from cache (0.41s)
+Computing version for https://github.com/apple/swift-docc-plugin
+Computed https://github.com/apple/swift-docc-plugin at 1.0.0 (0.87s)
+Computing version for https://github.com/apple/swift-collections
+Computed https://github.com/apple/swift-collections at 1.0.4 (0.46s)
+Computing version for https://github.com/mergesort/Bodega.git
+Computed https://github.com/mergesort/Bodega.git at 2.1.3 (0.43s)
+Computing version for https://github.com/x-sheep/swift-property-based.git
+Computed https://github.com/x-sheep/swift-property-based.git at 2.0.1 (0.36s)
+Computing version for https://github.com/stephencelis/SQLite.swift.git
+Computed https://github.com/stephencelis/SQLite.swift.git at 0.13.3 (0.43s)
+Creating working copy for https://github.com/mergesort/Bodega.git
+Working copy of https://github.com/mergesort/Bodega.git resolved at 2.1.3
+Creating working copy for https://github.com/apple/swift-docc-plugin
+Working copy of https://github.com/apple/swift-docc-plugin resolved at 1.0.0
+Creating working copy for https://github.com/stephencelis/SQLite.swift.git
+Working copy of https://github.com/stephencelis/SQLite.swift.git resolved at 0.13.3
+Creating working copy for https://github.com/apple/swift-collections
+Working copy of https://github.com/apple/swift-collections resolved at 1.0.4
+Creating working copy for https://github.com/x-sheep/swift-property-based.git
+Working copy of https://github.com/x-sheep/swift-property-based.git resolved at 2.0.1
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/14] /Users/inannamalick/dev/botique-proptest/worktrees/loaded-identity/.build/arm64-apple-macosx/debug/BoutiquePackageTests.derived/runner.swift
+[3/14] Write sources
+[4/14] Write swift-version-6FAF900280F264CA.txt
+[5/14] Write sources
+[6/40] Compiling SQLiteObjc SQLiteObjc.m
+[7/40] Write sources
+[13/54] Compiling SQLite Backup.swift
+[14/54] Compiling SQLite Blob.swift
+[15/54] Compiling SQLite Connection+Aggregation.swift
+[16/54] Compiling SQLite Connection.swift
+[17/54] Compiling SQLite Errors.swift
+[18/54] Compiling SQLite Result.swift
+[19/54] Compiling SQLite Statement.swift
+[20/54] Compiling SQLite Value.swift
+[21/54] Compiling SQLite Cipher.swift
+[22/54] Compiling SQLite FTS4.swift
+[23/54] Compiling SQLite FTS5.swift
+[24/54] Compiling SQLite RTree.swift
+[25/54] Compiling SQLite Foundation.swift
+[26/54] Compiling OrderedCollections OrderedDictionary+Elements+SubSequence.swift
+[27/54] Compiling OrderedCollections OrderedDictionary+Elements.swift
+[28/54] Compiling OrderedCollections OrderedDictionary+Equatable.swift
+[29/54] Compiling OrderedCollections OrderedDictionary+ExpressibleByDictionaryLiteral.swift
+[30/54] Compiling OrderedCollections OrderedDictionary+Hashable.swift
+[31/54] Compiling OrderedCollections OrderedDictionary+Initializers.swift
+[32/54] Compiling OrderedCollections OrderedDictionary+Invariants.swift
+[33/54] Compiling OrderedCollections OrderedDictionary+Partial MutableCollection.swift
+[34/54] Compiling OrderedCollections OrderedDictionary+Partial RangeReplaceableCollection.swift
+[35/54] Compiling OrderedCollections OrderedDictionary+Sequence.swift
+[36/54] Compiling OrderedCollections OrderedDictionary+Values.swift
+[37/54] Compiling OrderedCollections OrderedDictionary.swift
+[38/54] Emitting module OrderedCollections
+[39/79] Compiling OrderedCollections OrderedSet+Codable.swift
+[40/79] Compiling OrderedCollections OrderedSet+CustomDebugStringConvertible.swift
+[41/79] Compiling OrderedCollections OrderedSet+CustomReflectable.swift
+[42/79] Compiling OrderedCollections OrderedSet+CustomStringConvertible.swift
+[43/79] Compiling OrderedCollections OrderedSet+Diffing.swift
+[44/79] Compiling OrderedCollections OrderedSet+Equatable.swift
+[45/79] Compiling OrderedCollections OrderedSet+ExpressibleByArrayLiteral.swift
+[46/79] Compiling OrderedCollections OrderedSet+Hashable.swift
+[47/79] Compiling OrderedCollections OrderedSet+Initializers.swift
+[48/79] Compiling OrderedCollections OrderedSet+Insertions.swift
+[49/79] Compiling OrderedCollections OrderedSet+Invariants.swift
+[50/79] Compiling OrderedCollections OrderedSet+Partial MutableCollection.swift
+[51/79] Compiling OrderedCollections OrderedSet+Partial RangeReplaceableCollection.swift
+[52/79] Compiling OrderedCollections OrderedSet+Partial SetAlgebra+Basics.swift
+[53/79] Compiling OrderedCollections OrderedSet+Partial SetAlgebra+Operations.swift
+[54/79] Compiling OrderedCollections OrderedSet+Partial SetAlgebra+Predicates.swift
+[55/79] Compiling OrderedCollections OrderedSet+RandomAccessCollection.swift
+[56/79] Compiling OrderedCollections OrderedSet+ReserveCapacity.swift
+[57/79] Compiling OrderedCollections OrderedSet+SubSequence.swift
+[58/79] Compiling OrderedCollections OrderedSet+Testing.swift
+[59/79] Compiling OrderedCollections OrderedSet+UnorderedView.swift
+[60/79] Compiling OrderedCollections OrderedSet+UnstableInternals.swift
+[61/79] Compiling OrderedCollections OrderedSet.swift
+[62/79] Compiling OrderedCollections RandomAccessCollection+Offsets.swift
+[63/79] Compiling OrderedCollections _UnsafeBitset.swift
+[64/97] Compiling PropertyBased ClosedIntegerRange.swift
+[65/97] Compiling PropertyBased Date+String.swift
+[66/97] Compiling PropertyBased EnableShrinkTrait.swift
+[67/97] Compiling PropertyBased FixedSeedTrait.swift
+[68/97] Compiling PropertyBased Gen+Collection.swift
+[69/97] Compiling PropertyBased Gen+Color.swift
+[70/97] Compiling PropertyBased Gen+Date.swift
+[71/97] Compiling PropertyBased Gen+Duration.swift
+[72/97] Compiling PropertyBased Gen+Float.swift
+[73/97] Compiling PropertyBased Gen+Frequency.swift
+[74/97] Compiling PropertyBased Gen+Int.swift
+[75/97] Compiling PropertyBased Gen+SIMD.swift
+[76/97] Compiling PropertyBased Gen+String.swift
+[77/97] Emitting module SQLite
+[78/109] Compiling SQLite Helpers.swift
+[79/109] Compiling SQLite AggregateFunctions.swift
+[80/109] Compiling SQLite Coding.swift
+[81/109] Compiling SQLite Collation.swift
+[82/109] Compiling SQLite CoreFunctions.swift
+[83/109] Compiling SQLite CustomFunctions.swift
+[84/109] Compiling SQLite DateAndTimeFunctions.swift
+[85/109] Compiling SQLite Expression.swift
+[86/109] Compiling SQLite Operators.swift
+[87/109] Compiling SQLite Query.swift
+[88/109] Compiling SQLite Schema.swift
+[89/109] Compiling SQLite Setter.swift
+[90/114] Emitting module Bodega
+[91/118] Compiling Bodega CacheKey.swift
+[92/118] Compiling Bodega DiskStorageEngine.swift
+[93/118] Compiling Bodega FileManager.Directory.swift
+[94/118] Compiling Bodega ObjectStorage.swift
+[95/118] Compiling Bodega SQLiteStorageEngine+Default.swift
+[96/118] Compiling Bodega SQLiteStorageEngine.swift
+[97/118] Compiling Bodega StorageEngine.swift
+[98/118] Compiling Bodega String+Formatting.swift
+[99/129] Compiling Boutique AsyncValueSubject.swift
+[100/129] Compiling Boutique BoxedValue.swift
+[101/129] Compiling Boutique CachedValue.swift
+[102/129] Compiling Boutique JSONCoders.swift
+[103/129] Compiling Boutique Keychain.swift
+[104/129] Compiling Boutique Store.ItemRemovalStrategy.swift
+[105/129] Compiling Boutique SecurelyStoredValue.swift
+[106/129] Compiling Boutique StorableItem.swift
+[107/129] Compiling Boutique Store+Identifiable.swift
+[108/129] Compiling Boutique Store+Observation.swift
+[116/129] Emitting module PropertyBased
+[117/146] Compiling PropertyBased MaximumAttemptsTrait.swift
+[118/146] Compiling PropertyBased Mutex.swift
+[119/146] Compiling PropertyBased PropertyCheck+Pack.swift
+[120/146] Compiling PropertyBased PropertyCheck.swift
+[121/146] Compiling PropertyBased SeededRandomNumberGenerator.swift
+[122/146] Compiling PropertyBased Shrink+Appended.swift
+[123/146] Compiling PropertyBased Shrink+Bitset.swift
+[124/146] Compiling PropertyBased Shrink+Collection.swift
+[125/146] Compiling PropertyBased Shrink+Date.swift
+[126/146] Compiling PropertyBased Shrink+Float.swift
+[127/146] Compiling PropertyBased Shrink+Integer.swift
+[128/146] Compiling PropertyBased Shrink+MutableCollection.swift
+[129/146] Compiling PropertyBased Shrink+Optional.swift
+[130/146] Compiling PropertyBased Shrink+Tuple.swift
+[131/146] Compiling PropertyBased Shrink.swift
+[132/146] Compiling PropertyBased Xoshiro.swift
+[133/146] Compiling PropertyBased Zip.swift
+[134/146] Emitting module Boutique
+[145/156] Compiling Boutique Store.Operation.swift
+[146/156] Compiling Boutique Store.swift
+[147/156] Compiling Boutique StoreEvent.swift
+[148/156] Compiling Boutique Stored.swift
+[149/156] Compiling Boutique StoredValue+Array.swift
+[150/156] Compiling Boutique StoredValue+Binding.swift
+[151/156] Compiling Boutique StoredValue+Bool.swift
+[152/156] Compiling Boutique StoredValue+Dictionary.swift
+[153/156] Compiling Boutique StoredValue+KeypathSetter.swift
+[154/156] Compiling Boutique StoredValue.swift
+[155/177] Compiling BoutiqueTests AsyncStoreTests.swift
+[156/177] Compiling BoutiqueTests BoutiqueItem.swift
+[157/177] Compiling BoutiqueTests CodecRecoveryDiscoveryTests.swift
+[158/177] Compiling BoutiqueTests KeychainService.Tests.swift
+[159/177] Compiling BoutiqueTests LoadedIdentityDiscoveryTests.swift
+[160/177] Compiling BoutiqueTests OperationLifecycleDiscoveryTests.swift
+[161/177] Compiling BoutiqueTests PropertyBasedAsyncValueSubjectTests.swift
+[162/177] Compiling BoutiqueTests PropertyBasedBindingTests.swift
+[163/177] Compiling BoutiqueTests PropertyBasedKeychainRetryTests.swift
+[164/177] Compiling BoutiqueTests PropertyBasedObservationTests.swift
+[165/177] Compiling BoutiqueTests PropertyBasedSecureWrapperTests.swift
+[166/177] Compiling BoutiqueTests PropertyBasedStoreTests.swift
+[167/177] Compiling BoutiqueTests PropertyBasedStoredValueTests.swift
+[168/177] Compiling BoutiqueTests PropertyLibraryAcceptanceTests.swift
+[169/177] Compiling BoutiqueTests DiscoveryProperty.swift
+[170/177] Compiling BoutiqueTests DiscoveryRandom.swift
+[171/177] Compiling BoutiqueTests DiscoveryStreamSupport.swift
+[172/177] Compiling BoutiqueTests SecureStreamDiscoveryTests.swift
+[173/177] Compiling BoutiqueTests SecurelyStoredValueTests.swift
+[174/177] Compiling BoutiqueTests StoreConcurrentFaultDiscoveryTests.swift
+[175/177] Emitting module BoutiqueTests
+[176/196] Compiling BoutiqueTests StoreDiscoveryHistoryTests.swift
+[177/196] Compiling BoutiqueTests StoreDiscoveryInterleavingTests.swift
+[178/196] Compiling BoutiqueTests StoreDiscoveryScheduleTests.swift
+[179/196] Compiling BoutiqueTests StoreDiscoveryStorage.swift
+[180/196] Compiling BoutiqueTests StoreEvent.Tests.Requirements.swift
+[181/196] Compiling BoutiqueTests StoreFusedRemovalTests.swift
+[182/196] Compiling BoutiqueTests StoreIdentityDiscoveryTests.swift
+[183/196] Compiling BoutiqueTests StorePartialFailureClearReproductionTests.swift
+[184/196] Compiling BoutiqueTests StorePartialFailureHistoryTests.swift
+[185/196] Compiling BoutiqueTests StorePropertyMirrorTests.swift
+[186/196] Compiling BoutiqueTests StoreSharedClearReproductionTests.swift
+[187/196] Compiling BoutiqueTests StoreSharedPersistenceDiscoveryTests.swift
+[188/196] Compiling BoutiqueTests StoreTests.swift
+[189/196] Compiling BoutiqueTests StoredTests.swift
+[190/196] Compiling BoutiqueTests StoredValueTests.swift
+[191/196] Compiling BoutiqueTests StreamDiscoveryStoreEventsTests.swift
+[192/196] Compiling BoutiqueTests StreamDiscoveryStoredValueTests.swift
+[193/196] Compiling BoutiqueTests StreamDiscoveryTests.swift
+[194/196] Compiling BoutiqueTests WrapperDiscoveryTests.swift
+[195/198] Emitting module BoutiquePackageTests
+[196/198] Compiling BoutiquePackageTests runner.swift
+[196/198] Write Objects.LinkFileList
+[197/198] Linking BoutiquePackageTests
+Build complete! (74.05s)
+Test Suite 'Selected tests' started at 2026-10-12 23:07:09.459.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 23:07:09.461.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 23:07:09.461.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 23:07:09.461.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.002) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Loaded identity invariants" started.
+◇ Test stableKeypathControls(backend:) started.
+◇ Test case passing 1 argument backend → "disk" to stableKeypathControls(backend:) started.
+PROPERTY loaded-identity-stable-disk: successful generated histories=100, total attempts including shrinking=100; reopen.then.insert=904, reopen.then.remove=942
+◇ Test case passing 1 argument backend → "sqlite" to stableKeypathControls(backend:) started.
+PROPERTY loaded-identity-stable-sqlite: successful generated histories=100, total attempts including shrinking=100; reopen.then.insert=1156, reopen.then.remove=1081
+✔ Test stableKeypathControls(backend:) with 2 test cases passed after 1.672 seconds.
+➜ Test migrationCharacterization(backend:) skipped.
+✔ Suite "Loaded identity invariants" passed after 1.672 seconds.
+✔ Test run with 2 tests in 1 suite passed after 1.672 seconds.
