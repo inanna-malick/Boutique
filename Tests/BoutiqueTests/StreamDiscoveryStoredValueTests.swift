@@ -34,7 +34,7 @@ struct StreamDiscoveryStoredValueTests {
                 }
                 for slot in streams.keys.sorted() {
                     let expected = queues[slot]!
-                    let actual = try await discoveryCollect(streams[slot]!, count: expected.count)
+                    let actual = try await discoveryRead(streams[slot]!, count: expected.count, step: step, invariant: "stored-value.final-missing")
                     try discoveryRequire(actual == expected, "stored-value.stream-events", step: step,
                                          "actual=\(actual), expected=\(expected)")
                     queues[slot] = []
@@ -68,7 +68,17 @@ struct StreamDiscoveryStoredValueTests {
                         streams[operation.slot] = wrapper.values
                         queues[operation.slot] = [model]
                     case .consume:
-                        try await verifyAndFlush(step: step)
+                        if let stream = streams[operation.slot], let expected = queues[operation.slot] {
+                            let count = discoveryPrefixCount(selector: operation.value, available: expected.count)
+                            let actual = try await discoveryRead(stream, count: count, step: step, invariant: "stored-value.consume-missing")
+                            try discoveryRequire(actual == Array(expected.prefix(count)),
+                                                 "stored-value.partial-events", step: step)
+                            queues[operation.slot] = Array(expected.dropFirst(count))
+                            coverage.hit("consumed", by: actual.count)
+                            if count > 0 && count < expected.count { coverage.hit("consume.partial") }
+                            if count == 0 { coverage.hit("consume.empty") }
+                            if count == expected.count { coverage.hit("consume.full") }
+                        }
                     case .cancel:
                         if let old = streams.removeValue(forKey: operation.slot) {
                             await discoveryCancel(old)

@@ -14,6 +14,32 @@ struct StreamDiscoveryTests {
                             commands.array(of: 1...DiscoveryProperty.steps))
             .map { StreamScenario(policy: $0, capacity: $1, commands: $2) }
         try await DiscoveryProperty.check("subject-subscribers", input: scenarios) { scenario, coverage in
+            try await run(scenario, coverage: coverage)
+        }
+    }
+
+    @Test(arguments: [0, 1, 2])
+    func requiredPartialConsumptionLifecycle(policy: Int) async throws {
+        let scenario = StreamScenario(policy: policy, capacity: 2, commands: [
+            .init(kind: .subscribe, slot: 1, value: 0),
+            .init(kind: .send, slot: 0, value: 1),
+            .init(kind: .send, slot: 0, value: 2),
+            .init(kind: .consume, slot: 0, value: 2),
+            .init(kind: .send, slot: 0, value: 3),
+            .init(kind: .cancel, slot: 0, value: 0),
+            .init(kind: .send, slot: 0, value: 4),
+            .init(kind: .consume, slot: 1, value: 1),
+            .init(kind: .resubscribe, slot: 0, value: 0),
+            .init(kind: .send, slot: 0, value: 5)
+        ])
+        let coverage = DiscoveryCoverage()
+        try await run(scenario, coverage: coverage)
+        #expect(coverage.counts["consume.partial", default: 0] == 1)
+        #expect(coverage.counts["cancel.live", default: 0] == 1)
+        #expect(coverage.counts["operation.resubscribe", default: 0] == 1)
+    }
+
+    private func run(_ scenario: StreamScenario, coverage: DiscoveryCoverage) async throws {
             let policy: AsyncStream<Int>.Continuation.BufferingPolicy
             switch scenario.policy {
             case 0: policy = .unbounded
@@ -66,10 +92,14 @@ struct StreamDiscoveryTests {
                         subscribe(command.slot)
                     case .consume:
                         if let stream = subscribers[command.slot], let expected = queues[command.slot] {
-                            let actual = try await discoveryCollect(stream, count: expected.count)
-                            try discoveryRequire(actual == expected, "subject.consume", step: step,
+                            let count = discoveryPrefixCount(selector: command.value, available: expected.count)
+                            let actual = try await discoveryRead(stream, count: count, step: step, invariant: "subject.consume-missing")
+                            try discoveryRequire(actual == Array(expected.prefix(count)), "subject.consume", step: step,
                                                  "actual=\(actual), expected=\(expected)")
-                            queues[command.slot] = []
+                            queues[command.slot] = Array(expected.dropFirst(count))
+                            if count > 0 && count < expected.count { coverage.hit("consume.partial") }
+                            if count == 0 { coverage.hit("consume.empty") }
+                            if count == expected.count { coverage.hit("consume.full") }
                             coverage.hit("consumed", by: actual.count)
                         } else { coverage.hit("consume.absent") }
                     case .cancel:
@@ -88,14 +118,14 @@ struct StreamDiscoveryTests {
                 for slot in subscribers.keys.sorted() {
                     let stream = subscribers[slot]!
                     let expected = queues[slot]!
-                    let actual = try await discoveryCollect(stream, count: expected.count)
+                    let actual = try await discoveryRead(stream, count: expected.count, step: scenario.commands.count, invariant: "subject.final-missing")
                     try discoveryRequire(actual == expected, "subject.final-queue", step: scenario.commands.count)
                     queues[slot] = []
                     if scenario.policy == 0 || scenario.capacity > 0 {
                         value = 1_000_000 + slot
                         subject.send(value)
                         publish(value)
-                        let sentinel = try await discoveryCollect(stream, count: 1)
+                        let sentinel = try await discoveryRead(stream, count: 1, step: scenario.commands.count, invariant: "subject.sentinel-missing")
                         try discoveryRequire(sentinel == [value], "subject.no-extra-events", step: scenario.commands.count)
                         queues[slot] = []
                     }
@@ -105,7 +135,6 @@ struct StreamDiscoveryTests {
                 throw error
             }
             for stream in subscribers.values { await discoveryCancel(stream) }
-        }
     }
 
     @Test

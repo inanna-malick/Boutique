@@ -33,3 +33,23 @@ func discoveryCancel<Value: Sendable>(_ stream: AsyncStream<Value>) async {
     consumer.cancel()
     await consumer.value
 }
+
+/// Deliberately partitions empty, full, and interior-prefix consumption.
+func discoveryPrefixCount(selector: Int, available: Int) -> Int {
+    guard available > 0 else { return 0 }
+    let choice = selector.magnitude
+    switch choice % 3 {
+    case 0: return 0
+    case 1: return available
+    default: return min(available, max(1, Int(choice / 3)))
+    }
+}
+
+/// Keep a missing emission tied to the operation and invariant while shrinking.
+func discoveryRead<Value: Sendable>(_ stream: AsyncStream<Value>, count: Int,
+                                    step: Int, invariant: String) async throws -> [Value] {
+    do { return try await discoveryCollect(stream, count: count) }
+    catch is DiscoveryStreamTimeout {
+        throw DiscoveryFailure(invariant: invariant, step: step, detail: "Timed out waiting for \(count) events")
+    }
+}
