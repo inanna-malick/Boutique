@@ -1,0 +1,56 @@
+{
+  "failure" : {
+    "detail" : "memory=[BoutiqueTests.(unknown context at $102fc0afc).IdentityItem(id: \"é\", payload: 1)], persisted=[BoutiqueTests.(unknown context at $102fc0afc).IdentityItem(id: \"é\", payload: 1), BoutiqueTests.(unknown context at $102fc0afc).IdentityItem(id: \"é\", payload: 0)], leftBytes=[195, 169], rightBytes=[101, 204, 129]",
+    "invariant" : "identity.persisted-multiplicity",
+    "step" : 0
+  },
+  "original" : {
+    "commands" : [
+      {
+        "alternate" : false,
+        "delta" : 3,
+        "kind" : "insert"
+      },
+      {
+        "alternate" : true,
+        "delta" : 0,
+        "kind" : "insertBatch"
+      },
+      {
+        "alternate" : false,
+        "delta" : 2,
+        "kind" : "removeBatch"
+      },
+      {
+        "alternate" : true,
+        "delta" : 2,
+        "kind" : "insertBatch"
+      },
+      {
+        "alternate" : false,
+        "delta" : 3,
+        "kind" : "removeBatch"
+      }
+    ],
+    "form" : 2,
+    "payload" : -2,
+    "prefix" : 0,
+    "suffix" : 1
+  },
+  "reduced" : {
+    "commands" : [
+      {
+        "alternate" : true,
+        "delta" : 0,
+        "kind" : "insert"
+      }
+    ],
+    "form" : 0,
+    "payload" : 0,
+    "prefix" : 0,
+    "suffix" : 0
+  },
+  "revision" : "59b1a0461622b2dadb6c31a6d781d6842e6a9754",
+  "suite" : "identity-equivalent-sqlite",
+  "version" : 1
+}
