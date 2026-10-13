@@ -7,6 +7,28 @@ import Testing
 @MainActor
 @Suite("Store property mirror", .serialized)
 struct StorePropertyMirrorTests {
+    @Test("a clear followed by an empty batch still clears persisted data")
+    func emptyBatchAfterClearPreservesClearSemantics() async throws {
+        let storage = StorePropertyStorage()
+        let store = try await Store<StorePropertyItem>(storage: storage, cacheIdentifier: \.id)
+        let initial = [
+            StorePropertyItem(id: "a", payload: 0),
+            StorePropertyItem(id: "b", payload: 0),
+        ]
+        try await store.insert(initial)
+        #expect(store.items == initial)
+        #expect(await storage.decodedItems() == Dictionary(uniqueKeysWithValues: initial.map { ($0.id, $0) }))
+
+        var operation = try await enqueue(.removeAll, on: store)
+        operation = try await enqueue(.insertMany([]), on: operation)
+        #expect(store.items == initial)
+        #expect(await storage.decodedItems() == Dictionary(uniqueKeysWithValues: initial.map { ($0.id, $0) }))
+        try await operation.run()
+
+        #expect(store.items.isEmpty)
+        #expect(await storage.decodedItems().isEmpty)
+    }
+
     @Test("generated operation chains match replaying the same operations one by one")
     func generatedChainsMatchReferenceReplay() async throws {
         for seed in 0..<80 {
@@ -88,7 +110,7 @@ struct StorePropertyMirrorTests {
     func stringIdentifiableInitializersAgree() async throws {
         for seed in 0..<32 {
             var random = StorePropertyRandom(seed: UInt64(seed) &* 0xD1342543DE82EF95)
-            let initial = random.items(maxCount: 10)
+            let initial = random.items(maxCount: 10).map { StringIDPropertyItem(id: $0.id, payload: $0.payload) }
             let convenienceStorage = StorePropertyStorage()
             let explicitStorage = StorePropertyStorage()
             let convenience = try await Store<StringIDPropertyItem>(storage: convenienceStorage)
@@ -102,7 +124,7 @@ struct StorePropertyMirrorTests {
                 case 0: try await convenience.insert(item); try await explicit.insert(item)
                 case 1: try await convenience.remove(item); try await explicit.remove(item)
                 case 2:
-                    let batch = random.items(maxCount: 4)
+                    let batch = random.items(maxCount: 4).map { StringIDPropertyItem(id: $0.id, payload: $0.payload) }
                     try await convenience.insert(batch); try await explicit.insert(batch)
                 default:
                     try await convenience.removeAll(); try await explicit.removeAll()
@@ -119,7 +141,7 @@ struct StorePropertyMirrorTests {
     func synchronousStringInitializerLoadsPersistedValues() async throws {
         for seed in 0..<24 {
             var random = StorePropertyRandom(seed: UInt64(seed) &* 0x94D049BB133111EB)
-            let expectedItems = random.items(maxCount: 10)
+            let expectedItems = random.items(maxCount: 10).map { StringIDPropertyItem(id: $0.id, payload: $0.payload) }
             let storage = StorePropertyStorage()
             let writer = try await Store<StringIDPropertyItem>(storage: storage)
             try await writer.insert(expectedItems)

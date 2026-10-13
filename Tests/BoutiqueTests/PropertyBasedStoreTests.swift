@@ -167,7 +167,7 @@ struct PropertyBasedStoreTests {
 
             // The synchronous initializer starts a load task; awaiting it must surface a
             // decode error and leave the in-memory collection empty.
-            let synchronousStore = Store<PropertyItem>(storage: storage, cacheIdentifier: \.id)
+            let synchronousStore = makeSynchronousPropertyStore(storage: storage)
             var synchronousError: Error?
             do {
                 try await synchronousStore.itemsHaveLoaded()
@@ -446,4 +446,9 @@ private actor PropertyStorageEngine: StorageEngine {
     func createdAt(key: CacheKey) async -> Date? { nil }
 
     func updatedAt(key: CacheKey) async -> Date? { nil }
+}
+
+@MainActor
+private func makeSynchronousPropertyStore(storage: StorageEngine) -> Store<PropertyItem> {
+    Store(storage: storage, cacheIdentifier: \.id)
 }

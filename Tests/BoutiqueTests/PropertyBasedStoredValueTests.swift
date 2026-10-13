@@ -344,10 +344,10 @@ private struct ValueGenerator {
     }
 
     private mutating func collectionValue(against model: [Int], preferPresent: Bool) -> Int {
-        if preferPresent, !model.isEmpty, next().isMultiple(of: 3) != 0 {
+        if preferPresent, !model.isEmpty, next() % 3 != 0 {
             return model[Int(next() % UInt64(model.count))]
         }
-        if !preferPresent, !model.isEmpty, next().isMultiple(of: 3) == 0 {
+        if !preferPresent, !model.isEmpty, next() % 3 == 0 {
             return model[Int(next() % UInt64(model.count))]
         }
         let absent = (-5...5).filter { !model.contains($0) }

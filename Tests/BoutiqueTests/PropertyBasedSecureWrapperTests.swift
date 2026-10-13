@@ -60,10 +60,8 @@ struct PropertyBasedSecureWrapperTests {
                     if expected == nil { expected = [] }
                     expected!.append(item)
                 case 1:
-                    try value.togglePresence(item)
-                    if expected == nil { expected = [item] }
-                    else if expected!.contains(item) { expected!.removeAll { $0 == item } }
-                    else { expected!.append(item) }
+                    try value.remove()
+                    expected = nil
                 case 2:
                     let replacement = random.pick(6)
                     let position = expected?.firstIndex(of: item)
