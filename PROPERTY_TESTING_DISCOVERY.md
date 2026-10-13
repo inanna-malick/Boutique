@@ -105,3 +105,17 @@ Mutation calibrations detected a removed cache update, omitted subject publicati
 ## Partial-failure continuation investigation
 
 [Partial-failure findings](Investigation/PartialFailure/README.md) adds 1,000-case direct-clear and reopen controls over generated long continuations after nine fault families. Independent memory and persistence models avoid asserting atomic rollback or failed-call memory semantics. An opt-in search and standalone regression show a successful fused clear retaining records committed by an earlier throwing insertion; reopening resurrects those records. This cluster is independent of the Unicode and overlap findings. Known-failing cases require `BOUTIQUE_PARTIAL_FAILURE_FINDINGS=1`; default controls and retained corpus replays pass.
+
+## Three-target follow-up
+
+All three bounded follow-ups are retained on this branch:
+
+- [Element interleavings](Investigation/Interleavings/README.md): 1,000 serialized and 1,000 same-ID before-commit control histories; independent per-owner commit completeness and an Array replay of actual commit order. After-commit same-ID and multi-item batch searches retain additional variants of the existing mutation race. They show why merely rebuilding from current memory after an await is insufficient.
+- [Partial failure continuations](Investigation/PartialFailure/README.md): 1,000 direct-clear and 1,000 reopen histories across nine fault families, plus passing concrete corpus cases. The successful fused-clear defect is a distinct cluster.
+- [Operation lifecycle](Investigation/OperationLifecycle/README.md): 1,000 generated contract histories, 750 bounded exhaustive histories, and deferred-codec/waiting-follower checks. A separate opt-in 1,000-case/24-case characterization run observed post-start append and failed-run retry behavior; no established-contract violation was confirmed.
+
+Final integration passed **150 tests in 27 suites in 83.412 seconds**, including **14,700 generated discovery cases**, original checks, finite matrices, and four passing corpus replays. The command was `Scripts/property-tests.sh --enable-code-coverage` with known-failing searches disabled. `PropertyTesting/Validation/followup-run.txt` retains case counters and the summary. A subsequent concrete same-ID replay still failed exactly `store.element.memory`, confirming the scheduling harness corrections retain sensitivity.
+
+Integration also repaired two test assumptions: initial scheduling acknowledgements need room for a loaded MainActor executor, and a forced serial follower must await the first task without a competing deadline. The overlap itself still has an explicit bounded deadline and actual commit-order oracle. Legacy event tests now subscribe before their producers start and compare event payloads rather than classifying buffered events using later Store state. Production source is unchanged.
+
+Focused, intentionally failing repro-only drafts are [#85 (Unicode IDs)](https://github.com/mergesort/Boutique/pull/85), [#86 (Store overlaps)](https://github.com/mergesort/Boutique/pull/86), and [#87 (fused clear after a partial write)](https://github.com/mergesort/Boutique/pull/87). Each is based on upstream main with standalone tests and no discovery dependency. Complex repairs remain design work rather than included production patches.

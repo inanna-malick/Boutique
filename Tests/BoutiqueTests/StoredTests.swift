@@ -279,11 +279,13 @@ struct StoredTests {
 
     @Test("Test the ability to observe an AsyncStream of Stored.events by inserting one value at a time", .timeLimit(.minutes(1)))
     func testAsyncStreamByInsertingSingleItems() async throws {
+        let events = $items.events
         let populateStoreTask = Task {
             var accumulatedValues: [BoutiqueItem] = []
 
-            for await event in $items.events {
+            for await event in events {
                 try $items.validateStoreEvent(event: event)
+                guard event.operation == .insert else { continue }
 
                 accumulatedValues += event.items
 
@@ -313,11 +315,13 @@ struct StoredTests {
 
     @Test("Test the ability to observe an AsyncStream of Stored.values by inserting an array of values", .timeLimit(.minutes(1)))
     func testAsyncStreamByInsertingMultipleItems() async throws {
+        let events = $items.events
         let populateStoreTask = Task {
             var accumulatedValues: [BoutiqueItem] = []
 
-            for await event in $items.events {
+            for await event in events {
                 try $items.validateStoreEvent(event: event)
+                guard event.operation == .insert else { continue }
 
                 accumulatedValues.append(contentsOf: event.items)
 

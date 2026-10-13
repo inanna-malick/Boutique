@@ -285,7 +285,9 @@ struct StoreDiscoveryInterleavingTests {
         var second: Task<Void, Error>?
         var scheduleInfeasible = false
         do {
-            try await storage.wait("first")
+            // Setup acknowledgement is separate from the requested overlap deadline.
+            // The first MainActor task may be delayed by other suites under load.
+            try await storage.wait("first", timeout: .seconds(30))
             if scenario.schedule.serialized {
                 await storage.releaseAll()
                 try await first.value
@@ -296,7 +298,7 @@ struct StoreDiscoveryInterleavingTests {
                 let secondCompletion = StoreDiscoveryCompletion()
                 let task = Task {
                     do {
-                        if forceSerializedSecond { try await firstCompletion.wait(timeout: .seconds(5)) }
+                        if forceSerializedSecond { try await first.value }
                         try await StoreInterleavingOwner.$name.withValue("second") { try await execute(scenario.second, store: store) }
                         await secondCompletion.finish(.success(()))
                     } catch {
