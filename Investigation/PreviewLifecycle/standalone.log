@@ -1,0 +1,33 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.49s)
+Test Suite 'Selected tests' started at 2026-10-12 23:07:22.050.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 23:07:22.051.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 23:07:22.051.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 23:07:22.051.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite StorePreviewLifecycleReproductionTests started.
+◇ Test suppliedFixturesSurviveLoading(overload:) started.
+◇ Test case passing 1 argument overload → "keypath" to suppliedFixturesSurviveLoading(overload:) started.
+✘ Test suppliedFixturesSurviveLoading(overload:) recorded an issue with 1 argument overload → "keypath" at StorePreviewLifecycleReproductionTests.swift:37:13: Expectation failed: (store.items → []) == (expected → [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $1058d7c10).StringItem(id: "fixture", payload: 7)])
+± removed [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $1058d7c10).StringItem(id: "fixture", payload: 7)]
+◇ Test case passing 1 argument overload → "identifiable" to suppliedFixturesSurviveLoading(overload:) started.
+✘ Test suppliedFixturesSurviveLoading(overload:) recorded an issue with 1 argument overload → "identifiable" at StorePreviewLifecycleReproductionTests.swift:37:13: Expectation failed: (store.items → []) == (expected → [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $1058d7c10).StringItem(id: "fixture", payload: 7)])
+± removed [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $1058d7c10).StringItem(id: "fixture", payload: 7)]
+◇ Test case passing 1 argument overload → "uuid" to suppliedFixturesSurviveLoading(overload:) started.
+✘ Test suppliedFixturesSurviveLoading(overload:) recorded an issue with 1 argument overload → "uuid" at StorePreviewLifecycleReproductionTests.swift:29:13: Expectation failed: (store.items → []) == (expected → [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $1058d7c54).UUIDItem(id: 00000000-0000-0000-0000-000000000001, payload: 7)])
+± removed [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $1058d7c54).UUIDItem(id: 00000000-0000-0000-0000-000000000001, payload: 7)]
+✘ Test suppliedFixturesSurviveLoading(overload:) with 3 test cases failed after 0.008 seconds with 3 issues.
+✘ Suite StorePreviewLifecycleReproductionTests failed after 0.008 seconds with 3 issues.
+↳ /// Standalone opt-in regression. run-owned.sh exclusively creates an absent
+↳ /// Foundation Previews directory and supplies a matching ownership marker.
+↳ /// Existing Preview data is never opened or cleaned by the runner.
+✘ Test run with 1 test in 1 suite failed after 0.008 seconds with 3 issues.
+OWNED PREVIEW artifacts: data.sqlite3, .boutique-preview-owner

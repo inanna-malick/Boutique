@@ -1,0 +1,25 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.37s)
+Test Suite 'Selected tests' started at 2026-10-12 23:07:37.606.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 23:07:37.607.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 23:07:37.607.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 23:07:37.607.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Preview Store lifecycle discovery" started.
+◇ Test loadedFixturesSearch(overload:) started.
+◇ Test case passing 1 argument overload → "keypath" to loadedFixturesSearch(overload:) started.
+✘ Test loadedFixturesSearch(overload:) recorded an issue with 1 argument overload → "keypath" at StorePreviewLifecycleDiscoveryTests.swift:84:6: Caught error: preview.loaded-fixtures at step 1: command=awaitLoaded, supplied=[BoutiqueTests.(unknown context at $1040b3a50).PreviewStringFixture(id: "fixture-0", payload: 0)], observed=[]
+✘ Test loadedFixturesSearch(overload:) with 1 test case failed after 0.008 seconds with 1 issue.
+✘ Suite "Preview Store lifecycle discovery" failed after 0.008 seconds with 1 issue.
+↳ /// Construction, read-only suspension, and explicit loading must preserve the
+↳ /// supplied Array model. No Store mutations or persistence writes are generated.
+✘ Test run with 1 test in 1 suite failed after 0.008 seconds with 1 issue.
+OWNED PREVIEW artifacts: data.sqlite3, .boutique-preview-owner

@@ -1,0 +1,79 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/5] Write sources
+[3/5] Write swift-version-6FAF900280F264CA.txt
+[5/7] Compiling BoutiqueTests StorePreviewLifecycleDiscoveryTests.swift
+[6/7] Emitting module BoutiqueTests
+[6/8] Write Objects.LinkFileList
+[7/8] Linking BoutiquePackageTests
+Build complete! (8.79s)
+Test Suite 'Selected tests' started at 2026-10-12 23:06:02.126.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 23:06:02.127.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 23:06:02.127.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 23:06:02.127.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Preview Store lifecycle discovery" started.
+◇ Suite StorePreviewLifecycleReproductionTests started.
+◇ Test suppliedFixturesSurviveLoading(overload:) started.
+◇ Test immediateConstructionControls(overload:) started.
+◇ Test case passing 1 argument overload → "keypath" to suppliedFixturesSurviveLoading(overload:) started.
+◇ Test case passing 1 argument overload → "keypath" to immediateConstructionControls(overload:) started.
+✘ Test suppliedFixturesSurviveLoading(overload:) recorded an issue with 1 argument overload → "keypath" at StorePreviewLifecycleReproductionTests.swift:37:13: Expectation failed: (store.items → []) == (expected → [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $101c53c10).StringItem(id: "fixture", payload: 7)])
+± removed [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $101c53c10).StringItem(id: "fixture", payload: 7)]
+◇ Test case passing 1 argument overload → "identifiable" to suppliedFixturesSurviveLoading(overload:) started.
+✘ Test suppliedFixturesSurviveLoading(overload:) recorded an issue with 1 argument overload → "identifiable" at StorePreviewLifecycleReproductionTests.swift:37:13: Expectation failed: (store.items → []) == (expected → [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $101c53c10).StringItem(id: "fixture", payload: 7)])
+± removed [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $101c53c10).StringItem(id: "fixture", payload: 7)]
+◇ Test case passing 1 argument overload → "uuid" to suppliedFixturesSurviveLoading(overload:) started.
+✘ Test suppliedFixturesSurviveLoading(overload:) recorded an issue with 1 argument overload → "uuid" at StorePreviewLifecycleReproductionTests.swift:29:13: Expectation failed: (store.items → []) == (expected → [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $101c53c54).UUIDItem(id: 00000000-0000-0000-0000-000000000001, payload: 7)])
+± removed [BoutiqueTests.StorePreviewLifecycleReproductionTests.(unknown context at $101c53c54).UUIDItem(id: 00000000-0000-0000-0000-000000000001, payload: 7)]
+✘ Test suppliedFixturesSurviveLoading(overload:) with 3 test cases failed after 0.011 seconds with 3 issues.
+✘ Suite StorePreviewLifecycleReproductionTests failed after 0.011 seconds with 3 issues.
+↳ /// Opt-in standalone witness: an isolated Foundation temporary directory is required before
+↳ /// any preview call. This host ignores TMPDIR, so the guard fails without calling
+↳ /// previewStore. No shared Preview database is opened or cleaned up.
+PROPERTY preview-immediate-keypath: successful generated histories=1000, total attempts including shrinking=1000; fixtures=6538
+◇ Test case passing 1 argument overload → "identifiable" to immediateConstructionControls(overload:) started.
+PROPERTY preview-immediate-identifiable: successful generated histories=1000, total attempts including shrinking=1000; fixtures=6531
+◇ Test case passing 1 argument overload → "uuid" to immediateConstructionControls(overload:) started.
+PROPERTY preview-immediate-uuid: successful generated histories=1000, total attempts including shrinking=1000; fixtures=6519
+✔ Test immediateConstructionControls(overload:) with 3 test cases passed after 0.780 seconds.
+◇ Test loadedFixturesSearch(overload:) started.
+◇ Test case passing 1 argument overload → "keypath" to loadedFixturesSearch(overload:) started.
+✘ Test loadedFixturesSearch(overload:) recorded an issue with 1 argument overload → "keypath" at DiscoveryProperty.swift:119:29: Issue recorded
+↳ preview.loaded-fixtures at step 1: command=awaitLoaded, supplied=[BoutiqueTests.(unknown context at $101c53a50).PreviewStringFixture(id: "fixture-0", payload: 0)], observed=[]
+✘ Test loadedFixturesSearch(overload:) recorded an issue with 1 argument overload → "keypath" at DiscoveryProperty.swift:87:28: Issue recorded
+↳ Failure occured with input PreviewScenario(payloads: [0], commands: []).
+  (shrunk down from PreviewScenario(payloads: [-84, -24, -72, 89, -60, -55, -53, 63, 87], commands: [BoutiqueTests.(unknown context at $101c53ae4).PreviewCommand.awaitLoaded, BoutiqueTests.(unknown context at $101c53ae4).PreviewCommand.inspect, BoutiqueTests.(unknown context at $101c53ae4).PreviewCommand.awaitLoaded, BoutiqueTests.(unknown context at $101c53ae4).PreviewCommand.inspect]) after 13 iterations)
+  
+  Add `.fixedSeed("2rocqy2yzuhWtOKWoi6FrjcPUyjrUJXBqle4r5evaTw=")` to the Test to reproduce this issue.
+PROPERTY preview-loaded-keypath: successful generated histories=0, total attempts including shrinking=15; 
+◇ Test case passing 1 argument overload → "identifiable" to loadedFixturesSearch(overload:) started.
+✘ Test loadedFixturesSearch(overload:) recorded an issue with 1 argument overload → "identifiable" at DiscoveryProperty.swift:119:29: Issue recorded
+↳ preview.loaded-fixtures at step 1: command=awaitLoaded, supplied=[BoutiqueTests.(unknown context at $101c53a50).PreviewStringFixture(id: "fixture-0", payload: 0)], observed=[]
+✘ Test loadedFixturesSearch(overload:) recorded an issue with 1 argument overload → "identifiable" at DiscoveryProperty.swift:87:28: Issue recorded
+↳ Failure occured with input PreviewScenario(payloads: [0], commands: []).
+  (shrunk down from PreviewScenario(payloads: [19, 54], commands: []) after 2 iterations)
+  
+  Add `.fixedSeed("mius/xfpQ2oXLI1p5a1n6qGBexCuKyi/8vEfX1jHxfc=")` to the Test to reproduce this issue.
+PROPERTY preview-loaded-identifiable: successful generated histories=0, total attempts including shrinking=4; 
+◇ Test case passing 1 argument overload → "uuid" to loadedFixturesSearch(overload:) started.
+✘ Test loadedFixturesSearch(overload:) recorded an issue with 1 argument overload → "uuid" at DiscoveryProperty.swift:119:29: Issue recorded
+↳ preview.loaded-fixtures at step 1: command=awaitLoaded, supplied=[BoutiqueTests.(unknown context at $101c53a94).PreviewUUIDFixture(id: 00000000-0000-0000-0000-000000000001, payload: 0)], observed=[]
+✘ Test loadedFixturesSearch(overload:) recorded an issue with 1 argument overload → "uuid" at DiscoveryProperty.swift:87:28: Issue recorded
+↳ Failure occured with input PreviewScenario(payloads: [0], commands: []).
+  (shrunk down from PreviewScenario(payloads: [63, -78, -77, -29, -20], commands: [BoutiqueTests.(unknown context at $101c53ae4).PreviewCommand.yield, BoutiqueTests.(unknown context at $101c53ae4).PreviewCommand.inspect, BoutiqueTests.(unknown context at $101c53ae4).PreviewCommand.inspect, BoutiqueTests.(unknown context at $101c53ae4).PreviewCommand.yield, BoutiqueTests.(unknown context at $101c53ae4).PreviewCommand.awaitLoaded]) after 10 iterations)
+  
+  Add `.fixedSeed("2Va8/Uay/f3LJxxOZo9wI0x6qBq0k6j9/cWRIh21gKw=")` to the Test to reproduce this issue.
+PROPERTY preview-loaded-uuid: successful generated histories=0, total attempts including shrinking=12; 
+✘ Test loadedFixturesSearch(overload:) with 3 test cases failed after 0.018 seconds with 6 issues.
+✘ Suite "Preview Store lifecycle discovery" failed after 0.799 seconds with 6 issues.
+↳ /// Construction, read-only suspension, and explicit loading must preserve the
+↳ /// supplied Array model. No Store mutations or persistence writes are generated.
+✘ Test run with 3 tests in 2 suites failed after 0.799 seconds with 9 issues.
+OWNED PREVIEW artifacts: data.sqlite3, .boutique-preview-owner

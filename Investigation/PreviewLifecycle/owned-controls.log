@@ -1,0 +1,36 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/5] Write sources
+[3/5] Write swift-version-6FAF900280F264CA.txt
+[5/7] Emitting module BoutiqueTests
+[6/7] Compiling BoutiqueTests StorePreviewLifecycleDiscoveryTests.swift
+[7/8] Compiling BoutiqueTests StorePreviewLifecycleReproductionTests.swift
+[7/9] Write Objects.LinkFileList
+[8/9] Linking BoutiquePackageTests
+Build complete! (9.27s)
+Test Suite 'Selected tests' started at 2026-10-12 23:06:51.225.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 23:06:51.226.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 23:06:51.226.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 23:06:51.226.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+➜ Suite StorePreviewLifecycleReproductionTests skipped.
+◇ Suite "Preview Store lifecycle discovery" started.
+➜ Test suppliedFixturesSurviveLoading(overload:) skipped.
+◇ Test immediateConstructionControls(overload:) started.
+◇ Test case passing 1 argument overload → "keypath" to immediateConstructionControls(overload:) started.
+PROPERTY preview-immediate-keypath: successful generated histories=1000, total attempts including shrinking=1000; fixtures=6582
+◇ Test case passing 1 argument overload → "identifiable" to immediateConstructionControls(overload:) started.
+PROPERTY preview-immediate-identifiable: successful generated histories=1000, total attempts including shrinking=1000; fixtures=6672
+◇ Test case passing 1 argument overload → "uuid" to immediateConstructionControls(overload:) started.
+PROPERTY preview-immediate-uuid: successful generated histories=1000, total attempts including shrinking=1000; fixtures=6529
+✔ Test immediateConstructionControls(overload:) with 3 test cases passed after 0.759 seconds.
+➜ Test loadedFixturesSearch(overload:) skipped.
+✔ Suite "Preview Store lifecycle discovery" passed after 0.759 seconds.
+✔ Test run with 3 tests in 2 suites passed after 0.759 seconds.
+OWNED PREVIEW artifacts: data.sqlite3, .boutique-preview-owner

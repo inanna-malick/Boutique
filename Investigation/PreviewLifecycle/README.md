@@ -1,36 +1,52 @@
-# Unresolved lead: preview fixtures after asynchronous loading
+# Confirmed: preview loading discards supplied fixtures
 
-**No defect was confirmed in a running preview Store.** Safe isolation failed before any preview API call, so this investigation stopped. The candidate harnesses are retained here outside the default test target. Prevented attempts are not passing tests, generated histories, or coverage evidence. No production file was changed, and the shared `Previews` directory was neither opened through the API, written, nor cleaned up.
+On unchanged production at `ced150e9`, each original overload returns the supplied nonempty fixture Array immediately, then replaces it with `[]` when its ordinary asynchronous storage load completes. The standalone witness confirms keypath, Identifiable String, and Identifiable UUID paths. This is one new correctness defect, separate from concurrent mutation races: construction and one explicit loading wait suffice, with no user mutation or competing Store.
 
-## Source evidence
+The API documentation promises preview items held only in memory. The invariant here is preservation of supplied preview fixtures across read-only lifecycle operations. It does not assume persistence ordering, automatic cross-Store refresh, or observation invalidation counts.
 
-At the tested base revision `b7afaed`, `Sources/Boutique/Store.swift` has this sequence:
+## Generated histories and independent oracle
 
-- Lines 100–107: synchronous initialization starts the lazy `loadStoreTask`.
-- Lines 278–289: that task awaits storage reads, assigns decoded values to `items`, then sends `.loaded`.
-- Lines 305–313: `previewStore(items:cacheIdentifier:)` initializes an ordinary Store with `SQLiteStorageEngine(directory: .temporary(appendingPath: "Previews"))`, then assigns supplied `items`.
-- Lines 329–347: Identifiable String and UUID overloads delegate to that keypath path.
+`Tests/BoutiqueTests/StorePreviewLifecycleDiscoveryTests.swift` generates 1–12 independently authored fixtures, arbitrary integer payloads, and 0–12 read-only operations (`inspect`, `yield`, `awaitLoaded`). Every history ends with a required `awaitLoaded`, so arbitrary prefix shrinking cannot remove the triggering lifecycle boundary. The independent Array model retains the supplied identities, payloads, and order; read-only operations leave it unchanged. Fixtures have distinct deterministic String or UUID identities. Each task is drained before its attempt exits, including failing attempts.
 
-This suggests the later load task can replace supplied preview fixtures with backing-store contents. It is an inference from source, not a demonstrated fixture-loss counterexample. The API documentation promises supplied preview items and says it only holds items in memory. Bodega 2.1.3's SQLite initializer creates the directory and schema, so merely constructing the API can write to its chosen directory. The inline “No files are written to disk” comment is not an adequate isolation guarantee.
+All three immediate-construction controls completed 1,000 cases each in `owned-controls.log`. They assert before suspension, then drain loading without checking the known failure. These are 3,000 construction controls, not 3,000 passing full lifecycle histories. The opt-in searches stop at their first failure and executed **zero successful histories**, with 15, 4, and 12 total attempts including shrinking for keypath, String, and UUID respectively. `owned-findings.log` retains native seeds and original/reduced inputs; three versioned JSON artifacts retain the independent concrete scenarios.
 
-## Isolation failure
+Each generated failure reduced to `payloads: [0], commands: []`, interpreted as construction with one item followed by the required loading wait. All report `preview.loaded-fixtures` at step 1, observed `[]`. `replay-keypath.log` independently replays the concrete keypath JSON and fails that exact invariant. `standalone.log` shows all three deterministic overload witnesses failing after loading; their immediate assertions pass. The standalone test uses only Foundation, Testing, and Boutique, without PropertyBased or shared discovery helpers.
 
-Candidate tests require `BOUTIQUE_PREVIEW_TEMP_ROOT` and verify `URL.temporaryDirectory` exactly equals the uniquely owned subprocess root before calling `previewStore`. The default target no longer contains these candidates. No environment mutation is attempted inside a test.
+## Guarded host experiment
 
-A fresh subprocess with `TMPDIR` set to `/private/tmp/BoutiquePreviewInvestigation.*` still resolves `URL.temporaryDirectory` and `NSTemporaryDirectory()` to the host's ordinary `/var/folders/7h/_kjv3v7x1p1dk9p_n_jrmgw00000gn/T` directory. `isolation-check.log` retains the exact guard failures. `foundation-isolation.log` proves the same behavior using a plain `swift -e` process, outside SwiftPM: the environment contains the isolated TMPDIR, while both Foundation APIs return the host directory. Thus this is not solely SwiftPM environment sanitization. Direct execution of the built `.xctest` bundle's Mach-O image failed with `exec format error`; it is a bundle rather than a standalone executable.
+Prior attempts stopped before any preview call because Foundation ignored subprocess `TMPDIR`; `foundation-isolation.log`, `isolation-check.log`, and diagnostic `run.sh` retain that history. This was an isolation-method failure, not a fundamental blocker.
 
-`run.sh` is now **diagnostic only**. It creates one uniquely owned root, launches a Foundation-only subprocess, prints these paths, then deletes only that root. It never calls Boutique or opens a Preview database:
+Before the new experiment, the actual Foundation path `/var/folders/7h/_kjv3v7x1p1dk9p_n_jrmgw00000gn/T/Previews` was inspected and absent. `run-owned.sh` queries Foundation in a subprocess and exclusively creates that directory with `mkdir` without `-p`. Any existing directory, file, or symlink causes an immediate stop before a Boutique preview call. Tests verify the actual path and randomly generated ownership marker before construction. Cleanup occurs after the test process exits and accepts only the marker and known SQLite filenames, refusing changed ownership, unexpected artifacts, and symlinks. It does not remove preexisting data or recursively remove directories. This is bounded exclusive ownership, not an OS sandbox against unrelated concurrent applications.
+
+The original production preview constructor creates `data.sqlite3`; every run logs that artifact, then cleans it and the marker. This supports the same ordinary-persistence initialization mechanism and contradicts the source comment “No files are written to disk”; it is not counted as another bug. The generated operations do not insert, remove, or otherwise persist fixture records. No production source, host configuration, or interposition was changed.
+
+## Reproduce
+
+On a supported compiler, the runner defaults to `swift`. On this host set `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer` and `BOUTIQUE_SWIFT` to the documented Swift 6.2.4 executable before these commands.
 
 ```sh
-Investigation/PreviewLifecycle/run.sh
+# 3,000 immediate construction controls pass; loaded findings skip.
+Investigation/PreviewLifecycle/run-owned.sh
+
+# Intentionally failing generated searches and deterministic witnesses.
+BOUTIQUE_PREVIEW_FINDINGS=1 Investigation/PreviewLifecycle/run-owned.sh
+
+# Standalone deterministic test only: three expected fixture-loss failures.
+BOUTIQUE_PREVIEW_FINDINGS=1 \
+BOUTIQUE_PREVIEW_TEST_FILTER=StorePreviewLifecycleReproductionTests \
+  Investigation/PreviewLifecycle/run-owned.sh
+
+# One concrete replay, independent of random generation.
+BOUTIQUE_PREVIEW_FINDINGS=1 BOUTIQUE_PREVIEW_OVERLOAD=keypath \
+BOUTIQUE_PREVIEW_TEST_FILTER=StorePreviewLifecycleDiscoveryTests/loadedFixturesSearch \
+BOUTIQUE_PROPERTY_REPLAY=Investigation/PreviewLifecycle/preview-loaded-keypath.json \
+  Investigation/PreviewLifecycle/run-owned.sh
 ```
 
-No invasive interposition, global-state cleanup, production change, or shared-directory access is retained or required. The diagnostic uses this host's documented Swift 6.2.4 toolchain and Xcode SDK; other hosts should substitute their supported compiler.
+The default test run skips both preview suites unless ownership setup is explicitly supplied. The runner directly calls `swift test` and has no `Scripts/property-tests.sh` dependency: a focused upstream reproduction needs only the standalone test in `Tests/BoutiqueTests` and this runner at `Investigation/PreviewLifecycle/run-owned.sh`. Set the standalone filter as above. The runner refuses existing preview data; if the guard stops, use a clean host/account rather than deleting that data.
 
-## Candidate harnesses and next step
+## Repair proposal and limits
 
-`StorePreviewLifecycleDiscoveryTests.swift` contains a proposed independent fixture Array oracle, generated nonempty value-type fixture arrays with distinct String identities and arbitrary integer payloads, immediate-construction checks, then one to three explicit `itemsHaveLoaded()` waits. Keypath and Identifiable String overloads have separate property names and a dedicated concrete keypath replay entrypoint. The intended immediate-control budget is 1,000 per overload; the intended finding budget is 100 per overload with first-failure shrinking. **Neither campaign ran past isolation.** Observation notification counts are characterization only; equal-value invalidation is unspecified.
+The keypath preview implementation initializes an ordinary Store (which starts its lazy loading task), then assigns fixtures. The eventual task replaces `items` with decoded storage values. String and UUID overloads delegate to this path. A minimal semantic repair should provide an initially loaded preview path backed by genuine in-memory storage, avoiding ordinary persistence loading over the supplied items. Merely assigning fixtures later, canceling an unstructured task, or persisting fixtures into the shared database introduces lifecycle or cross-preview behavior that needs design review.
 
-`StorePreviewLifecycleReproductionTests.swift` is a minimal candidate without PropertyBased or shared discovery helpers. It covers keypath, Identifiable String, and Identifiable UUID overloads. All API calls remain behind the same isolation guard. These candidates compiled successfully before being moved outside the default target, but have not demonstrated their proposed invariant against a running preview instance.
-
-A future investigator needs a supported isolated process environment in which Foundation's temporary directory points to an owned location, or an explicit authorized way to exercise the existing preview directory. Do not bypass the guard just to obtain a failure. If fixture loss is confirmed, a likely repair is a genuine in-memory preview initialization path that never starts ordinary persistence loading; this remains a proposal. No preview PR is warranted from the present evidence.
+This lane includes failing repros only. No production fix, public PR, or push was made. Nonempty fresh-directory fixture preservation is confirmed; shared persisted preview contamination, mutations within previews, equal-value observation notifications, and the repair design remain outside these assertions.

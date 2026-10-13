@@ -1,0 +1,21 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.48s)
+Test Suite 'Selected tests' started at 2026-10-12 23:09:07.104.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 23:09:07.105.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 23:09:07.105.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 23:09:07.105.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+➜ Suite "Preview Store lifecycle discovery" skipped.
+➜ Suite StorePreviewLifecycleReproductionTests skipped.
+➜ Test loadedFixturesSearch(overload:) skipped.
+➜ Test immediateConstructionControls(overload:) skipped.
+➜ Test suppliedFixturesSurviveLoading(overload:) skipped.
+✔ Test run with 3 tests in 2 suites passed after 0.001 seconds.

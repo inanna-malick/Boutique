@@ -2,11 +2,11 @@ import Foundation
 import Testing
 @testable import Boutique
 
-/// Opt-in scaffold: an isolated Foundation temporary directory is required before
-/// any preview call. This host ignores TMPDIR, so the guard fails without calling
-/// previewStore. No shared Preview database is opened or cleaned up.
+/// Standalone opt-in regression. run-owned.sh exclusively creates an absent
+/// Foundation Previews directory and supplies a matching ownership marker.
+/// Existing Preview data is never opened or cleaned by the runner.
 @MainActor
-@Suite(.serialized, .enabled(if: ProcessInfo.processInfo.environment["BOUTIQUE_PREVIEW_FINDINGS"] == "1" && ProcessInfo.processInfo.environment["BOUTIQUE_PREVIEW_TEMP_ROOT"] != nil))
+@Suite(.serialized, .enabled(if: ProcessInfo.processInfo.environment["BOUTIQUE_PREVIEW_FINDINGS"] == "1" && ProcessInfo.processInfo.environment["BOUTIQUE_PREVIEW_OWNED_DIRECTORY"] != nil))
 struct StorePreviewLifecycleReproductionTests {
     private struct StringItem: Codable, Sendable, Equatable, Identifiable {
         var id: String
@@ -18,10 +18,9 @@ struct StorePreviewLifecycleReproductionTests {
     }
     @Test(arguments: ["keypath", "identifiable", "uuid"])
     func suppliedFixturesSurviveLoading(overload: String) async throws {
-        let root = try #require(ProcessInfo.processInfo.environment["BOUTIQUE_PREVIEW_TEMP_ROOT"])
-        try #require(root.contains("BoutiquePreviewInvestigation."))
-        try #require(URL.temporaryDirectory.standardizedFileURL.path == URL(fileURLWithPath: root).standardizedFileURL.path,
-                     "Isolation unavailable: do not construct a preview in the shared temporary directory")
+        let root = try #require(ProcessInfo.processInfo.environment["BOUTIQUE_PREVIEW_OWNED_DIRECTORY"])
+        try #require(URL.temporaryDirectory.appendingPathComponent("Previews").standardizedFileURL.path == URL(fileURLWithPath: root).standardizedFileURL.path)
+        try #require(try String(contentsOf: URL(fileURLWithPath: root).appendingPathComponent(".boutique-preview-owner"), encoding: .utf8) == ProcessInfo.processInfo.environment["BOUTIQUE_PREVIEW_OWNER_TOKEN"])
         if overload == "uuid" {
             let expected = [UUIDItem(id: UUID(uuidString: "00000000-0000-0000-0000-000000000001")!, payload: 7)]
             let store = Store<UUIDItem>.previewStore(items: expected)

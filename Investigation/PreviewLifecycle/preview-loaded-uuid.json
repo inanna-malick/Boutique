@@ -1,0 +1,34 @@
+{
+  "failure" : {
+    "detail" : "command=awaitLoaded, supplied=[BoutiqueTests.(unknown context at $101c53a94).PreviewUUIDFixture(id: 00000000-0000-0000-0000-000000000001, payload: 0)], observed=[]",
+    "invariant" : "preview.loaded-fixtures",
+    "step" : 1
+  },
+  "original" : {
+    "commands" : [
+      "yield",
+      "inspect",
+      "inspect",
+      "yield",
+      "awaitLoaded"
+    ],
+    "payloads" : [
+      63,
+      -78,
+      -77,
+      -29,
+      -20
+    ]
+  },
+  "reduced" : {
+    "commands" : [
+
+    ],
+    "payloads" : [
+      0
+    ]
+  },
+  "revision" : "ced150e90a76f088b258051c7974c6c863a79bd3-dirty",
+  "suite" : "preview-loaded-uuid",
+  "version" : 1
+}

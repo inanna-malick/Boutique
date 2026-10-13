@@ -1,0 +1,37 @@
+{
+  "failure" : {
+    "detail" : "command=awaitLoaded, supplied=[BoutiqueTests.(unknown context at $101c53a50).PreviewStringFixture(id: \"fixture-0\", payload: 0)], observed=[]",
+    "invariant" : "preview.loaded-fixtures",
+    "step" : 1
+  },
+  "original" : {
+    "commands" : [
+      "awaitLoaded",
+      "inspect",
+      "awaitLoaded",
+      "inspect"
+    ],
+    "payloads" : [
+      -84,
+      -24,
+      -72,
+      89,
+      -60,
+      -55,
+      -53,
+      63,
+      87
+    ]
+  },
+  "reduced" : {
+    "commands" : [
+
+    ],
+    "payloads" : [
+      0
+    ]
+  },
+  "revision" : "ced150e90a76f088b258051c7974c6c863a79bd3-dirty",
+  "suite" : "preview-loaded-keypath",
+  "version" : 1
+}
