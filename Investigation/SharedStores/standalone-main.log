@@ -1,0 +1,182 @@
+Fetching https://github.com/apple/swift-collections from cache
+Fetching https://github.com/apple/swift-docc-plugin from cache
+Fetching https://github.com/mergesort/Bodega.git from cache
+Fetching https://github.com/stephencelis/SQLite.swift.git from cache
+Fetched https://github.com/apple/swift-docc-plugin from cache (0.48s)
+Fetched https://github.com/apple/swift-collections from cache (0.48s)
+Fetched https://github.com/stephencelis/SQLite.swift.git from cache (0.61s)
+Fetched https://github.com/mergesort/Bodega.git from cache (0.61s)
+Computing version for https://github.com/apple/swift-docc-plugin
+Computed https://github.com/apple/swift-docc-plugin at 1.0.0 (1.10s)
+Computing version for https://github.com/apple/swift-collections
+Computed https://github.com/apple/swift-collections at 1.0.4 (0.48s)
+Computing version for https://github.com/mergesort/Bodega.git
+Computed https://github.com/mergesort/Bodega.git at 2.1.3 (0.46s)
+Computing version for https://github.com/stephencelis/SQLite.swift.git
+Computed https://github.com/stephencelis/SQLite.swift.git at 0.13.3 (0.46s)
+Creating working copy for https://github.com/apple/swift-docc-plugin
+Working copy of https://github.com/apple/swift-docc-plugin resolved at 1.0.0
+Creating working copy for https://github.com/mergesort/Bodega.git
+Working copy of https://github.com/mergesort/Bodega.git resolved at 2.1.3
+Creating working copy for https://github.com/stephencelis/SQLite.swift.git
+Working copy of https://github.com/stephencelis/SQLite.swift.git resolved at 0.13.3
+Creating working copy for https://github.com/apple/swift-collections
+Working copy of https://github.com/apple/swift-collections resolved at 1.0.4
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/13] /Users/inannamalick/dev/botique-proptest/worktrees/repro-partial-clear/.build/arm64-apple-macosx/debug/BoutiquePackageTests.derived/runner.swift
+[3/13] Write swift-version-6FAF900280F264CA.txt
+[4/13] Write sources
+[8/39] Emitting module OrderedCollections
+[8/64] Compiling SQLiteObjc SQLiteObjc.m
+[9/64] Write sources
+[13/78] Compiling SQLite Backup.swift
+[14/78] Compiling SQLite Blob.swift
+[15/78] Compiling SQLite Connection+Aggregation.swift
+[16/78] Compiling SQLite Connection.swift
+[17/78] Compiling SQLite Errors.swift
+[18/78] Compiling SQLite Result.swift
+[19/78] Compiling SQLite Statement.swift
+[20/78] Compiling SQLite Value.swift
+[21/78] Compiling SQLite Cipher.swift
+[22/78] Compiling SQLite FTS4.swift
+[23/78] Compiling SQLite FTS5.swift
+[24/78] Compiling SQLite RTree.swift
+[25/78] Compiling SQLite Foundation.swift
+[26/78] Compiling OrderedCollections OrderedDictionary+Elements+SubSequence.swift
+[27/78] Compiling OrderedCollections OrderedDictionary+Elements.swift
+[28/78] Compiling OrderedCollections OrderedDictionary+Equatable.swift
+[29/78] Compiling OrderedCollections OrderedDictionary+ExpressibleByDictionaryLiteral.swift
+[30/78] Compiling OrderedCollections OrderedDictionary+Hashable.swift
+[31/78] Compiling OrderedCollections OrderedDictionary+Initializers.swift
+[32/78] Compiling OrderedCollections OrderedDictionary+Invariants.swift
+[33/78] Compiling OrderedCollections OrderedDictionary+Partial MutableCollection.swift
+[34/78] Compiling OrderedCollections OrderedDictionary+Partial RangeReplaceableCollection.swift
+[35/78] Compiling OrderedCollections OrderedDictionary+Sequence.swift
+[36/78] Compiling OrderedCollections OrderedDictionary+Values.swift
+[37/78] Compiling OrderedCollections OrderedDictionary.swift
+[38/78] Compiling OrderedCollections OrderedSet+Codable.swift
+[39/78] Compiling OrderedCollections OrderedSet+CustomDebugStringConvertible.swift
+[40/78] Compiling OrderedCollections OrderedSet+CustomReflectable.swift
+[41/78] Compiling OrderedCollections OrderedSet+CustomStringConvertible.swift
+[42/78] Compiling OrderedCollections OrderedSet+Diffing.swift
+[43/78] Compiling OrderedCollections OrderedSet+Equatable.swift
+[44/78] Compiling OrderedCollections OrderedSet+ExpressibleByArrayLiteral.swift
+[45/78] Compiling OrderedCollections OrderedSet+Hashable.swift
+[46/78] Compiling OrderedCollections OrderedSet+Initializers.swift
+[47/78] Compiling OrderedCollections OrderedSet+Insertions.swift
+[48/78] Compiling OrderedCollections OrderedSet+Invariants.swift
+[49/78] Compiling OrderedCollections OrderedSet+Partial MutableCollection.swift
+[50/78] Compiling OrderedCollections OrderedSet+Partial RangeReplaceableCollection.swift
+[51/78] Compiling OrderedCollections OrderedSet+Partial SetAlgebra+Basics.swift
+[52/78] Compiling OrderedCollections OrderedSet+Partial SetAlgebra+Operations.swift
+[53/78] Compiling OrderedCollections OrderedSet+Partial SetAlgebra+Predicates.swift
+[54/78] Compiling OrderedCollections OrderedSet+RandomAccessCollection.swift
+[55/78] Compiling OrderedCollections OrderedSet+ReserveCapacity.swift
+[56/78] Compiling OrderedCollections OrderedSet+SubSequence.swift
+[57/78] Compiling OrderedCollections OrderedSet+Testing.swift
+[58/78] Compiling OrderedCollections OrderedSet+UnorderedView.swift
+[59/78] Compiling OrderedCollections OrderedSet+UnstableInternals.swift
+[60/78] Compiling OrderedCollections OrderedSet.swift
+[61/78] Compiling OrderedCollections RandomAccessCollection+Offsets.swift
+[62/78] Compiling OrderedCollections _UnsafeBitset.swift
+[76/78] Emitting module SQLite
+[77/90] Compiling SQLite Helpers.swift
+[78/90] Compiling SQLite AggregateFunctions.swift
+[79/90] Compiling SQLite Coding.swift
+[80/90] Compiling SQLite Collation.swift
+[81/90] Compiling SQLite CoreFunctions.swift
+[82/90] Compiling SQLite CustomFunctions.swift
+[83/90] Compiling SQLite DateAndTimeFunctions.swift
+[84/90] Compiling SQLite Expression.swift
+[85/90] Compiling SQLite Operators.swift
+[86/90] Compiling SQLite Query.swift
+[87/90] Compiling SQLite Schema.swift
+[88/90] Compiling SQLite Setter.swift
+[89/95] Emitting module Bodega
+[90/95] Compiling Bodega CacheKey.swift
+[91/95] Compiling Bodega DiskStorageEngine.swift
+[92/95] Compiling Bodega FileManager.Directory.swift
+[93/95] Compiling Bodega ObjectStorage.swift
+[94/99] Compiling Bodega SQLiteStorageEngine+Default.swift
+[95/99] Compiling Bodega SQLiteStorageEngine.swift
+[96/99] Compiling Bodega StorageEngine.swift
+[97/99] Compiling Bodega String+Formatting.swift
+[98/110] Compiling Boutique AsyncValueSubject.swift
+[99/110] Compiling Boutique BoxedValue.swift
+[100/110] Compiling Boutique CachedValue.swift
+[101/110] Compiling Boutique JSONCoders.swift
+[102/110] Compiling Boutique Keychain.swift
+[103/110] Compiling Boutique Store.ItemRemovalStrategy.swift
+[104/110] Compiling Boutique SecurelyStoredValue.swift
+[105/110] Compiling Boutique StorableItem.swift
+[106/110] Compiling Boutique Store+Identifiable.swift
+[107/110] Compiling Boutique Store+Observation.swift
+[108/110] Emitting module Boutique
+[109/120] Compiling Boutique Store.Operation.swift
+[110/120] Compiling Boutique Store.swift
+[111/120] Compiling Boutique StoreEvent.swift
+[112/120] Compiling Boutique Stored.swift
+[113/120] Compiling Boutique StoredValue+Array.swift
+[114/120] Compiling Boutique StoredValue+Binding.swift
+[115/120] Compiling Boutique StoredValue+Bool.swift
+[116/120] Compiling Boutique StoredValue+Dictionary.swift
+[117/120] Compiling Boutique StoredValue+KeypathSetter.swift
+[118/120] Compiling Boutique StoredValue.swift
+[119/126] Emitting module BoutiqueTests
+[120/131] Compiling BoutiqueTests AsyncStoreTests.swift
+[121/131] Compiling BoutiqueTests BoutiqueItem.swift
+[122/131] Compiling BoutiqueTests KeychainService.Tests.swift
+[123/131] Compiling BoutiqueTests SecurelyStoredValueTests.swift
+[124/131] Compiling BoutiqueTests StoreEvent.Tests.Requirements.swift
+[125/131] Compiling BoutiqueTests StorePartialFailureClearReproductionTests.swift
+[126/131] Compiling BoutiqueTests StoreSharedClearReproductionTests.swift
+[127/131] Compiling BoutiqueTests StoreTests.swift
+[128/131] Compiling BoutiqueTests StoredTests.swift
+[129/131] Compiling BoutiqueTests StoredValueTests.swift
+[130/133] Compiling BoutiquePackageTests runner.swift
+[131/133] Emitting module BoutiquePackageTests
+[131/133] Write Objects.LinkFileList
+[132/133] Linking BoutiquePackageTests
+Build complete! (69.64s)
+Test Suite 'Selected tests' started at 2026-10-12 22:46:13.483.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 22:46:13.484.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 22:46:13.484.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:46:13.484.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.002) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Shared storage clear standalone reproduction" started.
+◇ Test fusedClearRemovesOtherStoresRecord(backend:batch:) started.
+◇ Test directClearRemovesOtherStoresRecord(backend:batch:) started.
+◇ Test case passing 2 arguments backend → "sqlite", batch → false to fusedClearRemovesOtherStoresRecord(backend:batch:) started.
+◇ Test case passing 2 arguments backend → "disk", batch → true to fusedClearRemovesOtherStoresRecord(backend:batch:) started.
+◇ Test case passing 2 arguments backend → "sqlite", batch → true to fusedClearRemovesOtherStoresRecord(backend:batch:) started.
+◇ Test case passing 2 arguments backend → "disk", batch → false to fusedClearRemovesOtherStoresRecord(backend:batch:) started.
+◇ Test case passing 2 arguments backend → "disk", batch → true to directClearRemovesOtherStoresRecord(backend:batch:) started.
+◇ Test case passing 2 arguments backend → "disk", batch → false to directClearRemovesOtherStoresRecord(backend:batch:) started.
+◇ Test case passing 2 arguments backend → "sqlite", batch → false to directClearRemovesOtherStoresRecord(backend:batch:) started.
+◇ Test case passing 2 arguments backend → "sqlite", batch → true to directClearRemovesOtherStoresRecord(backend:batch:) started.
+✘ Test fusedClearRemovesOtherStoresRecord(backend:batch:) recorded an issue with 2 arguments backend → "sqlite", batch → true at StoreSharedClearReproductionTests.swift:47:9: Expectation failed: (persisted → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1), BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)]) == ([replacement] → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)])
+± inserted [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]
+✘ Test fusedClearRemovesOtherStoresRecord(backend:batch:) recorded an issue with 2 arguments backend → "sqlite", batch → false at StoreSharedClearReproductionTests.swift:47:9: Expectation failed: (persisted → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1), BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)]) == ([replacement] → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)])
+± inserted [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]
+✘ Test fusedClearRemovesOtherStoresRecord(backend:batch:) recorded an issue with 2 arguments backend → "disk", batch → false at StoreSharedClearReproductionTests.swift:47:9: Expectation failed: (persisted → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2), BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]) == ([replacement] → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)])
+± inserted [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]
+✘ Test fusedClearRemovesOtherStoresRecord(backend:batch:) recorded an issue with 2 arguments backend → "disk", batch → true at StoreSharedClearReproductionTests.swift:47:9: Expectation failed: (persisted → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2), BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]) == ([replacement] → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)])
+± inserted [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]
+✘ Test fusedClearRemovesOtherStoresRecord(backend:batch:) recorded an issue with 2 arguments backend → "sqlite", batch → true at StoreSharedClearReproductionTests.swift:49:9: Expectation failed: (reopened.items → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1), BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)]) == ([replacement] → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)])
+± inserted [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]
+✘ Test fusedClearRemovesOtherStoresRecord(backend:batch:) recorded an issue with 2 arguments backend → "disk", batch → false at StoreSharedClearReproductionTests.swift:49:9: Expectation failed: (reopened.items → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2), BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]) == ([replacement] → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)])
+± inserted [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]
+✘ Test fusedClearRemovesOtherStoresRecord(backend:batch:) recorded an issue with 2 arguments backend → "sqlite", batch → false at StoreSharedClearReproductionTests.swift:49:9: Expectation failed: (reopened.items → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1), BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)]) == ([replacement] → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)])
+± inserted [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]
+✔ Test directClearRemovesOtherStoresRecord(backend:batch:) with 4 test cases passed after 0.013 seconds.
+✘ Test fusedClearRemovesOtherStoresRecord(backend:batch:) recorded an issue with 2 arguments backend → "disk", batch → true at StoreSharedClearReproductionTests.swift:49:9: Expectation failed: (reopened.items → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2), BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]) == ([replacement] → [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "replacement", payload: 2)])
+± inserted [BoutiqueTests.(unknown context at $1053fbe60).SharedClearRecord(id: "original", payload: 1)]
+✘ Test fusedClearRemovesOtherStoresRecord(backend:batch:) with 4 test cases failed after 0.013 seconds with 8 issues.
+✘ Suite "Shared storage clear standalone reproduction" failed after 0.013 seconds with 8 issues.
+✘ Test run with 2 tests in 1 suite failed after 0.013 seconds with 8 issues.
