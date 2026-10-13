@@ -1,5 +1,5 @@
 {
-  "originHash" : "cc0a5555f8ada9d39eb7aa3ebf517983770c3fb59b40991749c3f025fce9ea00",
+  "originHash" : "a32320d41013e6066715a5ac154f4d5a88727940ce686921c43f7b4e7e636623",
   "pins" : [
     {
       "identity" : "bodega",
@@ -35,6 +35,15 @@
       "state" : {
         "revision" : "3303b164430d9a7055ba484c8ead67a52f7b74f6",
         "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "swift-property-based",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/x-sheep/swift-property-based.git",
+      "state" : {
+        "revision" : "7d405e77a7b729390ed1d9a66e1f80a707fd03c4",
+        "version" : "2.0.1"
       }
     }
   ],

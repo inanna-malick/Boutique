@@ -1,4 +1,4 @@
-// swift-tools-version: 5.10
+// swift-tools-version: 6.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -15,6 +15,7 @@ let package = Package(
             targets: ["Boutique"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/x-sheep/swift-property-based.git", exact: "2.0.1"),
         .package(url: "https://github.com/mergesort/Bodega.git", exact: Version(2, 1, 3)),
         .package(url: "https://github.com/apple/swift-collections", from: Version(1, 0, 3)),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: Version(1, 0, 0)),
@@ -40,7 +41,8 @@ let package = Package(
         ),
         .testTarget(
             name: "BoutiqueTests",
-            dependencies: ["Boutique"]
+            dependencies: ["Boutique", .product(name: "PropertyBased", package: "swift-property-based")]
         ),
-    ]
+    ],
+    swiftLanguageModes: [.v5]
 )
