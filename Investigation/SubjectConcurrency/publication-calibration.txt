@@ -1,0 +1,35 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/5] Write sources
+[3/5] Write swift-version-6FAF900280F264CA.txt
+[5/7] Compiling BoutiqueTests SubjectConcurrencyDiscoveryTests.swift
+[6/7] Emitting module BoutiqueTests
+[6/8] Write Objects.LinkFileList
+[7/8] Linking BoutiquePackageTests
+Build complete! (8.92s)
+Test Suite 'Selected tests' started at 2026-10-12 23:07:58.945.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 23:07:58.946.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 23:07:58.946.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 23:07:58.946.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Subject concurrency discovery" started.
+◇ Test publicationAndLifecycleWaves() started.
+✘ Test publicationAndLifecycleWaves() recorded an issue at DiscoveryProperty.swift:119:29: Issue recorded
+↳ subject.concurrent.membership at step 0: wave=2, observed=[2, 2, 3]
+✘ Test publicationAndLifecycleWaves() recorded an issue at DiscoveryProperty.swift:87:28: Issue recorded
+↳ Failure occured with input Scenario(widths: [2], incremental: false).
+  (shrunk down from Scenario(widths: [11, 10, 11, 6, 9, 12, 1, 3, 2, 12, 5], incremental: false) after 12 iterations)
+  
+  Add `.fixedSeed("DIHun4xkFPKAckiijnMsYB2IfGX6ignJCfidPrGsBxY=")` to the Test to reproduce this issue.
+PROPERTY subject-concurrency-waves: successful generated histories=0, total attempts including shrinking=17; 
+✘ Test publicationAndLifecycleWaves() failed after 0.009 seconds with 2 issues.
+✘ Suite "Subject concurrency discovery" failed after 0.009 seconds with 2 issues.
+↳ /// Waves impose real-time order only between completed groups. Within a wave,
+↳ /// each subscriber may observe its own permutation of the unique publications.
+✘ Test run with 1 test in 1 suite failed after 0.009 seconds with 2 issues.

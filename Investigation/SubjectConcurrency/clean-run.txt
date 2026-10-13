@@ -1,0 +1,30 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/5] Write sources
+[3/5] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.31s)
+Test Suite 'Selected tests' started at 2026-10-12 23:05:50.853.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 23:05:50.853.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 23:05:50.853.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 23:05:50.853.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Subject concurrency discovery" started.
+◇ Test publicationAndLifecycleWaves() started.
+PROPERTY subject-concurrency-waves: successful generated histories=1000, total attempts including shrinking=1000; subscriber.cancel-resubscribe=12676, wave.inout=3240, wave.send=3098, wave.workers=41352
+✔ Test publicationAndLifecycleWaves() passed after 1.581 seconds.
+◇ Test subscribeDuringConcurrentUpdates(width:) started.
+◇ Test case passing 1 argument width → 1 to subscribeDuringConcurrentUpdates(width:) started.
+◇ Test case passing 1 argument width → 2 to subscribeDuringConcurrentUpdates(width:) started.
+◇ Test case passing 1 argument width → 4 to subscribeDuringConcurrentUpdates(width:) started.
+◇ Test case passing 1 argument width → 8 to subscribeDuringConcurrentUpdates(width:) started.
+◇ Test case passing 1 argument width → 16 to subscribeDuringConcurrentUpdates(width:) started.
+◇ Test case passing 1 argument width → 32 to subscribeDuringConcurrentUpdates(width:) started.
+✔ Test subscribeDuringConcurrentUpdates(width:) with 6 test cases passed after 0.045 seconds.
+✔ Suite "Subject concurrency discovery" passed after 1.627 seconds.
+✔ Test run with 2 tests in 1 suite passed after 1.627 seconds.

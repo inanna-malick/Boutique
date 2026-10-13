@@ -1,0 +1,26 @@
+{
+  "failure" : {
+    "detail" : "wave=1, observed=[1, 2]",
+    "invariant" : "subject.concurrent.membership",
+    "step" : 0
+  },
+  "original" : {
+    "incremental" : false,
+    "widths" : [
+      3,
+      9,
+      7,
+      2,
+      12
+    ]
+  },
+  "reduced" : {
+    "incremental" : false,
+    "widths" : [
+      1
+    ]
+  },
+  "revision" : "ced150e90a76f088b258051c7974c6c863a79bd3-dirty",
+  "suite" : "subject-concurrency-waves",
+  "version" : 1
+}

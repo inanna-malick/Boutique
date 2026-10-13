@@ -1,0 +1,30 @@
+[0/1] Planning build
+[1/1] Compiling plugin Swift-DocC Preview
+[2/2] Compiling plugin Swift-DocC
+Building for debugging...
+[2/4] Write swift-version-6FAF900280F264CA.txt
+Build complete! (6.46s)
+Test Suite 'Selected tests' started at 2026-10-12 23:06:12.943.
+Test Suite 'BoutiquePackageTests.xctest' started at 2026-10-12 23:06:12.944.
+Test Suite 'BoutiquePackageTests.xctest' passed at 2026-10-12 23:06:12.944.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 23:06:12.944.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.2.4 (5ee435b15ad40ec)
+↳ Target Platform: arm64-apple-macosx
+◇ Suite "Subject concurrency discovery" started.
+◇ Test publicationAndLifecycleWaves() started.
+✘ Test publicationAndLifecycleWaves() recorded an issue at DiscoveryProperty.swift:119:29: Issue recorded
+↳ subject.concurrent.membership at step 0: wave=1, observed=[1, 2]
+✘ Test publicationAndLifecycleWaves() recorded an issue at DiscoveryProperty.swift:87:28: Issue recorded
+↳ Failure occured with input Scenario(widths: [1], incremental: false).
+  (shrunk down from Scenario(widths: [3, 9, 7, 2, 12], incremental: false) after 5 iterations)
+  
+  Add `.fixedSeed("R+r82rH25jGx+vBOHOVkudgY8DUJPsM30JUtQfmsWj0=")` to the Test to reproduce this issue.
+PROPERTY subject-concurrency-waves: successful generated histories=0, total attempts including shrinking=7; 
+✘ Test publicationAndLifecycleWaves() failed after 0.005 seconds with 2 issues.
+✘ Suite "Subject concurrency discovery" failed after 0.005 seconds with 2 issues.
+↳ /// Waves impose real-time order only between completed groups. Within a wave,
+↳ /// each subscriber may observe its own permutation of the unique publications.
+✘ Test run with 1 test in 1 suite failed after 0.005 seconds with 2 issues.
