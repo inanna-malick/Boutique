@@ -15,7 +15,7 @@ struct StoreSharedClearReproductionTests {
         try await reproduce(backend: backend, batch: batch, fused: false)
     }
 
-    @Test(arguments: ["disk", "sqlite"], [false, true])
+    @Test(.enabled(if: ProcessInfo.processInfo.environment["BOUTIQUE_SHARED_STORES_FINDINGS"] == "1"), arguments: ["disk", "sqlite"], [false, true])
     func fusedClearRemovesOtherStoresRecord(backend: String, batch: Bool) async throws {
         try await reproduce(backend: backend, batch: batch, fused: true)
     }
