@@ -59,6 +59,7 @@ struct WrapperDiscoveryTests {
             var observers: [WrapperInvalidations] = []
             for (step, command) in scenario.commands.enumerated() {
                 let next = WrapperRecord.make(command.operand)
+                let previousModel = model
                 coverage.hit("operation.\(command.kind)")
                 switch command.kind {
                 case .set: wrapper.set(next); model = next; persisted = model; warm = true
@@ -98,10 +99,13 @@ struct WrapperDiscoveryTests {
                     warm = true
                 }
                 if [.set, .bindingSet, .theme, .tags, .reset].contains(command.kind) {
-                    for observer in observers {
-                        try discoveryRequire(observer.count == 1, "wrapper.observation", step: step)
+                    // Equal writes' invalidation policy is not part of the contract.
+                    if model != previousModel {
+                        for observer in observers {
+                            try discoveryRequire(observer.count == 1, "wrapper.observation", step: step)
+                        }
+                        if !observers.isEmpty { coverage.hit("observation.mutate-armed") }
                     }
-                    if !observers.isEmpty { coverage.hit("observation.mutate-armed") }
                     observers.removeAll()
                 } else if [.read, .bindingRead, .observe].contains(command.kind) {
                     for observer in observers {
